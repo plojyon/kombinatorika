@@ -1994,78 +1994,202 @@ asimptotika: vzamemo singularnost ($x_0$), ki je najbli"zje izhodi"s"cu \[F_n \s
 npr. koliko elementov ima v povpre"cju podmno"zica $[n]$?
 \[\frac{\sum_{S \subseteq [n]} |S|}{2^n} = \frac{\sum_k k \cdot \binom{n}{k}}{2^n} = \frac{n2^{n-1}}{2^n} = \frac{n}{2}\]
 
-\label{TODO: tukej bom dou svoje zapiske se}
-\section{Pólyeva teorija}
+% 11. predavanje, 14. 12. 2020
+% by Yon, transkripcija lanskih zapiskov
+\section{P\'{o}lyeva teorija}
+\begin{ex}
+	Koliko je ogrlic z $n$ koraldami $k$ barv?
+	Dve ogrlici sta enaki, "ce eno iz druge dobimo z rotacijo.
+\end{ex}
+\begin{ex}
+	Koliko je zapestnic z $n$ koraldami $r$ barvami?
+	Dve zapestnici sta enaki, "ce eno iz druge dobimo z rotacijo ali zrcaljenjem.
+\end{ex}
+Nekateri objekti so ekvivalentni, zanima nas "stevilo ekvivaletnih razredov barvanj.
 
-Primer: Pri"stejemo ogrlice s 4 koraldami in 2 barvama: ogrlici sta enaki, "ce eno iz druge dobimo z rotacijo.
-%{\color{red} manjkajo slikice}
-Splo"sno? \\
-
-Kaj pa zapestnice? Zapestnici sta enaki, "ce eno iz druge dobimo z rotacijo ali zrcaljenjem. \\
-%{\color{red} manjkajo slikice} \\
-
-
-\subsection{Permutacijske grupe}
-
-$(G, \circ)$ je grupa, "ce veljajo asociativnost, enota, inverz. \\
-Simetri"cna grupa $S_n: \{\text{permutacija } [n] \to [n]\}$ \\
-Permutacijska grupa: podgrupa simetri"cne grupe.
-$H \leq G$ je podgrupa, "ce $e \in H$, $a,b \in H \implies a \circ b \in H$ in $a \in H \implies a^{-1} \in H$ \\
-Cayleyev izrek: vsaka kon"cna grupa je izomorfna permutacijski grupi \\
-npr. cikli"cna grupa $C_n = \{(1 2 \dots n)^i \; \vert \; 0 \leq i \leq n-1\}$, $|C_n| = n$ \\
-\[\Z_n \cong C_n \quad \cong \; \text{ pomeni izomorfnost:}\]
-\[\phi: \Z_n \to C_n \quad \phi(i) = (1 2 \dots n)^i \text{ to je (o"citno) izomorfizem}\]
-
-G permutacijska grupa, $G \leq S_x$ \\
-\[x \in X, \quad Gx := \{gx \; \vert \; g \in G\} \subseteq X \text{ je orbita elementa x}\]
-\[X/G = \{\text{orbite}\}\]
-Orbite so ekvivalen"cni razredi za relacijo $\sim$, kjer \\
-\[x \sim y \iff \exists g \in G: \; gx = y\]
-
-Stabilizator \\
-\[x \in X\]
-\[G_x = \{g \in G \; \vert \; gx = x\} \subseteq G\]
-
-\begin{theorem}
-    \[Gx \leq G\]    
+\begin{defn}[Permutacijska grupa]
+	je grupa $G \leq S_n$
+\end{defn}
+\begin{theorem}[Cayleyev]
+	Vsaka grupa je izomorfna neki permutacijski grupi.
 \end{theorem}
+\begin{ex}[Cikli"cna grupa]
+	$C_n = \lbrace \cycle{1, 2, 3, \ldots, n}^i: 0 \leq i \le n \rbrace \leq S_n$\\
+	$C_n \cong \Z_n$\\
+	$\phi: \Z_n \rightarrow C_n := i \rightarrow \cycle{1, 2, \ldots, n}^i$
+\end{ex}
 
-%{\color{red} za en del nism zihr a je prov}
-\begin{pro}
-    \[\text{id } \in G_x \text{, saj  idx } = x \; \forall x\]
-    \[g,h \in G_x \implies ghx = x \implies gh \in G_x\]
-    \[g \in G_x \implies g^{-1} \in G_x \; (gx = x \quad / \cdot g^{-1})\]
-    \qed
-\end{pro}
-
-Opomba: $H \triangleleft G$ podgrupa edinka, "ce $H \leq G$ in $gHg^{-1} \subseteq H$ \\
-$G_x$ v splo"snem ni podgrupa edinka. \\
-Spomnimo se: $H \subseteq G$, $g \in G$\\
-\[gH := \{gh \vert h \in H\} \text{ levi odsek}\]
-Levi odseki so disjunktni in enako mo"cni ($eH \to gH \quad h \to gH$) \\
-bijekcija $a \in gH \cap g'H \quad a=gh=g'h'$ \\
-\[h,h' \in H \implies g^{-1}g' = hh'^{-1} \in H \implies g' \in gH\]
-\[\implies g'H \subseteq gH \subseteq g'H \implies gH = g'H\]
-\[G/H = \{\text{levi odseki}\} \quad \text{kvocientna mno"zica}\]
-Kdaj je $G/H$ grupa
-\[gH \cdot g'H := gg'H\]
-To je dobro definirano samo "ce $H \triangleleft G$ \\
-Vedno: $|G/H| = \frac{|G]}{|H|}$ \\
-
+\begin{ex}[Diedrska grupa]
+	$D_n = \lbrace \text{rotacije + zrcaljenja} \rbrace \leq S_n$\\
+	$|D_n| = 2n$ ($n$ zrcaljenj in $n$ rotacij)
+	\\
+	\includegraphics{diedrska}
+\end{ex}
+\begin{defn}[$x \sim y$]
+	$\exists g \in G: g \cdot x = y$
+\end{defn}
+\begin{claim}
+	$\sim$ je ekvivalen"cna relacija.
+\end{claim}
+$X$ z operacijo $\sim$ razpade na ekvivalen"cne razrede, ki jih imenujemo orbite. Orbito elementa $x$ v $G$ ozna"cimo $Gx$ ($\neq G_x$!!).
+\subsection{Orbite, stabilizatorji in negibne to"cke}
+\begin{defn}[Orbita]
+	$$Gx = {g \cdot x: g \in G}$$
+\end{defn}
+\begin{rem}
+	\label{orbita_neq_odsek}
+	Koncept orbit spominja na leve (desne) odseke, a ni isto. Pri odsekih imamo podgrupo, tukaj pa $x$ niti ni element $G$. Pomembna posledica je, da so orbite lahko razli"cno velike, odseki pa so po mo"ci vedno enaki ($|aH|=|bH|$).
+\end{rem}
+\begin{ex}
+	Za $G=C_n, D_n \text{ ali } S_n$ velja $Gx = X$ (samo ena orbita).
+\end{ex}
+\begin{ex}
+	% maybe je +1 thing lih obratno, se mi zdi da je neki menjou kaj je tip 1 in kaj je tip 2
+	$$G = \lbrace\text{id, zrcaljenje}\rbrace \leq S_n$$
+	$$\text{"stevilo orbit} = \begin{cases}\frac{n+1}{2}; \quad n\text{ lih} \\ \frac{n}{2}; \quad n\text{ sod, zrcaljenje tipa }1 \\ \frac{n}{2}+1; \quad  n\text{ sod, zrcaljenje tipa }2\end{cases}$$
+\end{ex}
+Mno"zico orbit ozna"cimo z $X/G$.
+\begin{rem}
+	Na enak na"cin smo ozna"cili tudi faktorske grupe (mno"zice odsekov), a koncept ni isti, ker orbita~$\neq$~odsek (glej opombo \ref{orbita_neq_odsek} pri definiciji orbite).
+\end{rem}
+\begin{defn}[Stabilizator]
+	$$G_x = \lbrace g \in G: g \cdot x = x \rbrace$$
+	Elemente $G_x$ ($\neq Gx$!!) imenujemo stabilizatorji $x$-a.
+\end{defn}
+\begin{defn}[Negibna to"cka]
+	$$X_g = \lbrace x \in X: g \cdot x = x \rbrace$$
+	Elemente $X_g$ imenujemo negibne to"cke $g$-ja.
+\end{defn}
 \begin{theorem}
-    \[|Gx| \cdot |G_x| = |G|\]
+	$$G_x \leq G$$
 \end{theorem}
+\begin{proof}
+	$$id \in G_x$$
+	$$g, h \in G_x \implies g \cdot x = x, h \cdot x = x$$
+	$$\implies (g \cdot h) \cdot x = g \cdot (g \cdot x) = g \cdot x = x $$
+	$$\implies g \cdot h \in G_x$$
+	$$g \in G_x \implies g \cdot x = c \implies g^{-1} \cdot x = g^{-1} \cdot g \cdot x = x$$
+	$$ \implies g^{-1} \in G_x $$
+\end{proof}
+\begin{ex}
+	$G = C_n$\\
+	$G_x = \lbrace id \rbrace$\\
+	$X_g = \begin{cases}x: g = id\\\emptyset: g\neq id\end{cases}$
+\end{ex}
+\begin{ex}
+	$G = D_n$\\
+	$G_x = \lbrace id, \text{zrcaljenje} \rbrace$\\
+	$X_g = \begin{cases}n: g = id\\ 0: (g \text{ rotacija) ali }(g\text{ zrcaljenje tipa 1 in }n\text{ sod}) \\ 1: g \text{ zrcaljenje, }n\text{ lih} \\ 2: g \text{ zrcaljenje tipa 2, }n\text{ sod}\end{cases}$
+\end{ex}
 
-\begin{pro}
-    Trdimo $|Gx| = \frac{|G|}{|G_x|} = |G/G_x|$ \\
-    I"s"cemo bijekcijo $\phi: Gx \to G/G_x \quad gx \mapsto gGx$ \\
-    Dokazati moramo dobro definiranost
-    \[gx = g'x \; (g \neq g') \; \iff gGx = g'Gx\]
-    \[gx = g'x \iff g'^{-1}gx = x \iff g'^{-1}g \in Gx \iff \]
-    \[\iff g'^{-1}gGx = Gx \iff gGx = g'Gx\]
-    Dokazali smo tudi injektivnost \\
-    Surjektivnost: $\text{gGx } = \phi(gx)$\\
-    \qed
-\end{pro}
+\begin{claim}
+	$$|G| = |G_x| \cdot |Gx| \quad \forall x \in X$$
+\end{claim}
+\begin{proof}
+	Spomnimo se levih odsekov $\ldots$
+	$$ H \leq G \models g \cdot H = \lbrace g \cdot h : h \in H \rbrace \quad \text{je levi odsek v }G $$
+	$$g = e \implies g \cdot H = H$$
+	$g \cdot H$ in $g' \cdot H$ sta bodisi enaka, bodisi disjunktna.
+	$G$ torej razpade na leve odseke, ki imajo enako mo"c ($H \rightarrow gH$ je bijekcija; inverz $g \rightarrow g^{-1}h$).
+	\\
+	\ldots in kvocientnih mno"zic
+	$$G/H = \lbrace gH: g \in G \rbrace$$
+	$$|G/H| = \frac{|G|}{|H|} \quad \text{(torej } |H| \text{ deli } |G|\text{)} $$
+	Uporabimo za $H=G_x$
+	Vemo, da velja $$|G/G_x| = \frac{|G|}{|G_x|}$$
+	Definirajmo $$\phi: Gx \rightarrow G/G_x \quad \text{kot} \quad g \cdot x \rightarrow gG_x$$
+	$\phi$ je o"citno bijekcija, torej imata $Gx$ in $G/G_x$ enako mo"c.
+	Velja torej
+	$$|G_x|\cdot|Gx| = |G_x| \cdot |G/G_x| = |G_x| \cdot \frac{|G|}{|G_x|} = |G| $$
+	Pozor! $g$ ni enoli"cno dolo"cen. Poka"zimo, da je $\phi$ dobro definirana (za nek vhod dobimo enoli"cen izhod).
+	$$g \cdot x = h \cdot x \iff h^{-1} \cdot g \cdot x = x \iff h^{-1} \cdot g \in G_x \iff h^{-1} \cdot g \cdot G_x = G_x \iff g \cdot G_x = h \cdot G_x $$
+	Hkrati smo pokazali, da je injektivna (ker so vmes ekvivalence, ne samo implikacije).
+	Poka"zimo "se, da je surjektivna:
+	$$gG_x = \phi (g \cdot x) $$
+	$$\implies |G_x| = \frac{G}{G_x}$$
+\end{proof}
+
+\begin{ex}
+	Pre"stej simetrije tetraedra.\\
+	$|G| = |G_x||Gx| = 3 \cdot 4 = 12$\\
+	$\text{id} + \text{rotacije za }120^{\circ} + \text{rotacije za }180^{\circ}$\\
+	$1 + 4 \cdot 2 + 3 = 12$
+\end{ex}
+\begin{ex}
+	Pre"stej simetrije kocke.\\
+	$|G| = |G_x||Gx| = 3 \cdot 8 = 24$
+\end{ex}
+
+
+% 12. predavanje, 21. 12. 2020
+% by Yon, transkripcija lanskih zapiskov
+\subsection{Burnsidova lema}
+\begin{lemma}[Burnsidova]
+	"Stevilo orbit je enako povpre"cnemu "stevilu negibnih to"ck.
+	$$|X/G| = \frac{1}{|G|}\sum_{g \in G}|X_g|$$
+\end{lemma}
+\begin{proof}
+	% je to fubinijev izrek?
+	$$\sum_{g \in G}|X_g| = \sum_{g \in G}\sum_{x \in X_g}1 = \sum_{g \in G}\sum_{\stackrel{x\in X}{g \cdot x = x}}1 = \sum_{x \in X}\sum_{\stackrel{g \in G}{g \cdot x = x}}1 = \sum_{x \in X}\sum_{g \in G_x}1 = \sum_{x\in X}|G_x|$$
+	\begin{rem}
+		Ta del bi lahko utemeljili tudi s tabelco: v vrstice napi"semo elemente $X$, v stolpce elemente $G$. Na polju $(g, x)$ naredimo kljukico ntk. $g \cdot x = x$. "Stevilo kljukic po vrsticah je $\sum_{x\in X}|G_x|$, "stevilo kljukic po stolpcih pa $\sum_{g \in G}|X_g|$.
+	\end{rem}
+	$$\sum_{g \in G}|X_g| = \sum_{x\in X}|G_x| = \sum_{x \in X}\frac{|G|}{|Gx|} = |G| \sum_{x \in X}\frac{1}{|Gx|}$$
+	Analizirajmo pomen faktorja $\sum_{x \in X}\frac{1}{|Gx|}$. Za vsak $x$ iz na"se mno"zice vzamemo inverz mo"ci njegove orbite. Ker vsak $x$ pripada natanko eni orbiti, in ker ima vsaka orbita natanko toliko $x$-ov, kolikor je njena mo"c, dobimo slede"co sliko
+	$$
+	\underbrace{\frac{1}{2}+\frac{1}{2}}_{=1} + 
+	\underbrace{\frac{1}{1}}_{=1} + 
+	\underbrace{\frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}}_{=1} + 
+	\ldots
+	= \text{"stevilo orbit}
+	$$
+	oziroma ra"cunsko (oznaka $\sigma =$ orbita)
+	$$\sum_{x \in \sigma}\frac{1}{|\sigma|} = |\sigma| \cdot \frac{1}{|\sigma|} = 1$$
+	kar lahko uporabimo, da poenostavimo 
+	$$|G| \sum_{x \in X}\frac{1}{|Gx|} = |G| \sum_{\sigma \in X/G}\sum_{x \in \sigma}\frac{1}{|\sigma|} = |G| \sum_{\sigma \in X/G}1 = |G| \cdot |X/G|$$
+\end{proof}
+\begin{ex}
+	$G=C_n$. $|X/G|$ je o"citno $1$, saj lahko iz ene to"cke z rotacijami v ciklu pridemo kamorkoli, torej imamo samo eno orbito. Ko se"stevamo "stevila negibnih to"ck, ugotovimo, da jih je pri identiteti $n$, pri ostalih $n-1$ ciklih pa nobene.
+	$$1 = \frac{1}{n}(n + (n-1)\cdot 0)$$
+\end{ex}
+\begin{ex}
+	$G=D_n$. Spet imamo o"citno samo $1$ orbito. Na desni strani pa "stejemo: $n$ negibnih to"ck pri identiteti, $(n-1)$ pravih rotacij, ki nimajo nobene negibne to"cke, $n$ zrcaljenj z $1$ negibno to"cko "ce je $n$ lih, sicer pa "se $\frac{n}{2}$ zrcaljenj preko simetrale stranic ($0$ negibnih to"ck) in $\frac{n}{2}$ zrcaljenj preko diagonale ($2$ negibni to"cki).
+	$$n\text{ lih:} \quad 1 = \frac{1}{2n}(n + (n-1)\cdot 0 + n \cdot 1)$$
+	$$n\text{ sod:} \quad 1 = \frac{1}{2n}(n + (n-1)\cdot 0 + \frac{n}{2} \cdot 0 + \frac{n}{2} \cdot 2)$$
+\end{ex}
+\begin{ex}
+	$G = \lbrace \text{id, zrcaljenje} \rbrace$. Lo"cimo primera glede na parnost $n$-ja in tip zrcaljenja.
+	$$n\text{ lih, zrcaljenje preko to"cke:}\quad 1 + \frac{n-1}{2} = \frac{1}{2}(n+1)$$
+	$$n\text{ sod, zrcaljenje preko to"ck:}\quad 2 + \frac{n-2}{2} = \frac{1}{2}(n+2)$$
+	$$n\text{ sod, zrcaljenje preko stranice:}\quad \frac{n}{2} = \frac{1}{2}(n+0)$$
+\end{ex}
+\begin{ex}
+	$G = S_n$.
+	$$1 = \frac{1}{n!}\sum_{\pi \in S_n} \# \text{negibnih to"ck }\pi$$
+	Ugotovili smo, da je vsota "stevil negibnih to"ck vseh permutacij enaka $n!$. To ni povsem o"citno, ampak lahko sami preverite.
+\end{ex}
+\begin{ex}
+	$3 \times 3$ mre"za z $2$ luknjama. Koliko razli"cnih konfiguracij obstaja, "ce konfiguraciji smatramo za enaki ntk. lahko eno dobimo iz druge z rotacijami in zrcaljenji?
+	\\
+	Vzemimo za $X$ mno"zico vseh izbir lukenj na plo"s"ci ($|X|=\binom{9}{2}=36$). Na tej mno"zici deluje $D_4$ ($|D_4| = 8$). Pri identiteti imamo torej $36$ negibnih to"ck, pri rotacijah za $90^{\circ}$ vedno $0$, pri rotacijah za $180^{\circ}$ lahko izberemo katerkoli nasprotni par lukenj ($4$ mo"zne izbire), pri vodoravnih in navpi"cnih zrcaljenjih $6 + 6$, pri diagonalnih zrcaljenjih pa "se $2 \cdot 6$ izbir.
+	$$\frac{1}{8}(36+0+4+12+12)=8$$
+	\begin{rem}
+		"Ce tu ne dobimo naravnega "stevila, smo falili.
+	\end{rem}
+\end{ex}
+
+\subsection{Cikli"cni indeks}
+Naj bo $G \leq S_n$ permuatacijska grupa, $n=|X|$.
+$g \in G$ je permutacija elementov iz $X$, ki jo seveda lahko enoli"cno zapi"semo $g$ kot produkt disjunktih ciklov. 
+\begin{defn}[Cikli"cni indeks]
+	Ozna"cimo z $\alpha_i(g)$ "stevilo ciklov dol"zine $i$.
+	Cikli"cni indeks $Z_G(t_1, \ldots, t_n)$ definiramo kot
+	$$ Z_G(t_1, \ldots, t_n) = \frac{1}{|G|}\sum_{g \in G}t_1^{\alpha_1(g)}t_2^{\alpha_2(g)}\cdots t_n^{\alpha_n(g)} $$
+\end{defn}
+\begin{ex}
+	$G=C_4$. $|G|=4$. Za vsak element grupe pogledamo kak"sna je cikli"cna struktura. $id$ ima $4$ cikle dol"zine $1$, torej dobimo "clen $(t_1)^4$. Rotacija za $180^{\circ}$ ima $2$ cikla dol"zine $2$ ($\cycle{1, 2, 3, 4}$ in $\cycle{1, 4, 3, 2}$), torej $(t_2)^2$, vsaka od dveh rotacij za $90^{\circ}$ pa je cikel dol"zine $4$, torej $2 \cdot (t_4)^1$.
+	$$Z_{C_4}(t_1, t_2, t_3, t_4) = \frac{1}{4}((t_1)^4+(t_2)^2+2 \cdot t_4)$$
+\end{ex}
+
 
 \end{document}
