@@ -38,7 +38,6 @@
 \newtheorem{conseq}[counter]{Posledica}
 \newtheorem{claim}[counter]{Trditev}
 \newtheorem{theorem}[counter]{Izrek}
-\newtheorem{pro}[counter]{Dokaz} % NO
 %%
 \theoremstyle{remark}
 \newtheorem*{ex}{Primer}
@@ -347,7 +346,7 @@ Po Dirichletovem principu obstajata $j$ in $j'$, $j < j'$, tako da
 	\[\binom{n - 1}{k - 1}+\binom{n-1}{k} = \frac{(n-1)^{\underline{k-1}}}{(k-1)!} + \frac{(n-1)^{\underline{k}}}{k!} = \frac{(n-1)^{\underline{k-1}}(k+n-k)}{k!} = \frac{n^{\underline{k}}}{k!}, \ k \geqslant1\]
 \end{proof}
 
-\subsection{Pascalov trikotnik}
+\subsubsection{Pascalov trikotnik}
 %(Image will be added soon (upam))
 \label{TODO: add image 1}
 % \includegraphics{image_name_without_file_extension}
@@ -471,14 +470,14 @@ Ideja:
 	$(0, 0, 3, 1, 0, 5, 0, 2)$
 \end{ex}
 \begin{claim}
-	"Stevilo "sibkih kompozicij $n$ s $k$ "cleni je $\binom{n + k}{k - 1}$.
+	"Stevilo "sibkih kompozicij $n$ s $k$ "cleni je $\binom{n + k-1}{k - 1}$.
 \end{claim}
 
 \begin{proof}(1. na"cin)\\
 	"Stejemo re"sitve $\lambda_1 + \lambda_2 + \cdots + \lambda_k = n$, zahtevamo $\lambda_1 \geqslant 0$.
 	\[\mu_i = \lambda_i + 1\]
 	\[\mu_1 + \cdots + \mu_k = n + k,\quad \mu_i \geqslant 1\]
-	\[\binom{n+k}{k-1} \text{ je re"sitev.}\]
+	\[\binom{n+k-1}{k-1} \text{ je re"sitev.}\]
 \end{proof}
 \begin{proof}(2. na"cin)\\
 	"Sibko kompozicijo predstavino s kroglicami in pregradami.
@@ -2013,6 +2012,13 @@ Nekateri objekti so ekvivalentni, zanima nas "stevilo ekvivaletnih razredov barv
 \begin{theorem}[Cayleyev]
 	Vsaka grupa je izomorfna neki permutacijski grupi.
 \end{theorem}
+\begin{proof}
+	Naj bo $G$ poljubna grupa in $g \in G$. Definirajmo $T_g: G \rightarrow G$:
+	\[ T_g(x) = gx \]
+	$T_g$ je permutacija mno"zice G. \\
+	$H = \lbrace T_g: g \in G \rbrace$ je grupa za komponiranje. \\
+	$H \cong G$
+\end{proof}
 \begin{ex}[Cikli"cna grupa]
 	$C_n = \lbrace \cycle{1, 2, 3, \ldots, n}^i: 0 \leq i \le n \rbrace \leq S_n$\\
 	$C_n \cong \Z_n$\\
