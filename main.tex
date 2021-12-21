@@ -1508,6 +1508,7 @@ Koeficienti pri $x^k$ so
 
 $(\R[x], +, \cdot)$ je sedaj komutativen kolobar (kjer je $\cdot$ konvolucijski produkt). $\R[x]$, z vsemi temi operacijami tvori komutativno algebro. Lahko bi za kolobar vzeli tudi $\C([0, 1])$. "Ce vzamemo polinome fiksne stopnje $\R^{n \times n}$, dobimo nekomutativno algebro.
 
+\label{TODO: definiraj kaj je algebra}
 \begin{defn}[Algebra formalnih poten"cnih vrst]
     $\R[[x]]$ je komutativna algebra zaporedij v $\R$.
     \[\R[[x]] = \{(a_0, a_1, a_2, ...): a_i \in \R\} = \{f: \N \rightarrow \R\} = \R^{\N}\]
@@ -1642,7 +1643,7 @@ Spomnimo se na dekompozicijo parcialnih ulomkov.
 Ugotovili smo, da $\frac{x + 1}{(1-2x)(1-x)}$, kar je v bistvu $\frac{3}{1 - 2x} - \frac{2}{1 - x}$ lahko interpretiramo kot $a_n = 3 \cdot 2^n - 2$.
 
 Spomnimo se "se na kvadratno ena"cbo.
-\[ax^2 + nx + c = a (x - x_1)(x - x_2), \ x_{1, 2} = \frac{- b \pm \sqrt{b^2 - 4ac}}{2a}\]
+\[ax^2 + bx + c = a (x - x_1)(x - x_2), \ x_{1, 2} = \frac{- b \pm \sqrt{b^2 - 4ac}}{2a}\]
 Pri kombinatoriki jo bomo nekoliko obrnili.
 \[c + bx + ax^2 = c(1 - y_1 x)(1 - y_2 x)\]
 $\frac{1}{y_1}$ in $\frac{1}{y_2}$ sta ni"cli na"sega polinoma $c + bx + ax^2$.
@@ -1754,11 +1755,11 @@ Poskusimo posplo"siti zgornji postopek za poljubno homogeno linearno rekurzivno 
 
 % 30. 11. 2021
 \subsection{Binomska vrsta}
-Spomnimo se biomskega koeficientaza $n, k \in \N$
+Spomnimo se biomskega koeficienta za $n, k \in \N$
 \[\binom{n}{k} = \bigg|\binom{[n]}{k}\bigg| = \frac{n^{\underline{k}}}{k} = \begin{cases}\frac{n!}{k!(n-k)!}: 0 \leqslant k \leqslant n \\ 0: k > n\end{cases}\] %\frac{n \cdot (n - 1) \cdot ... \cdot (n - k + 1)}{k!}\]
 \begin{defn}[Posplo"seni binomski koeficient]
 	Zahtevamo samo $n \in \N$.
-	\[\binom{\lambda}{n} = \frac{\lambda^{\underline{n}}}{n!} = \frac{\lambda \cdot (\lambda - 1) \cdot ... \cdot (\lambda - n + 1)}{n!}\]
+	\[\binom{\lambda}{n} = \frac{\lambda^{\underline{n}}}{n!} = \frac{\lambda \cdot (\lambda - 1) \cdots (\lambda - n + 1)}{n!}\]
 	Kjer je $\lambda \in K$, $K$ konvergentni obseg s karakteristiko $0$, npr $\R^2$ ali $\C^2$.
 \end{defn}
 %Nekaj primerov:
@@ -2196,6 +2197,8 @@ $g \in G$ je permutacija elementov iz $X$, ki jo seveda lahko enoli"cno zapi"sem
 	$G=C_4$. $|G|=4$. Za vsak element grupe pogledamo kak"sna je cikli"cna struktura. $id$ ima $4$ cikle dol"zine $1$, torej dobimo "clen $(t_1)^4$. Rotacija za $180^{\circ}$ ima $2$ cikla dol"zine $2$ ($\cycle{1, 2, 3, 4}$ in $\cycle{1, 4, 3, 2}$), torej $(t_2)^2$, vsaka od dveh rotacij za $90^{\circ}$ pa je cikel dol"zine $4$, torej $2 \cdot (t_4)^1$.
 	$$Z_{C_4}(t_1, t_2, t_3, t_4) = \frac{1}{4}((t_1)^4+(t_2)^2+2 \cdot t_4)$$
 \end{ex}
-
+\begin{ex}
+	$G=D_4$. $Z_{D_4}(t_1, t_2, t_3, t_4) = \frac{1}{8}((t_1)^4+(t_2)^2+2t_4+2(t_2)^2+2(t_1)^2t_2$.
+\end{ex}
 
 \end{document}
