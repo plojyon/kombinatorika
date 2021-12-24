@@ -148,13 +148,13 @@ Y^X := \{f: X\rightarrow Y\}
 \begin{theorem}[Na"celo vsote in produkta]
 	\[
 	A \cap B = \emptyset \implies |A \cup B| = |A| + |B|
-	\]	
+	\]
 \end{theorem}
 
 \begin{theorem}[Na"celo vklju"citev in izkju"citev]
 	\[
 	|A \cup B| = |A| + |B| - |A \cap B|
-	\]	
+	\]
 \end{theorem}
 
 
@@ -180,16 +180,16 @@ Kako uporabljamo ti dve na"celi?
 	\[\Phi = 2^X \rightarrow \{0, 1\}\times\{0, 1\}\times...\times\{0, 1\} \ (n\text{-krat})\]
 	\[\Phi(A) = (\varepsilon_1, ..., \varepsilon_n), A \subseteq X\]
 	\[\varepsilon_i = \begin{cases}0: \quad x_i \notin A  \\ 1; \quad x_i \in A \end{cases}\]
-	
-	
+
+
 	\[
 	\Psi : \{0, 1\}^n \rightarrow 2^X
 	\]
 	\[
 	\Psi (\varepsilon_1, ..., \varepsilon_n) = \{x_i : \varepsilon_i = 1\}
 	\]
-	
-	
+
+
 	\[\Psi \circ \Phi = id_{2^X}\]
 	\[\Phi \circ \Psi = id_{\{0, 1\}^n}\]
 	\[\implies \Phi \text{ je bijekcija}\]
@@ -197,7 +197,7 @@ Kako uporabljamo ti dve na"celi?
 \end{proof}
 \begin{proof}
 	(Intuitiven)\\
-	Za vsakega od $n$ elementov imamo dve izbiri (damo / ne damo v podmno"zico). 
+	Za vsakega od $n$ elementov imamo dve izbiri (damo / ne damo v podmno"zico).
 	Izbire so neodvisne, torej imamo
 	$2 \cdot 2 \cdot ...\cdot 2 = 2^n$
 	izbir.
@@ -268,7 +268,7 @@ Kompozitum je asociativen, a ni komutativen. Ima enoto, $ id = \cycle{1,2,\ldots
 \label{TODO: what is this}
 Naj bo $\pi \in S_n$, $i \in [n]$
 \[i, \pi (i), \pi^2(i), \pi^3(i), \cdots\]
-Po Dirichletovem principu obstajata $j$ in $j'$, $j < j'$, tako da 
+Po Dirichletovem principu obstajata $j$ in $j'$, $j < j'$, tako da
 \[ \pi^j(i) = \pi^{j'}(i) \implies i = \pi^{j'-j}(i) \]
 \[\cycle{i,\ \pi(i),\ \pi^2(i),\ \cdots,\ \pi^{n - 1}(i)}\]
 \begin{claim}
@@ -525,8 +525,8 @@ Ideja:
 	\[
 		|\bigcap_{i = 1}^n A_i^c| =
 		|(\bigcup_{i = 1}^n A_i)^c| =
-		|A| - |\bigcup_{i = 1}^n A_i| = 
-		|A_{\emptyset}|\sum_{\emptyset \neq I \subseteq [n]} (-1)^{|I|} (A_I) = 
+		|A| - |\bigcup_{i = 1}^n A_i| =
+		|A_{\emptyset}|\sum_{\emptyset \neq I \subseteq [n]} (-1)^{|I|} (A_I) =
 		\sum_{I \subseteq [n]} (-1)^{|I|} |A_I|
 	\]
 \end{proof}
@@ -571,17 +571,17 @@ To lahko poka"zemo tudi s slede"co bijekcijo
 
 \begin{proof}
 	Zapi"simo $\frac{1}{n}$, $\frac{2}{n}$, $\frac{3}{n}$, \ldots, $\frac{n}{n}$ in jih pokraj"sajmo.
-	
+
 	\[
 	\begin{tabular}{c c c c c c c c c c c c}
-	
+
 	$\frac{1}{12}$ & $\frac{2}{12}$ & $\frac{3}{12}$ & $\frac{4}{12}$ & $\frac{5}{12}$ & $\frac{6}{12}$ & $\frac{7}{12}$ & $\frac{8}{12}$ & $\frac{9}{12}$ & $\frac{10}{12}$ & $\frac{11}{12}$ & $\frac{12}{12}$\\
 	\\
 	$\frac{1}{12}$ & $\frac{1}{6}$ & $\frac{1}{4}$ & $\frac{1}{3}$ & $\frac{5}{12}$ & $\frac{1}{2}$ & $\frac{7}{12}$ & $\frac{2}{3}$ & $\frac{3}{4}$ & $\frac{5}{6}$ & $\frac{11}{12}$ & $\frac{1}{1}$
-	
+
 	\end{tabular}
 	\]
-	
+
 	Ulomkov je $n$, imenovalci so delitelji "stevila $n$, "stevci so "stevila, ki so manj"sa od $a$ in tuja z $a$.
 	\[\sum_{a | n} \phi (a) = n\]
 \end{proof}
@@ -595,14 +595,14 @@ To lahko poka"zemo tudi s slede"co bijekcijo
 	\[|A_i| = \frac{n}{p_i}\]
 	\[|A_i \cap A_j| = \frac{n}{p_i p_j}\]
 	\[|A_I| = \frac{n}{\displaystyle \prod_{i \subseteq I} p_i}\]
-	
+
 	\[\phi (n) = \sum_{I \subseteq [k]} (-1)^{|I|} \frac{n}{\displaystyle \prod_{i \in I} p_i}\]
-	
+
 		$k = 2$ \label{TODO: k=2? kasn k? od kje? kaj to pomen}
-	
+
 	\[n\cdot(1 - \frac{1}{p_1} - \frac{1}{p_2} + \frac{1}{p_1 p_2}) = n\cdot(1 - \frac{1}{p_1})\cdot(1 - \frac{1}{p_2})\]
 	\[\phi (n) \stackrel{\text{distributivnost}}{=}  n\cdot(1 - \frac{1}{p_1})\cdot(1 - \frac{1}{p_2})\cdot \ldots \cdot(1 - \frac{1}{p_k})\]
-	
+
 	\[\phi (n) = n \cdot \prod_{p | n} (1 - \frac{1}{p})\]
 \end{proof}
 %26. 10. 2021
@@ -611,7 +611,7 @@ To lahko poka"zemo tudi s slede"co bijekcijo
 Spomnimo se na binomske koeficiente
 \[\binom{n}{k} \ = \ \frac{n!}{k! (n - k)!}\text{, } 0 \leqslant k \leqslant n\]
 
-Imamo $a$ enic in $b$ ni"cel. Preme"samo jih lahko na 
+Imamo $a$ enic in $b$ ni"cel. Preme"samo jih lahko na
 \[\binom{a + b}{a} = \binom{a + b}{b} = \frac{(a+b)!}{a!b!}\]
 na"cinov. Kaj pa "ce imamo ve"c enakih elementov? "Stevila $1,1,1,2,2,3,3,3,3,3,4$ lahko preme"samo na.
 \[\binom{a_1 + a_2 + ... + a_n}{a_1} \cdot \binom{a_2 + a_3 ... + a_n}{a_2} \cdot \binom{a_3 + a_4 + ... + a_n}{a_3} ...\]
@@ -654,7 +654,7 @@ $8$ razli"cic, $6$ potro"snikov, vsak potro"snik testira $4$, vsako razli"cico t
 		\item $B_1, \ldots, B_b \subseteq [v]$
 		\item $|B_1| = \ldots = |B_b| = k$
 		\item vsak $i \in [v]$ se pojavi v natanko $\lambda$ mno"zicah oz. ``blokih''.
-	\end{itemize} 
+	\end{itemize}
 \end{defn}
 
 \begin{ex}
@@ -668,7 +668,7 @@ $8$ razli"cic, $6$ potro"snikov, vsak potro"snik testira $4$, vsako razli"cico t
 		v
 	\end{tabular}\\
 	Kljukico damo tam, kjer je $i \in B_j$. V vsakem stolpcu tako dobimo $k$ kljukic, skupaj $k\cdot b$, v vsaki vrstici dobimo $\lambda$ kljukic, skupaj $\lambda \cdot v$. Iz tega sledi, da $k \cdot b = \lambda \cdot v$, oziroma $b = \frac{\lambda v}{k}$
-	
+
 	Velja "se b $\leqslant$ $\binom{v}{k}$
 	\[\frac{\lambda v}{k} \leqslant \frac{v!}{k! (v-k)!}\]
 	Pokraj"samo $\frac{v}{k}$ na obeh straneh neena"cbe in dobimo
@@ -682,7 +682,7 @@ $8$ razli"cic, $6$ potro"snikov, vsak potro"snik testira $4$, vsako razli"cico t
 \begin{proof}\mbox{}\\
 	($\Rightarrow$) "Ze dokazano.\\
 	($\Leftarrow$) Izberemo $\frac{\lambda v}{k}$ $k$-elementnih podmno"zic mno"zice $[v]$. To lahko naredimo, ker je $\frac{\lambda v}{k} \leqslant \binom{v - 1}{k - 1}\cdot \frac{v}{k} = \binom{v}{k}$.\\
-	
+
 	\[v = 8, \ k = 4, \ \lambda = 3\]
 	\[\frac{\lambda v}{k} = 6  \Rightarrow 1234, 1356, 1567, 1568, 2356, 3457\]
 	To ni nujno na"crt.
@@ -690,7 +690,7 @@ $8$ razli"cic, $6$ potro"snikov, vsak potro"snik testira $4$, vsako razli"cico t
 	\[\lambda_1 = 4,\ \lambda_2 = 2,\ \lambda_3 = 4,\ \lambda_4 = 2,\ \lambda_5 = 5,\ \lambda_6 = 4,\ \lambda_7 = 2,\ \lambda_8 = 1\]
 	Naredimo isto tabelo kot prej in ugotovimo, da je $\lambda = \frac{\sum_{i = 1}^v \lambda_i}{v}$.\\
 	"Ce to ni na"crt, zagotovo obstajata $i$, $j$, da je $\lambda_i$ > $\lambda$ > $\lambda_j$.\\
-	
+
 	Bloki so 4 tipov:
 	\begin{itemize}
 	    \item[(I)] vsebujejo $i$ in $j$
@@ -698,7 +698,7 @@ $8$ razli"cic, $6$ potro"snikov, vsak potro"snik testira $4$, vsako razli"cico t
 	    \item[(III)] vsebujejo $j$, ne pa $i$
 	    \item[(IV)] ne vsebujejo ne $i$ ne $j$\\
 	\end{itemize}
-	
+
 	Bloki tipa (I) in (IV) vsebujejo enako $i$-jev in $j$-jev.
 	\begin{itemize}
 	    \item[] $\lambda_i$ = blokov tipa (I) + (II)
@@ -769,7 +769,7 @@ Fanova ravnina:
 	    \item $i\notin S$: $\lambda_t$ kljukic
 	    \item[] skupaj: $\lambda_t (v-t+1)$
 	\end{itemize}
-	
+
 	\[\implies \lambda_s = \frac{(v - t + 1)\lambda_t}{k-t+1}\]
 \end{proof}
 
@@ -790,7 +790,7 @@ Za $c(n, k)$ ni ``lepe'' formule. Vemo pa naslednje lastnosti
 	\item $c(n, 0) = 0$ ("ce $n > 0$, oziroma $1$, "ce je $n = 0$)
 	\item $c(n, 1) = (n-1)!$
 	\item $c(n, k) = 0$ za $k > n$ ali $k < 0$
-	\item $\sum_k c(n, k) = n!$	
+	\item $\sum_k c(n, k) = n!$
 \end{itemize}
 
 \begin{claim}[Rekurzivna zveza]
@@ -887,7 +887,7 @@ Preproste formule za $S(n,k)$ in $B(n)$ nimamo, poznamo pa naslednje identitete:
 \end{itemize}
 
 \begin{claim}[Rekurzivna formula za $S(n)$]
-    \[S(n, k) = S(n-1, k-1) + k \cdot S(n-1, k)\] 
+    \[S(n, k) = S(n-1, k-1) + k \cdot S(n-1, k)\]
 \end{claim}
 
 \begin{proof}
@@ -1053,9 +1053,9 @@ Raz"cletnive lahko prika"zemo grafi"cno s pomo"cjo Ferresovih diagramov.
 	\[
 		\begin{tikzpicture}[scale=0.7]
 		 \fill foreach \Z [count=\Y] in {5,4,4,2,1,1}
-		  {foreach \X in {1,...,\Z} 
+		  {foreach \X in {1,...,\Z}
 		  {(\X,-\Y) circle[radius=3pt]}};
-		
+
 		\end{tikzpicture}
 	\]
 \end{ex}
@@ -1101,7 +1101,7 @@ Veljajo naslednje lastnosti:
 	\begin{enumerate}
 	    \item $p_k(n)$ = $\overline{p_{k - 1}} (n - k)$
 	    \item $p_k(n)$ = $p_{k - 1} (n - 1)$ + $p_k (n - k)$
-	    \item $\overline{p_{k}}(n)$ = $\overline{p_{k - 1}}(n) + p_k (n)$ = $\overline{p_{k - 1}}(n) + \overline{p_k} (n - k)$ 
+	    \item $\overline{p_{k}}(n)$ = $\overline{p_{k - 1}}(n) + p_k (n)$ = $\overline{p_{k - 1}}(n) + \overline{p_k} (n - k)$
 	\end{enumerate}
 \end{claim}
 
@@ -1196,158 +1196,158 @@ $p(n) = \sum_{m = 1}^{\infty} (\alpha(m) - \beta (m)\cdot p(n - m))$
 	$m = 10$:
 	% poskusi polep"sati
 	\label{TODO: kaj se da nardit glede teh diagramov?}
-	
+
 	%\begin{align*}
 	%    \vspace{0pt}
 	%    \begin{tikzpicture}[scale=0.5] % prva vrstica
 	%        \fill foreach \Z [count=\Y] in {10}
-	%          {foreach \X in {1,...,\Z} 
+	%          {foreach \X in {1,...,\Z}
 	%          {(\X,-\Y) circle[radius=5pt]}};
 	%    \end{tikzpicture}
 	%    &\iff
 	%    \vspace{0pt}
 	%    \begin{tikzpicture}[scale=0.7]
 	%        \fill foreach \Z [count=\Y] in {9, 1}
-	%          {foreach \X in {1,...,\Z} 
+	%          {foreach \X in {1,...,\Z}
 	%          {(\X,-\Y) circle[radius=3pt]}};
 	%    \end{tikzpicture}
 	%\\\mbox{}\\
 	%    \begin{tikzpicture}[scale=0.7]% druga vrstica
 	%        \fill foreach \Z [count=\Y] in {7, 2, 1}
-	%          {foreach \X in {1,...,\Z} 
+	%          {foreach \X in {1,...,\Z}
 	%          {(\X,-\Y) circle[radius=3pt]}};
 	%    \end{tikzpicture}
 	%    &\iff
 	%    \begin{tikzpicture}[scale=0.7]
 	%        \fill foreach \Z [count=\Y] in {8, 2}
-	%          {foreach \X in {1,...,\Z} 
+	%          {foreach \X in {1,...,\Z}
 	%          {(\X,-\Y) circle[radius=3pt]}};
 	%    \end{tikzpicture}
 	%\\\mbox{}\\
 	%    \begin{tikzpicture}[scale=0.7]% tretja vrstica
 	%        \fill foreach \Z [count=\Y] in {6, 3, 1}
-	%          {foreach \X in {1,...,\Z} 
+	%          {foreach \X in {1,...,\Z}
 	%          {(\X,-\Y) circle[radius=3pt]}};
 	%    \end{tikzpicture}
 	%    &\iff
 	%    \begin{tikzpicture}[scale=0.7]
 	%        \fill foreach \Z [count=\Y] in {7, 3}
-	%          {foreach \X in {1,...,\Z} 
+	%          {foreach \X in {1,...,\Z}
 	%          {(\X,-\Y) circle[radius=3pt]}};
 	%    \end{tikzpicture}
 	%\\\mbox{}\\
 	%    \begin{tikzpicture}[scale=0.7]% "cetrta vrstica
 	%        \fill foreach \Z [count=\Y] in {5, 4, 1}
-	%          {foreach \X in {1,...,\Z} 
+	%          {foreach \X in {1,...,\Z}
 	%          {(\X,-\Y) circle[radius=3pt]}};
 	%    \end{tikzpicture}
 	%    &\iff
 	%    \begin{tikzpicture}[scale=0.7]
 	%        \fill foreach \Z [count=\Y] in {6, 4}
-	%          {foreach \X in {1,...,\Z} 
+	%          {foreach \X in {1,...,\Z}
 	%          {(\X,-\Y) circle[radius=3pt]}};
 	%    \end{tikzpicture}
 	%\\\mbox{}\\
 	%    \begin{tikzpicture}[scale=0.7]% peta vrstica
 	%        \fill foreach \Z [count=\Y] in {5, 3, 2}
-	%          {foreach \X in {1,...,\Z} 
+	%          {foreach \X in {1,...,\Z}
 	%          {(\X,-\Y) circle[radius=3pt]}};
 	%    \end{tikzpicture}
 	%    &\iff
 	%    \begin{tikzpicture}[scale=0.7]
 	%        \fill foreach \Z [count=\Y] in {4, 3, 2, 1}
-	%          {foreach \X in {1,...,\Z} 
+	%          {foreach \X in {1,...,\Z}
 	%          {(\X,-\Y) circle[radius=3pt]}};
 	%    \end{tikzpicture}
 	%\end{align*}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	\[\begin{tikzpicture}[scale=0.7] % prva vrstica
 	 \fill foreach \Z [count=\Y] in {10}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
-	
+
 	\end{tikzpicture} \iff  \begin{tikzpicture}[scale=0.7]
 	 \fill foreach \Z [count=\Y] in {9, 1}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
-	
+
 	\end{tikzpicture}\]
-	
+
 	\[\begin{tikzpicture}[scale=0.7]% druga vrstica
 	 \fill foreach \Z [count=\Y] in {7, 2, 1}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
-	
+
 	\end{tikzpicture} \iff  \begin{tikzpicture}[scale=0.7]
 	 \fill foreach \Z [count=\Y] in {8, 2}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
-	
+
 	\end{tikzpicture}\]
-	
+
 	\[\begin{tikzpicture}[scale=0.7]% tretja vrstica
 	 \fill foreach \Z [count=\Y] in {6, 3, 1}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
-	
+
 	\end{tikzpicture} \iff \begin{tikzpicture}[scale=0.7]
 	 \fill foreach \Z [count=\Y] in {7, 3}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
-	
+
 	\end{tikzpicture}\]
-	
+
 	\[\begin{tikzpicture}[scale=0.7]% "cetrta vrstica
 	 \fill foreach \Z [count=\Y] in {5, 4, 1}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
-	
+
 	\end{tikzpicture} \iff  \begin{tikzpicture}[scale=0.7]
 	 \fill foreach \Z [count=\Y] in {6, 4}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
-	
+
 	\end{tikzpicture}\]
-	
+
 	\[\begin{tikzpicture}[scale=0.7]% peta vrstica
 	 \fill foreach \Z [count=\Y] in {5, 3, 2}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
-	
+
 	\end{tikzpicture} \iff \begin{tikzpicture}[scale=0.7]
 	 \fill foreach \Z [count=\Y] in {4, 3, 2, 1}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
-	
+
 	\end{tikzpicture}\]
-	
+
 	s($\lambda$) $\coloneqq$ $\lambda_{l(\lambda)}$ najmanj"si "clen
 	\[\begin{tikzpicture}[scale=0.7]
 	 \fill foreach \Z [count=\Y] in {7, 6, 5, 2, 1}
-	  {foreach \X in {1,...,\Z} 
+	  {foreach \X in {1,...,\Z}
 	  {(\X,-\Y) circle[radius=3pt]}};
 	\end{tikzpicture}\]
 	Recimo diagonali, ki se pojavi ob koncu prvih treh vrstic, \textbf{bok}.\\
 	\[b(\lambda) \coloneqq \max\{i: \lambda_i = \lambda_1 - i + 1\}\]
-	
+
 	\begin{enumerate}
 	    \item "Ce je $s(\lambda) > b(\lambda)$: bok postavimo pod najmanj"si "clen
 	    \item "Ce je $s(\lambda) \leqslant b(\lambda)$: najmanj"si "clen postavimo desno od boka
 	\end{enumerate}
-	
+
 	Zakaj to ni vselej bijekcija? \label{TODO: add image 5} Prvo pravilo ne deluje, "ce
 	\[b(\lambda) = l(\lambda) = s(\lambda) - 1 = k\]
 	% Dodaj sliko
@@ -1360,7 +1360,7 @@ $p(n) = \sum_{m = 1}^{\infty} (\alpha(m) - \beta (m)\cdot p(n - m))$
 	\label{TODO: add image 7}
 	\[k + (k + 1) + (k + 2) + \cdots + (k + k - 1) =\]
 	\[\frac{(2k - 1) 2k}{2} - \frac{(k - 1) k}{2} = \frac{k (3k - 1)}{2}\]
-	
+
 	\begin{itemize}
 	    \item "ce m $\neq$ $\frac{k \cdot (3k \pm 1)}{2}$, smo na"sli bijekcijo, $\alpha(m) - \beta(m) = 0$.
 	    \item "ce m = $\frac{k \cdot (3k \pm 1)}{2}$, imamo bijekcijo, "ce odstavimo eno raz"clenitev s $k$ "cleni.
@@ -1397,7 +1397,7 @@ Spomnimo se na definiciji injektivnosti in surjektivnosti
 % honestly, tega pomojem ne rabimo. Je samo confusing
 %\begin{ex}
 %	Podajmo primer interpretacije po vrsticah.
-%	
+%
 %	1. vrstica: "steje preslikave $[n] \rightarrow [k]$\\
 %	2. vrstica: $f, g: \{1, 2, 3\} \rightarrow \{a, b, c, d\}$
 %	\[f: \frac{1, 2}{a} \ \frac{}{b} \ \frac{3}{c} \ \frac{}{d}\]
@@ -1418,11 +1418,11 @@ Na kak"sne na"cine lahko predstavimo zaporedje?
     \end{tabular}\]
     \item Z rekurzivno zvezo
     \[a_n = F_{n \geqslant d} (a_{n - 1}, a_{n - 2}, ...)\text{ + za"cetni "cleni }a_0, ... a_{d - 1}\]
-    
+
     \[a_n = 2a_{n-1}, \quad a_0 = 1\]
     \[b_n = nb_{n - 1}, \quad n \geqslant 1, \quad b_0 = 1\]
     \[F_n = F_{n - 1} + F_{n - 2}, \quad n \geqslant 2, \quad F_0 = 1, \quad F_1 = 1\]
-    
+
     \item Z asimptotsko formulo
     \[F_n \sim \frac{1}{\sqrt{5}}(\frac{1 + \sqrt{5}}{2})^{n + 1}\]
     \[n! \sim \sqrt{2 \pi n}(\frac{n}{e})^n\]
@@ -1440,9 +1440,9 @@ Na kak"sne na"cine lahko predstavimo zaporedje?
 		$2^{100} = ((2^{24} \cdot 2)^2)^2$
 	\end{ex}
     Ponavadi zaporedja poenostavimo tako, da jih ocenimo s pribi"zkom, ki ima splo"sni "clen oblike $a_n \sim A n^B C^n$.
-    
+
     \item Z rodovno funkcijo
-    
+
     Spomnimo se iz analize: $\sum_{n = 0}^{\infty} a_n x^n$ je poten"cna vrsta, ki konvergira na $x \in (-R, R)$, divergira pa na $x \in (-\infty, -R) \cup (R, \infty)$, kjer je $R \in [0, \infty]$ (lahko je tudi $\infty$) konvergen"cni polmer. V $x = \pm R$ ne moremo zagotovo trditi ni"cesar.
     \[R = \lim_{n \to \infty} |\frac{a_n}{a_{n + 1}}| \text{, "ce limita obstaja}\]
     \[R = \frac{1}{\limsup\limits_{n \to \infty} \sqrt[n]{|a_n|}} \in [0, \infty]\]
@@ -1462,7 +1462,7 @@ Na kak"sne na"cine lahko predstavimo zaporedje?
     Zaporedje lahko na ta na"cin ``zakodiramo'' v funkcijo.
     \[a_n = n! \rightarrow \sum_{n = 0}^{\infty} n! \cdot x^n\]
     Ampak tega (za primer $a_n = n!$) "zal ne znamo izra"cunati. Zato bomo vpeljali eksponentno rodovno funkcijo.
-    
+
     \begin{itemize}
         \item $\sum_{n = 0}^{\infty} a_n \cdot x^n$ je (obi"cajna) rodovna funkcija $(a_n)_n$
         \item $\sum_{n = 0}^{\infty} a_n \cdot \frac{x^n}{n!}$ je eksponentna rodovna funkcija $(a_n)_n$
@@ -1537,7 +1537,7 @@ Enota za mno"zenje je $1 = 1 + 0 x + 0 x^2 + ...$. Velja tudi $(1 + x + x^2 + ..
         a_0 b_2 + a_1 b_1 + a_2 b_0 &= 0\\
         ... &= 0
     \end{align*}
-    
+
     ($\Leftarrow$)
     Skonstruirajmo inverz za $\sum_{n = 0}^{\infty} b_n x^n$
     \begin{align*}
@@ -1588,7 +1588,7 @@ Vpeljimo nekaj oznak, ki jih bomo uporabljali v nadaljevanju.
 \begin{proof}Uporabimo formulo za splo"sni "clen konvolucijskega produkta
     \[
     	e^{\lambda x} \cdot e^{\mu x} =
-    	\sum_{k = 0}^{n} \frac{\lambda^k}{k!} \frac{\mu^{n - k}}{(n - k)!} 
+    	\sum_{k = 0}^{n} \frac{\lambda^k}{k!} \frac{\mu^{n - k}}{(n - k)!}
     	\stackrel{?}{=}
     	\frac{(\lambda + \mu)^n}{n!} =
     	e^{(\lambda + \mu) x}
@@ -1610,7 +1610,7 @@ Vpeljimo nekaj oznak, ki jih bomo uporabljali v nadaljevanju.
 
 \begin{defn}[Karakteristika]
 	Je najmanj"se tako "stevilo $k$, da velja $\underbrace{1 + 1 + \cdots}_{k\text{-krat}} = id$.
-	
+
 	Obseg ima karakteristiko $0$, "ce $1 + 1 + ... + 1 \neq 0$.
 \end{defn}
 \begin{ex}
@@ -1636,7 +1636,7 @@ Spomnimo se na dekompozicijo parcialnih ulomkov.
 
 \begin{rem}[Parcialna dekompozicija z metodo prekrivanja]
 	V zgornjem primeru obe strani pomno"zimo z $(1 - 2x)$, nato pa vstavimo $x = \frac{1}{2}$. Ostane samo $A = 3$. Pomno"zimo "se z $(1 - x)$ in vstavimo $x = 1$. Dobimo $B = -2$. Po"zvi"zgamo se na deljenje z ni"c, ker deluje.
-	
+
 	Pozor! Ta metoda deluje samo takrat, ko imamo v imenovalcu samo enostavne ni"cle. "Ce imamo tudi ni"cle vi"sjih stopenj, lahko enostavne ni"cle izra"cunamo z metodo prekrivanja, ostale pa ro"cno.
 \end{rem}
 
@@ -1669,7 +1669,7 @@ $y_{1, 2}$ sta torej ni"cli obratnega polinoma.
 \end{proof}
 
 \begin{ex}
-	$\frac{1}{1 - x} = \sum_n x^n$.	
+	$\frac{1}{1 - x} = \sum_n x^n$.
 \end{ex}
 \begin{ex}
 	$\frac{1}{(1 - x)^2} = \sum_n (n + 1)x^n$.
@@ -1744,7 +1744,7 @@ Poskusimo posplo"siti zgornji postopek za poljubno homogeno linearno rekurzivno 
     \[c_d a_n + c_{d - 1} a_{n - 1} + ... + c_0 a_{n - d} = q(n) \lambda^n\]
     Re"sitev je vsota re"sitve homogene ena"cbe in partikularne re"sitve, ki jo poi"s"cemo z nastavkom
     \[a_n = n^{\alpha} r(n) \lambda^n\]
-    $\deg(r(n)) \leqslant \deg(q)$, $\alpha$-kratnost $\lambda$ v karakteristi"cnem polinomu, 
+    $\deg(r(n)) \leqslant \deg(q)$, $\alpha$-kratnost $\lambda$ v karakteristi"cnem polinomu,
     \[\alpha \geqslant 0, \quad \alpha = 0 \iff \lambda \text{ ni ni"cla}\]
 \end{theorem}
 
@@ -1843,7 +1843,7 @@ Opazimo o"citen vzorec. Ali bi lahko posplo"sili pravilo $B_{\lambda}(x) = (1 + 
 \subsubsection{Catalanova "stevila}
 \begin{defn}[Catalanovo "stevilo]
 	$C_n$ je "stevilo pravilnih postavitev oklepajev na nizu $n+1$ "stevil $\cycle{t_0, t_1, t_2, \ldots, t_n}$.
-	
+
 	Prvih nekaj Catalanovih "stevil (od $n=0$ dalje): $1, 1, 2, 5, 14, 42, \ldots$.
 \end{defn}
 
@@ -1875,7 +1875,7 @@ Ker smo kul matematiki, se ne bomo zadovoljili zgolj z rekurzivno zvezo.
 	Pomno"zimo rekurzijo z $x^{n + 1}$ in se"stejmo "clene $\sum_{n = 0}^{\infty}$, kot smo to po"celi pri linearnih rekurzijah.
 	\[\sum_{n = 0}^{\infty} C_{n + 1} x^{n + 1} = \sum_{n = 0}^{\infty} (\sum_{k = 0}^{\infty} C_k x^k) x^{n + 1}\]
 	Levo stran izrazimo kot $F(x) - 1$, na desni strani pa opazimo konvolucijo $F(x)$ s samim sabo. Dobimo torej $x F^2(x)$. "Ce enakost preoblikujemo, dobimo $x F^2(x) - F(x) + 1 = 0$.
-	
+
 	Kaj pa zdaj? No, ko vidimo kvadratno ena"cbo, nas ima, da bi jo re"sili. Poskusimo s kvadratno ena"cbo
 	\[F(x) = \frac{1 \pm \sqrt{1 - 4x}}{2x}\]
 	Sedaj pa se vpra"sajmo, "ce je ta izraz kaj smiseln. "Ce za"cnemo s "clenom $\sqrt{1-4x}$, lahko uporabimo binomsko vrsto.
@@ -1887,7 +1887,7 @@ Ker smo kul matematiki, se ne bomo zadovoljili zgolj z rekurzivno zvezo.
 	Nadaljujemo tako, da izra"cunano vstavimo v prvotno ni"clo.
 	\[\frac{1 + \sqrt{1 - 4x}}{2x} = \frac{2 - 2\sum_{n = 1}^{\infty} \frac{1}{n} \binom{2n - 2}{n - 1} x^n}{2x} \qquad \notin k[[x]] \]
 	To na "zalost ni formalna poten"cna vrsta, saj delimo neko vrsto z $x$-om, ki se ne more izpostaviti.
-	
+
 	Po drugi strani, "ce vzamemo drugo ni"clo, se nam "clen $1$ kraj"sa, ostane pa lepa formalna poten"cna vrsta.
 	\[\frac{1 - \sqrt{1 - 4x}}{2x} = \sum_{n = 1}^{\infty} \frac{1}{n} \binom{2n - 2}{n - 1} x^{n - 1}\]
 	Ta vrsta tudi re"si na"so kvadratno ena"cbo.
@@ -1897,7 +1897,7 @@ Ker smo kul matematiki, se ne bomo zadovoljili zgolj z rekurzivno zvezo.
 \end{proof}
 
 \begin{ex}
-	$C_3 = \frac{1}{4} \binom{6}{3} = \frac{\cancel{6} \cdot 5 \cdot \cancel{4}}{\cancel{4} \cdot \cancel{6}} = 5$	
+	$C_3 = \frac{1}{4} \binom{6}{3} = \frac{\cancel{6} \cdot 5 \cdot \cancel{4}}{\cancel{4} \cdot \cancel{6}} = 5$
 \end{ex}
 \begin{ex}
 	$C_5 = \frac{1}{6} \binom{10}{5} = \frac{\overset{\cancel{2}}{\cancel{2}} \cdot \overset{3}{\cancel{9}} \cdot \overset{2}{\cancel{8}} \cdot 7 \cdot \cancel{6}}{\cancel{6} \cdot \cancel{5} \cdot \cancel{4} \cdot \cancel{3} \cdot \cancel{2}} = 42$
@@ -1923,11 +1923,11 @@ Spomnimo se na raz"clenitve in "stevila $p_k(n), \overline{p_k}(n), p(n)$.
 Ugotovili smo "ze, kako izra"cunati koeficient pri $[x^5]$ pri izrazu kot je $(1 + x + x^2 + \ldots)(1 + x + x^2 + \ldots)\ldots$. Kaj pa "ce koeficienti niso povsod enaki?
 \[(1 + x + x^2 + \ldots)(1 + x^2 + x^4 + \ldots)(1 + x^3 + x^6 + \ldots) \qquad[x^5]\]
 Izberemo nekaj iz prvega oklepaja, pri"stejemo $2\cdot$ nekaj iz drugega in $3 \cdot$ nekaj iz tretjega.
-\[x^5 = 
-x^{0 \cdot 1} \cdot x^{1 \cdot 2} \cdot x^{1 \cdot 3} = 
-x^{2 \cdot 1} \cdot x^{0 \cdot 2} \cdot x^{1 \cdot 3} = 
+\[x^5 =
+x^{0 \cdot 1} \cdot x^{1 \cdot 2} \cdot x^{1 \cdot 3} =
+x^{2 \cdot 1} \cdot x^{0 \cdot 2} \cdot x^{1 \cdot 3} =
 x^{1 \cdot 1} \cdot x^{2 \cdot 2} \cdot x^{0 \cdot 3} =
-x^{3 \cdot 1} \cdot x^{1 \cdot 2} \cdot x^{0 \cdot 3} = 
+x^{3 \cdot 1} \cdot x^{1 \cdot 2} \cdot x^{0 \cdot 3} =
 x^{5 \cdot 1} \cdot x^{0 \cdot 2} \cdot x^{0 \cdot 3}\]
 To je enak problem, kot "ce bi hoteli zapisati "stevilo $5$ kot vsoto "stevil $1$, $2$ in $3$. Zgoraj bi to izgledalo (z enakim vrstnim redom)
 \[5 = 2 + 3 = 1 + 1 + 3 = 1 + 2 + 2 = 1 + 1 + 1 + 2 = 1 + 1 + 1 + 1 + 1\]
@@ -2144,15 +2144,15 @@ Mno"zico orbit ozna"cimo z $X/G$.
 	$$\sum_{g \in G}|X_g| = \sum_{x\in X}|G_x| = \sum_{x \in X}\frac{|G|}{|Gx|} = |G| \sum_{x \in X}\frac{1}{|Gx|}$$
 	Analizirajmo pomen faktorja $\sum_{x \in X}\frac{1}{|Gx|}$. Za vsak $x$ iz na"se mno"zice vzamemo inverz mo"ci njegove orbite. Ker vsak $x$ pripada natanko eni orbiti, in ker ima vsaka orbita natanko toliko $x$-ov, kolikor je njena mo"c, dobimo slede"co sliko
 	$$
-	\underbrace{\frac{1}{2}+\frac{1}{2}}_{=1} + 
-	\underbrace{\frac{1}{1}}_{=1} + 
-	\underbrace{\frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}}_{=1} + 
+	\underbrace{\frac{1}{2}+\frac{1}{2}}_{=1} +
+	\underbrace{\frac{1}{1}}_{=1} +
+	\underbrace{\frac{1}{4}+\frac{1}{4}+\frac{1}{4}+\frac{1}{4}}_{=1} +
 	\ldots
 	= \text{"stevilo orbit}
 	$$
 	oziroma ra"cunsko (oznaka $\sigma =$ orbita)
 	$$\sum_{x \in \sigma}\frac{1}{|\sigma|} = |\sigma| \cdot \frac{1}{|\sigma|} = 1$$
-	kar lahko uporabimo, da poenostavimo 
+	kar lahko uporabimo, da poenostavimo
 	$$|G| \sum_{x \in X}\frac{1}{|Gx|} = |G| \sum_{\sigma \in X/G}\sum_{x \in \sigma}\frac{1}{|\sigma|} = |G| \sum_{\sigma \in X/G}1 = |G| \cdot |X/G|$$
 \end{proof}
 \begin{ex}
@@ -2187,7 +2187,7 @@ Mno"zico orbit ozna"cimo z $X/G$.
 
 \subsection{Cikli"cni indeks}
 Naj bo $G \leq S_n$ permuatacijska grupa, $n=|X|$.
-$g \in G$ je permutacija elementov iz $X$, ki jo seveda lahko enoli"cno zapi"semo $g$ kot produkt disjunktih ciklov. 
+$g \in G$ je permutacija elementov iz $X$, ki jo seveda lahko enoli"cno zapi"semo $g$ kot produkt disjunktih ciklov.
 \begin{defn}[Cikli"cni indeks]
 	Ozna"cimo z $\alpha_i(g)$ "stevilo ciklov dol"zine $i$.
 	Cikli"cni indeks $Z_G(t_1, \ldots, t_n)$ definiramo kot
@@ -2198,7 +2198,148 @@ $g \in G$ je permutacija elementov iz $X$, ki jo seveda lahko enoli"cno zapi"sem
 	$$Z_{C_4}(t_1, t_2, t_3, t_4) = \frac{1}{4}((t_1)^4+(t_2)^2+2 \cdot t_4)$$
 \end{ex}
 \begin{ex}
-	$G=D_4$. $Z_{D_4}(t_1, t_2, t_3, t_4) = \frac{1}{8}((t_1)^4+(t_2)^2+2t_4+2(t_2)^2+2(t_1)^2t_2$.
+	$G=D_4$. Imamo identiteto, rotacijo za $180^{\circ}$, dve rotaciji za $90^{\circ}$, $4$ zrcaljenja (vodoravno, navpi"cno in dve diagonalni). $Z_{D_4}(t_1, t_2, t_3, t_4) = \frac{1}{8}((t_1)^4+(t_2)^2+2t_4+2(t_2)^2+2(t_1)^2t_2)$.
 \end{ex}
+
+
+\begin{theorem}[Cikli"cni indeks $C_n$]
+	\[ Z_{C_n}(t_1, \ldots, t_n) = \frac{1}{n}\sum_{d | n} \phi(d) \cdot (t_{\frac{n}{d}})^d \]
+\end{theorem}
+\begin{theorem}[Cikli"cni indeks $D_n$]
+	\[	Z_{D_n} = \frac{1}{2}Z_{C_n} +
+	\begin{cases}
+		\frac{1}{2} t_1 t_2^{\frac{n-1}{2}}: n \text{ lih}
+		\\
+		\frac{1}{4} t_2^{\frac{n}{2}} + \frac{1}{4} t_1^2 t_2^{\frac{n}{2}-1}: n \text{ sod}
+	\end{cases}
+	\]
+\end{theorem}
+\begin{rem}[Formula za Eulerjevo funkcijo]
+	\[\phi(n) = n \prod_{\mathclap{\substack{p|n \\ p \in \mathbb{P}}}}(1-\frac{1}{p})\]
+\end{rem}
+\begin{proof}
+	Cikli"cna grupa je sestavljena iz dolgega cikla in vseh njegovih potenc. $C_n = \{\cycle{1, \ldots, n}^i: 0 \leqslant i \leqslant n-1 \}$. Kak"snega tipa je dolg cikel na neko potenco?
+	
+	$\cycle{1, 2, 3, 4, 5, 6}^2 = \cycle{1, 3, 5}\cycle{2, 4, 6}$.
+	
+	$\cycle{1, 2, 3, 4, 5, 6}^3 = \cycle{1, 4}\cycle{2, 5}\cycle{3, 6}$.
+	
+	$\cycle{1, 2, 3, 4, 5, 6}^4 = \cycle{1, 5, 3}\cycle{2, 6, 4}$.
+
+	$\cycle{1, 2, 3, 4, 5, 6}^5 = \cycle{1, 6, 5, 4, 3, 2}$.
+	
+	Opazimo, da velja
+	\[d | n \implies \cycle{1, 2, \ldots, n}^d = \cycle{1,\ (d+1),\ (2d+1),\ \ldots \ }\cycle{2,\ (d+2),\ (2d+2),\ \ldots \ }\cdots\]
+	Kar pomeni, da je $\cycle{1, 2, \ldots, n}^d$ produkt $d$ ciklov dol"zine $\frac{n}{d}$. Hkrati, "ce $d \perp n$, je $\cycle{1, 2, \ldots, n}^d$ en sam cikel dol"zine $d$.
+
+	Vzemimo $d=\gcd(n, i)$, $n=d\cdot n'$, $i = d \cdot i'$. Vemo, da $\gcd(n', i')=1$. Po prej"snjih ugotovitvah velja
+	\[\cycle{1, 2, \ldots, n}^i = (\cycle{1, 2, \ldots, n}^d)^{i'}\]
+	Ker je $\cycle{1, 2, \ldots, n}^d$ produkt $d$ ciklov dol"zine $n'$ in ker sta si $n'$ in $i'$ tuji, je rezultat "se vedno produkt $d$ ciklov dol"zine $n'=\frac{n}{d}$. Doprinos k cikli"cnemu indeksu bo $(t_{\frac{n}{d}})^d$. Kolikokrat pa dobimo ta "clen? Tolikokrat, kolikor je $i$-jev, da je $\gcd(n, i)=d$. To nam pove Eulerjeva funkcija $\phi(\frac{n}{d})$.
+\end{proof}
+\begin{rem}
+	$d$ lahko zamenjamo z $\frac{n}{d}$. Dobimo popolnoma ekvivalentno formulo
+	\[Z_{C_n}(t_1, \ldots, t_n) = \frac{1}{n}\sum_{d|n}\phi(d) \cdot (t_d)^\frac{n}{d}\]
+\end{rem}
+\begin{proof}"Se za $D_n$.
+	\[
+	Z_{D_n} = \frac{1}{2}Z_{C_n} +
+	\begin{cases}
+		\frac{1}{2} t_1 t_2^{\frac{n-1}{2}}: n \text{ lih}
+		\\
+		\frac{1}{4} t_2^{\frac{n}{2}} + \frac{1}{4} t_1^2 t_2^{\frac{n}{2}-1}: n \text{ sod}
+	\end{cases}
+	\]
+	Prvi del so rotacije, ki jih je enako kot pri $C_n$ (deliti moramo z $\frac{1}{2}$, ker ima $D_n$ dvakrat ve"c elementov; na za"cetku delimo z $2n$ namesto z $n$). Pri"steti moramo le "se zrcaljenja. 
+	
+	"Ce je $n$ lih, so vsa zrcaljenja istega tipa. Takih zrcaljenj je $n$. Ko delimo s "stevilom elemenotov ($2n$), je to $\frac{1}{2}$. Doprinos od enega zrcaljenja je $1$ negibna to"cka in $\frac{n-1}{2}$ parov to"ck, ki se izmenjajo.
+	
+	"Ce je $n$ sod, lo"cimo na $\frac{n}{2}$ zrcaljenj prek to"cke in $\frac{n}{2}$ zrcaljenj prek stranice. Spet delimo "se z $2n$, ostane $\frac{1}{4}$. Pri zrcaljenju "cez simetralo stranic dobimo $\frac{n}{2}$ $2$-ciklov. Pri zrcaljenju "cez to"cki imamo $2$ negibni to"cki, nato pa ostalih $n-2$ ogli"s"c razdelimo v pare.
+\end{proof}
+
+
+
+
+
+\subsection{"Stevilo ekvialentnih barvanj}
+V tem razdelku bomo ugotovili pravo uproabnost Burnsidove leme.
+\begin{defn}[Barvanje]
+	"Ce je $R$ mno"zica barv, je barvanje $b \in R$ preslikava iz mno"zice korald v mno"zico barv
+	$b : X \to R$.
+	$R^X$ je tedaj mno"zica barvanj.
+\end{defn}
+
+Namesto da permutiramo koralde, lahko $G$ razumemo tudi kot grupo permutacij barvanj (podgrupo $S_{R^X}$). Ker je $g$ permutacija korald, moramo posebej definirati, kako uporabimo $g \in G$ na barvnju $b \in R^X$.
+\begin{defn}[Permutacija barvanja]
+	$g \cdot b(x) \coloneqq b (g^{-1} \cdot x)$
+\end{defn}
+S tem smo dobili izomorfno permutacijsko grupo. Ne bom bolj natan"cno povedal, kaj s tem mislim.
+
+Nas zanima "stevilo neekvivalentnih barvanj na"se ogrlice. To je ravno "stevilo orbit na"se grupe permutacij barvanj ($G=C_n$ za "stevilo barvanj ogrlic, $G=D_n$ za "stevilo barvanj zapestnic).
+Po Burnsidovi lemi moramo izra"cunati povpre"cno "stevilo negibnih to"ck.
+\begin{ex}
+	$n=6$, $r=2$, $g$ je rotacija za $120^{\circ}$. Koliko je negibnih to"ck za barvanje? Pozor: za permutacijo korald pri taki rotaciji nimamo negibnih to"ck. Mi "stejemo negibne to"cke barvanj. Take negibne to"cke so: barvanje, kjer so vse koralde bele/"crne in barvanje kjer je vsaka druga koralda bela/"crna. Imamo torej $4$ negibne to"cke.
+\end{ex}
+\begin{ex}
+	"Ce bi v prej"snjem primeru vzeli rotacijo za $60^{\circ}$, bi imeli $2$ negibni to"cki. "Ce bi vzeli rotacijo za $180^{\circ}$, bi imeli $8$ negibnih to"ck.
+\end{ex}
+
+V splo"snem: i"s"cemo permutacij barvanj, kjer je $b = g \cdot b$, oziroma $g\cdot b(x) = b(g^{-1} \cdot x) = b(x)$ za vsak $x \in X$.
+Druga"ce re"ceno, i"s"cemo "stevilo $g$-jev, kjer sta $x$ in $g^{-1}\cdot x$ vedno iste barve. Za vsak tak $g$ velja, da so tudi $gx, g^2x, g^3x, \ldots$ iste barve.
+
+Ugotovimo, da je edina zahteva, da mora biti vsak cikel $g$ v celoti iste barve. Torej je "stevilo negibnih barvanj enako $r^{c(g)}$, kjer je $c(g)$ "stevilo ciklov v $g$, oziroma $c(g) = \displaystyle\sum_i \alpha_i(g)$.
+
+\begin{theorem}[P\'{o}lyev izrek]
+	"Stevilo neekvivalentnih barvanj je enako
+	$$ \frac{1}{\left|G\right| }\sum_{g \in G} r^{c(g)}  = Z_g(r, \ldots, r) $$
+\end{theorem}
+
+\begin{ex}
+	"Stevilo ogrlic z $n$ koraldami in $r$ barvami je $\frac{1}{n}\sum_{d|n}\phi(d)\cdot r^{\frac{n}{d}}$.
+\end{ex}
+\begin{ex}
+	"Stevilo zapestnic z $n$ koraldami in $r$ barvami je
+	\[ \frac{1}{2n} \sum_{d | n} \phi\big(\frac{n}{d}\big) r^d + \begin{cases}\frac{1}{2} r^{\frac{n+1}{2}}; n\text{ lih}\\ \frac{1}{4} r^{\frac{n}{2}} + \frac{1}{4}r^{\frac{n}{2}+1}; n\text{ sod} \end{cases} \]
+\end{ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% unreviewed content
+
+\begin{ex}
+	Na koliko na"cinov lahko pobarvamo ogli"s"ca tetraedra z $r$ (razli"cnimi) barvanji?\\
+	$Z_{\substack{G \\ \\ \uparrow \\ \mathclap{\text{grupa rotacij tetraedra}}}} (t_1,t_2,t_3,t_4) = \frac{1}{12}(t_1^4 + 8t_1t_3 + 3t_2^2)$ (zra"cunano prej)
+\end{ex}
+
+
+\begin{ex}[$G = S_n$]
+$$ \frac{1}{n!}\sum_k c(n,k) r^k $$
+Barvanji sta ekvivalentni, "ce in samo "ce imata enako "stevilo korald iste barve
+\label{Idk kko smo prsli do tega}
+$$ \sum_k c(n,k) r^k = r^{\overline{n}} $$
+\end{ex}
+
+Kaj, "ce nas zanima, koliko je zapestnic z dolo"cenim "stevilom korald posamezne barve?
+\begin{ex}
+	Enumerator barvanj: $$\substack{u_1^4 \\ \\ \uparrow \\ \mathclap{\text{4 koralde barve 1}}} + u_1^3u_2 + 2u_1^2u_2^2+u_1u_2^3+u_2^4 $$
+\end{ex}
+\begin{defn}[Enumerator barvanj]
+	note: $R^x/G$ mnozica vseh neekvivalentnih barvanj
+	$$ E_G(u_1, \ldots, u_r) = \sum_{Gb \in R^x/G} \Pi_{i=1}^r u_i^{ |b^{-1}(i)| } $$
+\end{defn}
+
+\begin{theorem}[Posplositev P\'{o}lyevega izreka]
+	$$ E_G(u_1, \ldots, \ldots_r) = Z_G(u_1 + \cdots + u_r, u^2_1 + \cdots + u^2_r, u^3_1 + \cdots + u^3_r, \ldots, u^n_1 + \cdots + u^n_r) $$
+	Brez dokaza ( Burnsidova lema na mno"zici barvanj s fiksnimi $| b^{-1}(i) | $)
+\end{theorem}
+
+\begin{ex}[$G = C_4$]
+	$r = 2$ : $Z_G(u_1 + u_2, u^2_1 + u^2_2, u^3_1 + u^3_2, u^4_1 + u^4_2) = \frac{1}{4}\left((u_1 + u_2)^4 + 2(u^4_1 + u^4_2) + (u^2_1 + u^2_2)^2 \right) $
+\end{ex}
+\begin{ex}
+	Koliko je neekvivalentnih barvanj ploskev tetraedra z 2 "crnima, 1 rde"co in 1 modro ploskvijo? \\
+	1 nacin
+\end{ex}
+
+"Ce v posplositev P\'{o}lyevega izreka vstavimo $u_i = 1$, dobimo P\'{o}lyev izrek
+
 
 \end{document}
