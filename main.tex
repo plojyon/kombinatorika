@@ -347,9 +347,6 @@ Po Dirichletovem principu obstajata $j$ in $j'$, $j < j'$, tako da
 \end{proof}
 
 \subsubsection{Pascalov trikotnik}
-%(Image will be added soon (upam))
-\label{TODO: add image 1}
-% \includegraphics{image_name_without_file_extension}
 \Longstack[l]{
 n=0\\
 n=1\\
@@ -370,7 +367,7 @@ n=6\qquad\ \\
 1\x 6\y 15\z 20\z 15\y 6\x 1\\
 \overline{0\x 1\x 2\x 3\x 4\x 5\x 6}
 }
-\\
+
 "Stevilo v $n$-ti vrstici in $k$-tem stolpcu pascalovega trikotnika je enako $\binom{n}{k}$.
 Trikotnik konstruiramo tako, da napi"semo zunanji pla"s"c enic, nato pa vsak par sosenjih "stevil se"stejemo in zapi"semo vsoto pod niju.\label{pascalov_trikotnik}
 
@@ -495,11 +492,12 @@ Ideja:
 \subsection{Na"celo vklju"citev in izklju"citev (NVI)}
 \begin{ex}
 	$|A \cup B| = |A| + |B| - |A \cap B|$
-	\label{TODO: add image 2}
 \end{ex}
 \begin{ex}
 	$|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|$
-	\label{TODO: add image 3}
+	\begin{center}
+		\includegraphics[scale=0.1]{nvi}
+	\end{center}
 \end{ex}
 
 \begin{theorem}[NVI]
@@ -734,9 +732,12 @@ $8$ razli"cic, $6$ potro"snikov, vsak potro"snik testira $4$, vsako razli"cico t
 	Tudi na"crt s parametri $(7, 3, 3)$ NI $3$-na"crt!!
 \end{rem}
 
-Fanova ravnina:
-%(Image will be added soon (upam))
-\label{TODO: add image 4}
+\label{TODO: add explanation, kaj je point?}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{fano_plane}
+	\caption{Fanova ravnina}
+\end{figure}
 
 \begin{theorem}
 	"Ce je $B$ $t$-na"crt s parametri $(v, k, \lambda_t)$, je tudi $(t-1)$-na"crt s parametri $(v, k, \lambda_{t-1})$. Velja formula
@@ -1508,7 +1509,9 @@ Koeficienti pri $x^k$ so
 
 $(\R[x], +, \cdot)$ je sedaj komutativen kolobar (kjer je $\cdot$ konvolucijski produkt). $\R[x]$, z vsemi temi operacijami tvori komutativno algebro. Lahko bi za kolobar vzeli tudi $\C([0, 1])$. "Ce vzamemo polinome fiksne stopnje $\R^{n \times n}$, dobimo nekomutativno algebro.
 
-\label{TODO: definiraj kaj je algebra}
+\begin{defn}[Algebra]
+	Algebrai"cna struktura $((F, +, \cdot), (V, +, \circ))$ je algebra, "ce je $((F, +, \cdot), (V, +))$ vektorski prostor in $\circ$ produkt med vektorji, za katerega velja distributivnost.
+\end{defn}
 \begin{defn}[Algebra formalnih poten"cnih vrst]
     $\R[[x]]$ je komutativna algebra zaporedij v $\R$.
     \[\R[[x]] = \{(a_0, a_1, a_2, ...): a_i \in \R\} = \{f: \N \rightarrow \R\} = \R^{\N}\]
@@ -1908,8 +1911,17 @@ Catalanova "stevila so zelo pogosta v kombinatoriki. Dva primera uporabe sta:
 	\item Dyckove poti dol"zine $n$. To so poti od $(0,0)$ do $(2n, 0)$ s koraki diagonalno gor $(1,1)$ in diagonalno dol $(1, -1)$, a nikoli ne grejo pod $x$ os.
 	\item Triangulacije $(n + 2)$-kotnika. To pomeni dodajanje diagonal $(n+2)$-kotniku, dokler nimamo samih trikotnikov.
 \end{itemize}
-% Dodaj sliko za n = 3 (triangulacija petkotnika)
-\label{TODO: add image 9}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.2]{triangulation}
+	\caption{Triangulacije sedemkotnika}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.4]{dyck_pic}
+	\caption{Dyckova pot}
+\end{figure}
 Te dve uporabi lahko doka"zete bodisi tako, da najdete bijekcijo med "zelenimi konstrukcijami in postavljanjem oklepajev, bosidi poka"zete, da ima konstrukcija isto rekurzivno zvezo.
 
 V knjigi Enumerative Combinatorics je 66 matemati"cnih struktur, ki jih pre"stevajo Catalanova "stevila. Na spletni strani Richarda Stanlyja jih je "se ve"c kot 100.
@@ -2261,7 +2273,7 @@ $g \in G$ je permutacija elementov iz $X$, ki jo seveda lahko enoli"cno zapi"sem
 
 
 \subsection{"Stevilo ekvialentnih barvanj}
-V tem razdelku bomo ugotovili pravo uproabnost Burnsidove leme.
+V tem razdelku bomo ugotovili pravo uproabnost Burnsidove leme in cikli"cnega indeksa.
 \begin{defn}[Barvanje]
 	"Ce je $R$ mno"zica barv, je barvanje $b \in R$ preslikava iz mno"zice korald v mno"zico barv
 	$b : X \to R$.
@@ -2313,7 +2325,7 @@ Ugotovimo, da je edina zahteva, da mora biti vsak cikel $g$ v celoti iste barve.
 \begin{ex}[$G = S_n$]
 $$ \frac{1}{n!}\sum_k c(n,k) r^k $$
 Barvanji sta ekvivalentni, "ce in samo "ce imata enako "stevilo korald iste barve
-\label{Idk kko smo prsli do tega}
+\label{TODO: Idk kko smo prsli do tega}
 $$ \sum_k c(n,k) r^k = r^{\overline{n}} $$
 \end{ex}
 
