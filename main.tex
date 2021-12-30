@@ -824,7 +824,7 @@ Tabela Stirlingovih "stevil 1. vrste:
 \end{center}
 Konstruiramo podobno kot Pascalov trikotnik za binomske koeficiente (\ref{pascalov_trikotnik}), samo da uporabimo drugo rekurzivno formulo; najprej damo diagonalne elemente na $1$, naddiagonalne na $0$, $1$. stoplec na 0 (razen prvega elementa, ki je "ze $1$), za ostale pa uporabimo rekurzivno forumlo (se"stejemo element levo zgoraj in $(n-1)$ krat zgornji). \label{konstrukcija_tabele}
 
-\begin{claim}[Rekurzivna zveza]
+\begin{claim}[Rekurzivna zveza]\label{rekurzivna_cnk_narascajoce}
     \[\sum_k c(n,k)x^k = x^{\overline{n}}\]
 \end{claim}
 
@@ -845,6 +845,10 @@ Konstruiramo podobno kot Pascalov trikotnik za binomske koeficiente (\ref{pascal
 	\[\sum_k (-1)^{n-k} c(n,k) x^k = x^{\underline{n}}\]
 	$s(n,k) := (-1)^{n-k} c(n,k)$ predzna"ceno stirlingovo "stevilo prve vrste
 	\[\sum_k s(n,k) x^k = x^{\underline{n}}\]
+\end{proof}
+
+\begin{proof}
+	"Se eno alternativo tega dokaza bomo naredili pri P\'olyjevi teoriji (\ref{polyeva_dokaz_rekurzivne_cnk}).
 \end{proof}
 
 \subsection{Stirlingova "stevila druge vrste}
@@ -2269,10 +2273,7 @@ $g \in G$ je permutacija elementov iz $X$, ki jo seveda lahko enoli"cno zapi"sem
 \end{proof}
 
 
-
-
-
-\subsection{"Stevilo ekvialentnih barvanj}
+\subsection{"Stevilo neekvialentnih barvanj}
 V tem razdelku bomo ugotovili pravo uproabnost Burnsidove leme in cikli"cnega indeksa.
 \begin{defn}[Barvanje]
 	"Ce je $R$ mno"zica barv, je barvanje $b \in R$ preslikava iz mno"zice korald v mno"zico barv
@@ -2312,46 +2313,229 @@ Ugotovimo, da je edina zahteva, da mora biti vsak cikel $g$ v celoti iste barve.
 	"Stevilo zapestnic z $n$ koraldami in $r$ barvami je
 	\[ \frac{1}{2n} \sum_{d | n} \phi\big(\frac{n}{d}\big) r^d + \begin{cases}\frac{1}{2} r^{\frac{n+1}{2}}; n\text{ lih}\\ \frac{1}{4} r^{\frac{n}{2}} + \frac{1}{4}r^{\frac{n}{2}+1}; n\text{ sod} \end{cases} \]
 \end{ex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% unreviewed content
-
 \begin{ex}
-	Na koliko na"cinov lahko pobarvamo ogli"s"ca tetraedra z $r$ (razli"cnimi) barvanji?\\
-	$Z_{\substack{G \\ \\ \uparrow \\ \mathclap{\text{grupa rotacij tetraedra}}}} (t_1,t_2,t_3,t_4) = \frac{1}{12}(t_1^4 + 8t_1t_3 + 3t_2^2)$ (zra"cunano prej)
+	Na koliko na"cinov lahko pobarvamo ogli"s"ca tetraedra z $r$ (razli"cnimi) barvami? Izra"cunajmo cikli"cni indeks grupe rotacij tetraedra.
+	\[ Z_{\substack{G \\ \\ \uparrow \\ \mathclap{\text{grupa rotacij tetraedra}}}} (t_1,t_2,t_3,t_4) = \frac{1}{12}(t_1^4 + 8t_1t_3 + 3t_2^2) \]
+	nato le "se vstavimo $t_1 = t_2 = t_3 = t_4 = r$.
+\end{ex}
+\begin{ex}\label{polyeva_dokaz_rekurzivne_cnk}
+	Naj bo $G = S_n$. Barvanji sta v tem primeru ekvivalentni natanko tedaj, ko imata enako "stevilo korald iste barve. "Stevilo mo"znih barvanj torej dobimo kot "sibke kompozicije $n$ ("st. korald) z $r$ ("st. barv) "cleni.
+	\[\binom{n+r-1}{r-1} \]
+	Po drugi strani bi lahko to zapisali po P\'{o}lyevem izreku.
+	\[ \frac{1}{n!}\sum_{\pi \in S_n} r^{c(\pi)} = \frac{1}{n!}\sum_k c(n,k) r^k \]
+	Tukaj smo uporabili razmislek, da permutacija s $k$ cikli doprinese "clen $r^k$, pojavi pa se ravno $c(n, k)$-krat (definicija Stirlingovih "stevil prve vrste).
+	
+	"Ce ena"cimo rezultata obeh metod, se nam nekaj "clenov kraj"sa.
+	\[ \binom{n+r-1}{r-1} = \frac{(n+r-1)!}{(r-1)!n!} = \frac{(n+r-1)\cdots r \cdot(r-1)\cdots1}{((r-1)\cdot(r-2)\cdots2\cdot1)\cdot n!} = r^{\overline{n}} \cdot \frac{1}{n!} \]
+	\[ \implies \sum_k c(n,k) r^k = r^{\overline{n}} \]
+	\begin{rem}
+		To formulo smo "ze dokazali z indukcijo - glej rekurzivna zveza za $c(n, k)$ (\ref{rekurzivna_cnk_narascajoce}).
+	\end{rem}
 \end{ex}
 
 
-\begin{ex}[$G = S_n$]
-$$ \frac{1}{n!}\sum_k c(n,k) r^k $$
-Barvanji sta ekvivalentni, "ce in samo "ce imata enako "stevilo korald iste barve
-\label{TODO: Idk kko smo prsli do tega}
-$$ \sum_k c(n,k) r^k = r^{\overline{n}} $$
-\end{ex}
 
-Kaj, "ce nas zanima, koliko je zapestnic z dolo"cenim "stevilom korald posamezne barve?
+Recimo, da nas zanima, koliko je mo"znih barvanj zapestnic s to"cno dolo"cenim "stevilom korald za vsako barvo. Imamo sre"co, da so to pred nami "zeleli tudi nekateri pametni matematiki.
+
+\label{TODO: tega lani ni blo, tkoda ne znam nc dopisat}
+% tbh this part is kinda useless
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{ex}
-	Enumerator barvanj: $$\substack{u_1^4 \\ \\ \uparrow \\ \mathclap{\text{4 koralde barve 1}}} + u_1^3u_2 + 2u_1^2u_2^2+u_1u_2^3+u_2^4 $$
+	Enumerator barvanj
+	\[ u_1^4 + u_1^3u_2 + 2u_1^2u_2^2+u_1u_2^3+u_2^4 \]
 \end{ex}
 \begin{defn}[Enumerator barvanj]
-	note: $R^x/G$ mnozica vseh neekvivalentnih barvanj
 	$$ E_G(u_1, \ldots, u_r) = \sum_{Gb \in R^x/G} \Pi_{i=1}^r u_i^{ |b^{-1}(i)| } $$
 \end{defn}
+\begin{rem}
+	$R^x/G$ je mno"zica vseh neekvivalentnih barvanj.
+\end{rem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{theorem}[Posplositev P\'{o}lyevega izreka]
-	$$ E_G(u_1, \ldots, \ldots_r) = Z_G(u_1 + \cdots + u_r, u^2_1 + \cdots + u^2_r, u^3_1 + \cdots + u^3_r, \ldots, u^n_1 + \cdots + u^n_r) $$
-	Brez dokaza ( Burnsidova lema na mno"zici barvanj s fiksnimi $| b^{-1}(i) | $)
+	\[ E_G(u_1, \ldots, u_r) = Z_G(u_1 + \cdots + u_r, u^2_1 + \cdots + u^2_r, u^3_1 + \cdots + u^3_r, \ldots, u^n_1 + \cdots + u^n_r) \]
 \end{theorem}
+\begin{proof}
+	Brez dokaza. Namig: Burnsidova lema na mno"zici barvanj s fiksnimi $|b^{-1}(i)|$.
+\end{proof}
+\begin{rem}\label{TODO: elaborate, I don't see it}
+	"Ce v posplo"sitev P\'{o}lyevega izreka vstavimo $u_i = 1$, dobimo P\'{o}lyev izrek.
+\end{rem}
 
-\begin{ex}[$G = C_4$]
-	$r = 2$ : $Z_G(u_1 + u_2, u^2_1 + u^2_2, u^3_1 + u^3_2, u^4_1 + u^4_2) = \frac{1}{4}\left((u_1 + u_2)^4 + 2(u^4_1 + u^4_2) + (u^2_1 + u^2_2)^2 \right) $
+\begin{ex}
+	Poglejmo si ogrlico s $4$ koraldami in $2$ barvama. Grupa bo torej $G = C_4$.
+	\[ Z_{C_4}(t_1, t_2, t_3, t_4) = \frac{1}{4}(t_1^4 + t_2^2 + 2t_4) \]
+	\[ Z_{C_4}(u_1+u_2, u_1^2+u_2^2, u_1^3+u_2^3, u_1^4+u_2^4) = u_1^4 + u_1^3u_2 + 2u_1^2u_2^2 + u_1u_2^3 + u_2^4\]
+	Koeficient pred $u_1^3u_2$ je $1$, kar pomeni da imamo $1$ neekvivalentno barvanje ogrlice s $3$ belimi in $1$ "crno koraldo. Koeficient pred $u_1^2u_2^2$ je $2$, kar pomeni da imamo $2$ neekvivalentni barvanji ogrlice z $2$ belima in $2$ "crnima koraldama.
+\end{ex}
+
+\begin{rem}
+	Polinom, ki ga dobimo s tem izrekom bo o"citno vedno simetri"cen (koeficient pred $u_1^n\cdots u_r^m$ bo enak ne glede na to, kako permutiramo eksponente).
+\end{rem}
+
+\begin{ex}
+	Koliko je neekvivalentnih zapestnic s $6$ koraldami, "ce imamo $1$ "crno, $3$ bele in $2$ rde"ci koraldi? Parametri so torej $n=6$, $r=3$, $G=D_6$.
+	\[Z_{D_6}(t_1, \ldots, t_8) = \frac{1}{12}(t_1^6+t_2^3+2t_3^2+2t_6)+\frac{1}{4}(t_2^3+t_1^2t_2^2)\]
+	\[ \lbrack u_1 u_2^3 u_3^2 \rbrack\left(Z_{D_6}(u_1 + u_2 + u_3 + u_4, \ldots, u^4_1 + u^4_2 + u^4_3 + u^4_4)\right) = 6\]
+	Izra"cunajte sami, pomagajte si z multinomskim koeficientom, da ne ra"cunate vseh potenc.
+\end{ex}
+
+% "Ne bom sprasvou tega dokaza, samo hotu sm ga mal skicirat"
+% Ce se ti da, prosim dopolni
+% link do dokaza: https://youtu.be/AUkPKlDzwlM?t=2483
+\label{TODO: dopolni?}
+%\begin{proof}(Skica dokaza posplo"sitve P\'{o}lyevega izreka).
+%	Spet uporabimo Burnsidovo lemo, ko grupa deluje na barvanjih z $\alpha_i$ koraldami barve $i$. "Se vedno velja, da je barvanje negibna to"cka za neko permutacijo natanko tedaj, ko so vsi elementi v nekem ciklu iste barve.
+	
+%	Sedaj bomo namesto dokaza samo ilustrirali na primeru. $G=D_4$, $n=4$, $r=2$, $\alpha_1=2$, $\alpha_2=2$.
+%	\begin{figure}[h!]
+%		\centering
+%		\includegraphics[scale=0.5]{skica_dokaza_posplositev_poly}
+%		\caption{Vsa mo"zna barvanja z danimi parametri}
+%	\end{figure}
+%	To "se ni na"s rezultat, ker moramo izlo"citi ekvivalentna barvanja.
+%	Pre"stejmo negibne to"cke. Pri identiteri jih je $6$ (vse), pri rotaciji za $180^{\circ}$ pa $2$.
+%	Na desni strani Burnsidove leme dobimo
+%	\[  \]
+%\end{proof}
+
+\section{Trije klasi"cni izreki iz teorije delno urejenih mno"zic}
+\begin{defn}[Delno urejena mno"zica]
+	Mno"zica opremljena z relacijo delne urejenosti $(P, \leqslant)$.
+\end{defn}
+\begin{rem}
+	Izraz ``delno urejena mno"zica'' bomo kraj"sali z ``DUM'', ampak izgovorimo s celim izrazom. V angle"s"cini delno urejenim mno"zicam pravimo ``partially ordered sets'', kraj"samo ``poset'' in okraj"sano tudi izgovarjamo.
+\end{rem}
+\begin{defn}[Relacija delne urejenosti]
+	Relacija, za katero veljajo naslednje lastnosti
+	\begin{itemize}
+		\item refleksivnost $x \leqslant x$
+		\item antisimetri"cnost $x \leqslant y \land y \leqslant x \implies x = y$
+		\item tranzitivnost $x \leqslant y \land y \leqslant z \implies x \leqslant z$
+	\end{itemize}
+\end{defn}
+\begin{ex}
+	Ozna"cujemo $\underline{n} \coloneqq ([n], \leqslant)$, kjer je $\leqslant$ obi"cajna relacija manj"se ali enako.
 \end{ex}
 \begin{ex}
-	Koliko je neekvivalentnih barvanj ploskev tetraedra z 2 "crnima, 1 rde"co in 1 modro ploskvijo? \\
-	1 nacin
+	Boolova algebra $B_n \coloneqq (2^{[n]}, \subseteq)$. To je algebra za operaciji $\cup$, $\cap$. V ra"cunalni"stvu pogosto sre"camo dvoelementno Boolovo algebro $B_1 = \{0, 1\}$.
+\end{ex}
+\begin{ex}
+	$D_n \coloneqq (\{\text{delitelji }n\}, |)$. Za mno"zico bi lahko vzeli tudi $\N_{>0}$
 \end{ex}
 
-"Ce v posplositev P\'{o}lyevega izreka vstavimo $u_i = 1$, dobimo P\'{o}lyev izrek
+\begin{defn}[Stroga neenakost]
+	\[ x < y \iff x \leqslant y \land x \neq y\]
+\end{defn}
+\begin{defn}[Predhodnik]
+	$x$ je predhodnik $y$, "ce sta v relaciji $\lessdot$
+	\[ x \lessdot y \iff x < y \land \nexists z: x < z < y\]
+\end{defn}
+\begin{ex}
+	$B_3 = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2,3\}, \{1,2,3\}\}$. $A \in B_3$ je predhodnik elementov $A \cup \{i\}$ za vsak $i \notin A$.
+\end{ex}
 
+\begin{defn}[Hassejev diagram]
+	Graf $(V, E)$, kjer so vozli"s"ca $V=P$ (elementi na"se mno"zice), robovi pa $E=\{(x,y); x \lessdot y \lor y \lessdot x\}$. Obi"cajno nari"semo tako, da je $y$ nad $x$, "ce je $x < y$.
+\end{defn}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.1]{hasse_b3}
+	\caption{Hassejev diagram $B_3$}
+\end{figure}
+\begin{figure}[h!]
+	\includegraphics[scale=0.4]{hasse_d60}
+	\includegraphics[scale=0.6]{hasse_d30}
+	\caption{Hassejeva diagrama za $D_{30}$ in $D_{60}$}
+\end{figure}
+\begin{rem}
+	Hassejev diagram $B_n$ je hiperkocka $Q_n$.
+\end{rem}
+\begin{rem}
+	Hassejev diagram $D_n$ je hiperkocka natanko tedaj, ko je $n$ produkt razli"cnih pra"stevil.
+\end{rem}
+
+\begin{defn}[Izomorfnost]
+	Delno urejeni mno"zici $P$ in $Q$ sta izomorfni, "ce obstaja bijekcija $\phi: P \rightarrow Q$, da velja $a \leqslant b \iff \phi(a) \leqslant \phi(b)$.
+\end{defn}
+\begin{defn}[Kartezi"cni produkt]
+	$P \times Q$ je delno urejena mno"zica z elementi $(x, y)$, $x \in P, y \in Q$, in relacijo $(x, y) \leqslant (x', y') \iff x \leqslant x' \land y \leqslant y'$.
+\end{defn}
+\begin{proof}
+	Bralec lahko za zabavo doka"ze, da je kartezi"cni produkt delno urejenih mno"zic tudi delno urejena mno"zica.
+\end{proof}
+
+\begin{ex}
+	$\underline{2} \times \underline{2} \times \cdots \times \underline{2} \cong B_n$. Izomorfizem doka"zemo z $\phi(A) \coloneqq (\varepsilon_1, \ldots, \varepsilon_n)$.
+\end{ex}
+\begin{ex}
+	$n = p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}$. Opazimo, da je $D_n$ izomorfen
+	$[0, \alpha_1] \times [0, \alpha_2] \cdots \times [0,\alpha_k]$, kjer smo z $[0, \alpha_i]$ ozna"cili $\underline{\alpha_i} \cup \{0\}$.
+\end{ex}
+\begin{rem}
+	"Ce je $n$ produkt razli"cnih pra"stevil, je $D_n$ izomorfen $B_k$, kjer je $k$ mo"c faktorizacije $n$. Iz tega sledi zgornja opomba o Hassejevih diagramih $D_n$.
+\end{rem}
+
+\begin{defn}[Veriga]
+	Naj bo $(P, \leqslant)$ delno urejena mno"zica. Tedaj je $(C \subseteq P, \leqslant)$ veriga, "ce velja $\forall x,y\in C: x \leq y \lor y \leq x$ (vsi elementi so med seboj primerljivi).
+\end{defn}
+\begin{ex}
+	$\{ \emptyset, \{1, 3\}, \{1, 3, 4\}\} \subseteq B_4$ je veriga.
+\end{ex}
+\begin{defn}[Antiveriga]
+	Naj bo $(P, \leqslant)$ delno urejena mno"zica. Tedaj je $(C \subseteq P, \leqslant)$ antiveriga, "ce velja $\forall x,y\in C: \lnot(x \leq y \lor y \leq x)$ (nobena dva elementa nista primerljiva).
+\end{defn}
+\begin{ex}
+	$\{\{1, 3\}, \{2, 4\}, \{1, 2, 3\}\} \subseteq B_5$ je antiveriga.
+\end{ex}
+
+\begin{defn}[Vi"sina delno urejene mno"zice]
+	Velikost najdalj"se verige.
+\end{defn}
+\begin{defn}["Sirina delno urejene mno"zice]
+	Velikost najdalj"se antiverige.
+\end{defn}
+\begin{ex}
+	\begin{tabular}{ccc}
+		mno"zica & vi"sina & "sirina \\
+		$\underline{n}$ & $n$ & $1$ \\
+		$B_n$ & $n+1$ & $\binom{n}{\lfloor \frac{n}{2} \rfloor}*$ \\
+		$D_n$ & $\alpha_1 + \cdots + \alpha_k + 1$ & ?\\
+	\end{tabular}
+\end{ex}
+\begin{rem}
+	* To je malo te"zje dokazati, ampak bomo pokazali kasneje (Spernerjev izrek).
+\end{rem}
+\begin{defn}[Maksimalni element]
+	Tak $x$, da velja $\nexists y: x \leqslant y$.
+\end{defn}
+\begin{defn}[Najve"cji element]
+	Tak $x$, da velja $\forall y: x \geqslant y$.
+\end{defn}
+\begin{rem}
+	"Ce je $x$ najve"cji, potem je $x$ maksimalen. Obratno ne velja.
+\end{rem}
+\begin{rem}
+	"Ce je $P$ kon"cna, obstaja maksimalen element.
+\end{rem}
+\begin{rem}
+	Obstaja najve"c en najve"cji element.
+\end{rem}
+
+\begin{theorem}[Minskyjev izrek]
+	Naj bo $(P, \leqslant)$ kon"cna delno urejena mno"zica, $M$ dol"zina najdalj"se verige (vi"sina), $m$ pa najmanj"se "stevilo  antiverig, s katerimi lahko pokrijemo $P$. Tedaj velja $M = m$.
+\end{theorem}
+\begin{proof}
+	O"citno velja $M \leqslant m$, saj bo vsak element najdalj"se verige moral imeti svojo antiverigo. $m \leqslant M$ bomo pokazali z indukcijo po mo"ci $P$.\\
+	Baza indukcije: $|P| = 1$. $m = M = 1$.\\
+	Indukcijski korak: definirajmo $A \coloneqq \{\text{maksimalni elementi v }P\}$. Vemo, da je vi"sina $P \setminus A$ je zagotovo $M-1$ (vsaka najdalj"sa veriga ima natanko en maksimalen element). Po indukcijski predpostavki jo zato lahko pokrijemo z $M-1$ antiverigami. Ker je $A$ antiveriga, lahko $P$ pokrijemo z $M$ antiverigami.
+\end{proof}
+\begin{rem}
+	Ta dokaz slu"zi tudi kot algoritem za iskanje antiverig.
+\end{rem}
+
+\begin{theorem}[Dilworthov izrek]
+	Pogledamo naslednji"c.
+\end{theorem}
 
 \end{document}
