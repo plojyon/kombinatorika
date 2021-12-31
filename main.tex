@@ -2655,16 +2655,65 @@ Iz zgornjih dveh primerov je razvidno, da "ce je $n$ produkt razli"cnih pra"stev
 \begin{rem}
 	"Ce obstaja popolno prirejanje iz $X$ v $Y$, je $|A| \leq |N(A)|$. Popolno prirejanje je v tem primeru injekcija $A \rightarrow N(A)$.
 \end{rem}
+\begin{defn}[Alternirajo"ca pot]
+	Pot, v kateri se izmenjujejo rde"ce in "crne povezave (tj. povezave, ki so element prirejanja in povezave, ki niso).
+\end{defn}
 \begin{theorem}[Hall]
-	Naj bo $G$ dvodelen graf na particiji $X$ in $Y$. Tedaj obstaja popolno prirejanje iz $X$ v $Y$ natanko tedaj, ko $|A| \leq |N(A)|$ za vsak $A \subseteq X$.
+	Naj bo $G$ dvodelen graf na particiji $X$ in $Y$. Tedaj obstaja popolno prirejanje iz $X$ v $Y$ natanko tedaj, ko $|A| \leqslant |N(A)|$ za vsak $A \subseteq X$.
 \end{theorem}
 \begin{rem}
 	"Ce predpostavimo Dilworthov izrek, je Hallov izrek zelo lahko dokazati. Velja tudi obratno.
 \end{rem}
 \begin{rem}
 	Hallov izrek nam poda ekvivalenco oblike $\exists \iff \forall$. Tako ekvivalenco imenujemo dobra karakterizacija. Kadar imamo tako ekvivalenco, lahko doka"zemo ali ovr"zemo trditev na levi ali desni strani s tem da doka"zemo obstoj najve"c enega objekta.
+	
+	% A to rabimo?
+	% "Se en primer dobre karakterizacije je izrek o Eulerjevih grafih, ki trdi, da je povezan graf Eulerjev (obstaja Eulerjev obhod) natanko tedaj, ko so vsa vozli"s"ca sode stopnje.
+	% Za obstoj Hamiltonovega cikla nimamo dobre karakterizacije.
 \end{rem}
 \begin{proof}
-	Dokaz v desno smo "ze razmislili.
+	Dokaz v desno smo "ze razmislili. Za"cnimo s poljubnim prirejanjem in predpostavimo $|A| \leqslant |N(A)|$. "Ce je to prirejanje popolno iz $X$ v $Y$, potem smo kon"cali. Sicer poskusimo to prirejanje pove"cati. To bomo lahko ponavljali, dokler ne pridemo do popolnega prirejanja.
+	
+	Po predpostavi (na"se prirejanje ni popolno) obstaja neko vozli"s"ce $a \in X$, ki ni v nobeni povezavi v prirejanju (ni element rde"ce povezave). Definirajmo \\
+	$A \coloneqq \{x \in X; \exists \text{ alternirajo"ca pot od }a\text{ do }x\}$ in\\
+	$B \coloneqq \{y \in Y; \exists \text{ alternirajo"ca pot od }a\text{ do }y\}$.
+	
+	Zagotovo velja $a \in A$. Poka"zimo, da je $N(A) \subseteq B$.
+	\[y \in N(A) \implies \exists x \in A: x \sim y \implies \exists \text{ alternirajo"ca pot od }a\text{ do }x, x \sim y\]
+	Ker smo v dvodelnem grafu in ker $a$ nima rde"cih povezav, bo zadnja povezava v alternirajo"ci poti do $x$ rde"ca (v $Y$ vedno pridemo po "crni in v $X$ vedno pridemo po rde"ci). "Ce je povezava $xy$ "crna, potem jo lahko dodamo k alternirajo"ci poti in dobimo alternirajo"co pot od $a$ do $y$, torej je $y \in B$. "Ce pa je $xy$ rde"ca, mora biti $y$ predzadnje vozli"s"ce na"se poti od $a$ do $x$, ker ima $x$ lahko najve"c eno rde"co povezavo (tisto, po kateri smo pri"sli do njega). Torej je $y \in B$.
+	
+	Po predpostavki in pravkar"snji ugotovitvi, imamo
+	\[ |A| \leqslant |N(A)| \leqslant |B| \]
+	Iz $A$ gre $|A|-1$ rde"cih povezav (vsi elementi razen $a$ morajo imeti natanko eno rde"co povezavo, ker so del alternirajo"ce poti). To pomeni, da v $B$ obstaja vozli"s"ce $b$, ki nima nobene rde"ce povezave (ker je $|A|\leqslant|B|$). "Ce vsem povezavam v poti od $a$ do $b$ zamenjamo barvo, ne bomo pokvarili prirejanja; vsako vozli"s"ce bo imelo "se vedno najve"c eno rde"co povezavo. Ker se alternirajo"ca pot od $a$ do $b$ za"cne in kon"ca s "crno, smo s to inverzijo hkrati pove"cali "stevilo rde"cih povezav za $1$.
+	
+	Postopek ponavljamo dokler ne dose"zemo popolnega prirejanja.
 \end{proof}
+\begin{rem}
+	To je algoritem, ki bodisi poi"s"ce popolno prirejanje, bodisi doka"ze, da le-to ne more obstajati ("ce slu"cajno naletimo na primer, ko $|A| > |N(A)|$).
+\end{rem}
+
+\begin{conseq}
+	Naj bo $G$ dvodelni graf na $X$ in $Y$. Tedaj velja
+	\[ \forall x \in X: \forall y \in Y: \deg(x) \geqslant \deg(y) \implies \exists \text{ popolno prirejanje } X\rightarrow Y \]
+\end{conseq}
+\begin{proof}
+	"Zelimo pokazati, da je $|A| \leqslant |N(A)|$. Ozna"cimo "stevilo povezav med $A$ in $B$ kot $e(A, B)$ in $B \coloneqq N(A)$. Naj bo $d$ neko "stevilo, ki je med $\deg(x)$ in $\deg(y)$ za vsaka $x$ in $y$ ($d$ obstaja po na"si predpostavki).
+	
+	\[d \cdot |B| \geqslant \sum_{y \in B}\deg(y) \geqslant e(A,B) = \sum_{x\in A}\deg(x) \geqslant d\cdot |A|\]
+	\[\implies |A| \leqslant |B|\]
+	Po Hallovem izreku je to vse, kar moramo pokazati.
+\end{proof}
+
+\begin{conseq}
+	Naj bo $G$ biregularen (stopnja vsakega vozli"s"ca na levi/desni strani je enaka) dvodelen graf. Tedaj obstaja popolno prirejanje iz $X$ v $Y$ ali iz $Y$ v $X$.
+\end{conseq}
+\begin{proof}
+	\[ |E| = \sum_{x \in X}\deg(x) = r\cdot |X| \]
+	\[ |E| = \sum_{y \in Y}\deg(y) = s\cdot |Y| \]
+	\[ |X| \leqslant |Y| \iff r \geqslant s \iff \exists \text{ popolno prirejanje }X\rightarrow Y \]
+	\[ |X| \geqslant |Y| \iff r \leqslant s \iff \exists \text{ popolno prirejanje }Y\rightarrow X \]
+\end{proof}
+
+% tukej bi lahko dodal se kksn primer
+
 \end{document}
