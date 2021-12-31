@@ -2499,7 +2499,7 @@ Recimo, da nas zanima, koliko je mo"znih barvanj zapestnic s to"cno dolo"cenim "
 	\begin{tabular}{ccc}
 		mno"zica & vi"sina & "sirina \\
 		$\underline{n}$ & $n$ & $1$ \\
-		$B_n$ & $n+1$ & $\binom{n}{\lfloor \frac{n}{2} \rfloor}*$ \\
+		$B_n$ & $n+1$ & $\binom{n}{\left\lfloor \frac{n}{2} \right\rfloor}*$ \\
 		$D_n$ & $\alpha_1 + \cdots + \alpha_k + 1$ & ?\\
 	\end{tabular}
 \end{ex}
@@ -2523,7 +2523,7 @@ Recimo, da nas zanima, koliko je mo"znih barvanj zapestnic s to"cno dolo"cenim "
 \end{rem}
 
 \begin{theorem}[Minskyjev izrek]
-	Naj bo $(P, \leqslant)$ kon"cna delno urejena mno"zica, $M$ dol"zina najdalj"se verige (vi"sina), $m$ pa najmanj"se "stevilo  antiverig, s katerimi lahko pokrijemo $P$. Tedaj velja $M = m$.
+	Naj bo $(P, \leqslant)$ kon"cna delno urejena mno"zica, $M$ dol"zina najdalj"se verige (vi"sina), $m$ pa najmanj"se "stevilo antiverig, s katerimi lahko pokrijemo $P$. Tedaj velja $M = m$.
 \end{theorem}
 \begin{proof}
 	O"citno velja $M \leqslant m$, saj bo vsak element najdalj"se verige moral imeti svojo antiverigo. $m \leqslant M$ bomo pokazali z indukcijo po mo"ci $P$.\\
@@ -2534,8 +2534,139 @@ Recimo, da nas zanima, koliko je mo"znih barvanj zapestnic s to"cno dolo"cenim "
 	Ta dokaz slu"zi tudi kot algoritem za iskanje antiverig.
 \end{rem}
 
+\subsection{Dilworthov izrek}
 \begin{theorem}[Dilworthov izrek]
-	Pogledamo naslednji"c.
+	Naj bo $(P, \leqslant)$ kon"cna delno urejena mno"zica, $M$ dol"zina najdalj"se antiverige ("sirina), $m$ pa najmanj"se "stevilo verig, s katerimi lahko pokrijemo $P$. Tedaj velja $M = m$.
 \end{theorem}
+\begin{proof}
+	Podobno kot pri Minskyjevem izreku, opazimo da $M \leqslant m$, ker mora vsak element najdalj"se antiverige imeti svojo verigo v pokritju. $m \leqslant M$ bomo pokazali z indukcijo po mo"ci $P$.\\
+	Baza indukcije: $|P| = 1$. $m = M = 1$.\\
+	Indukcijski korak: definirajmo $C \coloneqq$ katerakoli najdalj"sa veriga v $P$. Problem nastane (za razliko od dokaza Minskyjevega), ker $P \setminus C$ nima nujno manj"se "sirine kot $P$.
+	
+	"Ce je se "sirina zmanj"sala, lahko (enako kot pri Minskyjevem) $P\setminus C$ pokrijemo z $\leqslant M-1$ verigami, torej lahko $P$ pokrijemo z $\leqslant M$ verigami.
+	
+	"Ce se "sirina ni zmanj"sala, izberimo neko antiverigo $A=\{a_1, \ldots, a_n\}$ iz $P \setminus C$. Definirajmo
+	\begin{itemize}
+		\item $S^+ \coloneqq \{x \in P; \exists i: x \geqslant a_i\}$
+		\item $S^- \coloneqq \{x \in P; \exists i: x \leqslant a_i\}$
+	\end{itemize}
+	Poka"zimo nekaj lastnosti glede $S^+$ in $S^-$.
+	\begin{enumerate}
+		\item $S^+ \cap S^- = A$
+		\begin{proof}
+			$A$ je o"citno vsebovan v obeh mno"zicah zaradi refleksivnosti ($\forall a \in A \exists i: a \leqslant a_i$). "Ce je $x \in S^+ \cap S^-$, potem $a_i \leqslant x \leqslant a_j$, zaradi tranzitivnosti pa $a_i \leqslant a_j$. Ker sta $a_i$ in $a_j$ iz iste antiverige, mora veljati $i=j$, kar pomeni da je $x = a_i$ in zato $x \in A$.
+		\end{proof}
+		\item $S^+ \cup S^- = P$
+		\begin{proof}
+			O"citno je, da je unija vsebovana v $P$. "Ce $x \notin S^+$ in $x \notin S^-$, potem $\forall i: x \not\geqslant a_i \land x \not\leqslant a_i$, kar pomeni da je $A \cup \{x\}$ antiveriga, ki je ve"cja od $A$, kar je v nasprotju z definicijo $A$.
+		\end{proof}
+		\item $S^+ \neq P$
+		\begin{proof}
+			Najmanj"si element v $C$ zagotovo ni v $S^+$; "ce bi obstajal $i$, da $x \geqslant a_i$, bi $C \cup \{a_i\}$ bila dalj"sa veriga kot $C$. Pomembno je opaziti, da $x \neq a_i$, ker je $A$ sestavljena iz elementov $P \setminus C$.
+		\end{proof}
+		\item $S^- \neq P$
+		\begin{proof}
+			Iz istega razloga kot zgoraj najve"cji element $C$ zagotovo ni v $S^-$.
+		\end{proof}
+	\end{enumerate}
+	Z drugimi besedami, $S^+$ ima "sirino $M$, a je njena mo"c strogo manj"sa od $|P|$. Po indukcijski predpostavki lahko $S^+$ pokrijemo z $M$ verigami $C_1^+, \ldots, C_M^+$, $S^-$ pa z $C_1^-, \ldots, C_M^-$. Vsak element $A$ mora imeti svojo verigo $C_i^+$. Brez "skode za splo"snost privzemimo $a_i \in C_i^+$ in $a_i \in C_i^-$. Na"se pokritje $P$ja sestavljajo $C_i = C_i^+ \cup C_i^-$.
+\end{proof}
 
+\subsection{Spernerjev izrek}
+\begin{lemma}
+	$\forall k: \binom{n}{k} \leqslant \binom{n}{\left\lfloor \frac{n}{2} \right\rfloor}$. 
+	Povedano z besedami: trdimo, da je najve"cji binomski koeficient neke vrstice vedno v njeni sredini.
+\end{lemma}
+\begin{proof}
+	Oglejmo si zaporedna binomska koeficienta in izra"cunajmo kriterij, kdaj je naslednji ve"cji od prej"snjega.
+	\[ \binom{n}{k} \leqslant \binom{n}{k+1} \]
+	\[ \frac{\binom{n}{k}}{\binom{n}{k+1}}\leqslant 1 \]
+	\[ \frac{n!(k+1)!(n-k-1)!}{k!(n-k)!n!} \leqslant 1 \]
+	\[ \frac{k+1}{n-k} \leq 1 \]
+	\[ k+1 \leq n-k \]
+	\[ 2k+1 \leq n \]
+	\[ k \leqslant \frac{n-1}{2} \]
+\end{proof}
+\begin{rem}
+	% fun fact time
+	Zaporedje, za katerega velja $a_0 \leqslant a_1 \leqslant \cdots \leqslant a_k \geqslant a_{k+1} \geqslant \cdots$ imenujemo unimodalno.
+\end{rem}
+
+\begin{theorem}[Spernerjev]
+	"Sirina $B_n$ je $\binom{n}{\left\lfloor \frac{n}{2} \right\rfloor}$.
+\end{theorem}
+\begin{proof}
+	"Ce vzamemo $A=\binom{\lbrack n \rbrack}{\left\lfloor \frac{n}{2} \right\rfloor}$ je to ravno antiveriga velikosti $\binom{n}{\left\lfloor \frac{n}{2} \right\rfloor}$. S tem smo fiksirali minimalno vrednost "sirine. Doka"zimo, da ne obstaja dalj"sa antiveriga.
+	
+	Naj bo $A$ poljubna antiveriga v $B_n$. Naj bo $a_i$ "stevilo elementov $A$, ki so $i$-elementne mno"zice. O"citno je $a_0 + a_1 + \cdots + a_n = |A|$.
+	
+	Pre"stejmo maksimalne verige v $B_n$
+	\begin{itemize}
+		\item Vse: $n!$
+		\begin{proof}
+			Verigo $\emptyset \subseteq \{i_1\} \subseteq \{i_1, i_2\} \subseteq \cdots \subseteq [n]$ dobimo tako, da izberemo nek vrstni red dodajanja elementov proti $[n]$.
+		\end{proof}
+		\item Tiste, ki vsebujejo izbrano podmno"zico $S \subseteq B_n$ velikosti $k$: $k!(n-k)!$
+		\begin{proof}
+			Dobimo jih tako, da konstruiramo verigo do $S$ ($k!$ na"cinov), nato pa dodajamo "se ostalih $n-k$ elementov do $[n]$.
+		\end{proof}
+		\item Tiste, ki vsebujejo katerikoli element iz $A$: $\sum_{k=0}^na_kk!(n-k)!$
+		\begin{proof}
+			Vsak element $A$ ima lahko med $0$ in $n$ elementov. "Ce za vsako od teh "stevil dodamo se"stejemo "stevilo verig, ki vsebuje ta element (teh je dokazano $k!(n-k)!$), dobimo ravno na"s rezultat. Nobene verige nismo "steli dvakrat, ker vsaka od na"sih verig vsebuje natanko en - unikaten - element $A$-ja.
+		\end{proof}
+	\end{itemize}
+	Zaklju"cimo lahko, da je $\sum_{k=0}^na_kk!(n-k)! \leq n!$, saj je mno"zica maksimalnih verig, ki vsebujejo elemente iz $A$ pomno"zica vseh maksimalnih verig. "Ce delimo z $n!$, dobimo
+	\[\sum_{k = 0}^n\frac{a_k}{\binom{n}{k}} \leq 1\]
+	\[
+		1 \geq
+		\sum_{k = 0}^n\frac{a_k}{\binom{n}{k}} \geq
+		\sum_{k = 0}^n\frac{a_k}{\binom{n}{\left\lfloor\frac{n}{2}\right\rfloor}} =
+		\frac{1}{\binom{n}{\left\lfloor\frac{n}{2}\right\rfloor}}\sum_{k = 0}^na_k
+	\]
+	\[\binom{n}{\left\lfloor\frac{n}{2}\right\rfloor} \geq \sum_{k=0}^na_k\]
+	\[\binom{n}{\left\lfloor\frac{n}{2}\right\rfloor} \geq |A|\]
+\end{proof}
+
+\begin{conseq}[Dilworth-Sperner]
+	$B_n$ lahko pokrijemo z $\binom{n}{\left\lfloor\frac{n}{2}\right\rfloor}$ verigami.
+\end{conseq}
+
+\subsection{Hallov izrek}
+\begin{defn}[Prirejanje]
+	Naj bo $G=(V, E)$ graf. $M \subseteq E$ je prirejanje, "ce velja $e \cap f = \emptyset$ za vsaka $e, f \in M$.
+\end{defn}
+"Ce pobarvamo povezave iz $M$ z rde"co barvo, potem nobeno vozli"s"ce iz $G$ nima ve"c kot ene rde"ce povezave.
+\begin{defn}[Popolno prirejanje]
+	Naj bo $M$ prirejanje grafa $G$. $M$ je popolno prirejanje, "ce velja $\forall v \in V: \exists e \in M: v \in e$.
+\end{defn}
+\begin{rem}
+	Angle"sko: ``matching'' in ``perfect matching''.
+\end{rem}
+\begin{rem}
+	"Ce ima $G$ popolno prirejanje, je $|V|$ sodo.
+\end{rem}
+\begin{defn}[Popolno prirejanje iz $X$ v $Y$]
+	Naj bo $G$ dvodelen graf na particiji $X$ in $Y$. Prirejanje $M$ je popolno prirejanje iz $X$ v $Y$ "ce velja $\forall x \in X: \exists e \in M: x \in e$.
+\end{defn}
+\begin{rem}
+	"Ce obstaja popolno prirejanje iz $X$ v $Y$, je $|X| \leq |Y|$. Popolno prirejanje namre"c deluje kot injekcija.
+\end{rem}
+\begin{defn}[Sose"s"cina $A$]
+	$N(A) = \{v \in V: \exists u \in A: u \sim v\}$
+\end{defn}
+\begin{rem}
+	"Ce obstaja popolno prirejanje iz $X$ v $Y$, je $|A| \leq |N(A)|$. Popolno prirejanje je v tem primeru injekcija $A \rightarrow N(A)$.
+\end{rem}
+\begin{theorem}[Hall]
+	Naj bo $G$ dvodelen graf na particiji $X$ in $Y$. Tedaj obstaja popolno prirejanje iz $X$ v $Y$ natanko tedaj, ko $|A| \leq |N(A)|$ za vsak $A \subseteq X$.
+\end{theorem}
+\begin{rem}
+	"Ce predpostavimo Dilworthov izrek, je Hallov izrek zelo lahko dokazati. Velja tudi obratno.
+\end{rem}
+\begin{rem}
+	Hallov izrek nam poda ekvivalenco oblike $\exists \iff \forall$. Tako ekvivalenco imenujemo dobra karakterizacija. Kadar imamo tako ekvivalenco, lahko doka"zemo ali ovr"zemo trditev na levi ali desni strani s tem da doka"zemo obstoj najve"c enega objekta.
+\end{rem}
+\begin{proof}
+	Dokaz v levo smo "ze razmislili.
+\end{proof}
 \end{document}
