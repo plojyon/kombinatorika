@@ -2448,12 +2448,12 @@ Recimo, da nas zanima, koliko je mo"znih barvanj zapestnic s to"cno dolo"cenim "
 	\includegraphics[scale=0.6]{hasse_d30}
 	\caption{Hassejeva diagrama za $D_{30}$ in $D_{60}$}
 \end{figure}
-\begin{rem}
+\begin{claim}
 	Hassejev diagram $B_n$ je hiperkocka $Q_n$.
-\end{rem}
-\begin{rem}
-	Hassejev diagram $D_n$ je hiperkocka natanko tedaj, ko je $n$ produkt razli"cnih pra"stevil.
-\end{rem}
+\end{claim}
+\begin{claim}\label{Dn_je_hiperkocka}
+	"Ce je $n$ produkt razli"cnih pra"stevil, je Hassejev diagram $D_n$ hiperkocka.
+\end{claim}
 
 \begin{defn}[Izomorfnost]
 	Delno urejeni mno"zici $P$ in $Q$ sta izomorfni, "ce obstaja bijekcija $\phi: P \rightarrow Q$, da velja $a \leqslant b \iff \phi(a) \leqslant \phi(b)$.
@@ -2472,9 +2472,7 @@ Recimo, da nas zanima, koliko je mo"znih barvanj zapestnic s to"cno dolo"cenim "
 	$n = p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}$. Opazimo, da je $D_n$ izomorfen
 	$[0, \alpha_1] \times [0, \alpha_2] \cdots \times [0,\alpha_k]$, kjer smo z $[0, \alpha_i]$ ozna"cili $\underline{\alpha_i} \cup \{0\}$.
 \end{ex}
-\begin{rem}
-	"Ce je $n$ produkt razli"cnih pra"stevil, je $D_n$ izomorfen $B_k$, kjer je $k$ mo"c faktorizacije $n$. Iz tega sledi zgornja opomba o Hassejevih diagramih $D_n$.
-\end{rem}
+Iz zgornjih dveh primerov je razvidno, da "ce je $n$ produkt razli"cnih pra"stevil, je $D_n$ izomorfen $B_k$, kjer je $k$ mo"c faktorizacije $n$. Iz tega sledi zgornja trditev o Hassejevih diagramih $D_n$ (\ref{Dn_je_hiperkocka}).
 
 \begin{defn}[Veriga]
 	Naj bo $(P, \leqslant)$ delno urejena mno"zica. Tedaj je $(C \subseteq P, \leqslant)$ veriga, "ce velja $\forall x,y\in C: x \leq y \lor y \leq x$ (vsi elementi so med seboj primerljivi).
@@ -2667,6 +2665,6 @@ Recimo, da nas zanima, koliko je mo"znih barvanj zapestnic s to"cno dolo"cenim "
 	Hallov izrek nam poda ekvivalenco oblike $\exists \iff \forall$. Tako ekvivalenco imenujemo dobra karakterizacija. Kadar imamo tako ekvivalenco, lahko doka"zemo ali ovr"zemo trditev na levi ali desni strani s tem da doka"zemo obstoj najve"c enega objekta.
 \end{rem}
 \begin{proof}
-	Dokaz v levo smo "ze razmislili.
+	Dokaz v desno smo "ze razmislili.
 \end{proof}
 \end{document}
