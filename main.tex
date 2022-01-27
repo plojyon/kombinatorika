@@ -42,6 +42,8 @@
 \theoremstyle{remark}
 \newtheorem*{ex}{Primer}
 \newtheorem*{rem}{Opomba}
+\newtheorem{rem*}[counter]{Opomba}
+\newtheorem{ex*}[counter]{Primer}
 
 % I like my squares DARK
 \renewcommand\qedsymbol{$\blacksquare$}
@@ -72,7 +74,7 @@
 
 \begin{document}
 
-\title{Kombinatorika - zapsiski s predavanj prof. Konvalinka}
+\title{Kombinatorika - zapsiski s predavanj prof. Konvalinke}
 \author{
 	Domen Vogrin
 	\and
@@ -97,9 +99,9 @@
 \begin{defn}[Funkcija] \text{}
 
 \begin{itemize}
-\item injektivna ($y$ je slika najve"c enega $x$) / ($x_1 \neq x_2 \rightarrow f(x_1) \neq f(x_2)$)
-\item surjektivna ($y$ je slika vsaj enega $x$) / ($\forall y \in Y \exists x \in X:f(x) = y$)
-\item bijektivna / ($y$ je slika natanko enega $x$) / (injektivna in surjektivna)
+\item injektivna ($y$ je slika najve"c enega $x$) ($x_1 \neq x_2 \rightarrow f(x_1) \neq f(x_2)$)
+\item surjektivna ($y$ je slika vsaj enega $x$) ($\forall y \in Y \exists x \in X:f(x) = y$)
+\item bijektivna ($y$ je slika natanko enega $x$) (injektivna in surjektivna)
 \end{itemize}
 \end{defn}
 
@@ -136,16 +138,16 @@ Y^X := \{f: X\rightarrow Y\}
 \subsection{Osnovna na"cela}
 \begin{theorem}[Dirichletovo na"celo]
 	\[
-	\exists f: X\rightarrow Y \implies |X| \leqslant |Y|
+	\exists \text{ injektivna } f: X\rightarrow Y \implies |X| \leqslant |Y|
 	\]
 	Ekvivalentno:
 	\[
-	|X| > |Y| \implies \neg \exists \ inj. \ f: X \rightarrow Y
+	|X| > |Y| \implies \neg \exists \text{ injektivna } \ f: X \rightarrow Y
 	\]
 	ali z besedami: ``"ce damo $n$ kroglic v $k$ "skatel in velja $n > k$, sta v vsaj eni "skatli vsaj dve kroglici.''
 \end{theorem}
 
-\begin{theorem}[Na"celo vsote in produkta]
+\begin{theorem}[Na"celo vsote]
 	\[
 	A \cap B = \emptyset \implies |A \cup B| = |A| + |B|
 	\]
@@ -289,7 +291,7 @@ Po Dirichletovem principu obstajata $j$ in $j'$, $j < j'$, tako da
 	Beremo ``A  nad k''.
 \end{defn}
 \begin{defn}[Binomski koeficient]
-	\[\binom{n}{k} := |\binom{[n]}{k}|\]
+	\[\binom{n}{k} := \bigg|\binom{[n]}{k}\bigg|\]
 	Beremo ``n nad k'' (``n choose k'').
 \end{defn}
 
@@ -311,7 +313,7 @@ Po Dirichletovem principu obstajata $j$ in $j'$, $j < j'$, tako da
 \end{defn}
 
 \begin{claim}
-	\[\binom{n}{k} = \frac{n(n-1)...(n-k+1)}{k!} = \frac{n^{\underline{k}}}{k!} = \begin{cases}\frac{n!}{k!(n-k)!}: \quad 0 \leq k \leq n   \\ 0: \quad \text{sicer} \end{cases}\]
+	\[\binom{n}{k} = \frac{n(n-1)...(n-k+1)}{k!} = \frac{n^{\underline{k}}}{k!} = \begin{cases}\frac{n!}{k!(n-k)!}: \quad 0 \leqslant k \leqslant n   \\ 0: \quad \text{sicer} \end{cases}\]
 \end{claim}
 \begin{proof}(1. na"cin)\\
 	Po eno strani lahko izberemo $k$ "stevil izmed $n$ "stevil brez ponavljanja, vrstni red je pomemben.
@@ -397,7 +399,7 @@ Po distributivnosti iz vsakega oklepaja izberemo $a$ ali $b$. "Ce smo $b$ izbral
 % 19. 10. 2021
 \subsection{Izbori}
 
-Na voljo imamo $b$ o"stevil"cenih kroglic. Na koliko na"cinov lahko izberemo $k$ kroglic? Ali dovolimo ponavljanje? Je vrstni red pomemben?
+Na voljo imamo $n$ o"stevil"cenih kroglic. Na koliko na"cinov lahko izberemo $k$ kroglic? Ali dovolimo ponavljanje? Je vrstni red pomemben?
 
 \begin{tabular}{c|c|c}
 
@@ -412,17 +414,19 @@ vrstni red ni pomemben & $\binom{n + k - 1}{k}$ & $\binom{n}{k}$
 \end{rem}
 
 \label{TODO: what is this??}
-\[1 \leqslant i_1 \leqslant ... \leqslant i_k \leqslant n\]
-"Zelimo pre"steti re"sitve tega sistema neena"cb.\\
-n = 4, k = 3
-\[1 1 1 \ \ \ 1 2 3 \ \ \ 2 2 2 \ \ \ 2 4 4\]
-\[1 1 2 \ \ \ 1 2 4 \ \ \ 2 2 3 \ \ \ 3 3 3\]
-\[1 1 3 \ \ \ 1 3 3 \ \ \ 2 2 4 \ \ \ 3 3 4\]
-\[1 1 4 \ \ \ 1 3 4 \ \ \ 2 3 3 \ \ \ 3 4 4\]
-\[1 2 2 \ \ \ 1 4 4 \ \ \ 2 3 4 \ \ \ 4 4 4\]
+\begin{ex}
+	"Zelimo pre"steti re"sitve tega sistema neena"cb.
+	\[1 \leqslant i_1 \leqslant ... \leqslant i_k \leqslant n\]
+	To so kombinacije s ponavljanjem, $n=4, k=3$.
+	\[1 1 1 \ \ \ 1 2 3 \ \ \ 2 2 2 \ \ \ 2 4 4\]
+	\[1 1 2 \ \ \ 1 2 4 \ \ \ 2 2 3 \ \ \ 3 3 3\]
+	\[1 1 3 \ \ \ 1 3 3 \ \ \ 2 2 4 \ \ \ 3 3 4\]
+	\[1 1 4 \ \ \ 1 3 4 \ \ \ 2 3 3 \ \ \ 3 4 4\]
+	\[1 2 2 \ \ \ 1 4 4 \ \ \ 2 3 4 \ \ \ 4 4 4\]
 
-Ideja:
-\[j_1 = i_1, \ j_2 = i_2 + 1, \ j_3 = i_3 + 2, \ ..., \ j_k = i_k + k - 1 \]
+	Ideja:
+	\[j_1 = i_1, \ j_2 = i_2 + 1, \ j_3 = i_3 + 2, \ ..., \ j_k = i_k + k - 1 \]
+\end{ex}
 
 \subsection{Kompozicije}
 \begin{defn}[Kompozicija]
@@ -479,14 +483,11 @@ Ideja:
 \begin{proof}(2. na"cin)\\
 	"Sibko kompozicijo predstavino s kroglicami in pregradami.
 	\[0 + 0 + 3 + 1 + 0 + 5 + 0 + 2:\quad ||\circ \circ \circ|\circ||\circ \circ \circ \circ \circ||\circ \circ\]
-	Imamo $n + (k - 1)$ objektov, izberemo polo"zaje pregrad na $\binom{n + k - 1}{k - 1}$ na"cinov.\\
-	\begin{rem}
-		Kombinacije s ponavljanjem ($n$ kroglic, izberemo jih $k$)
-	\end{rem}
-	$x_i$ \ldots kolikokrat smo izbrali kroglico:
-	\[x_i \geqslant 0, \quad i = 1, \ ..., \ n\]
+	Imamo $n + (k - 1)$ objektov, izberemo polo"zaje pregrad na $\binom{n + k - 1}{k - 1}$ na"cinov - to so kombinacije s ponavljanjem ($n$ kroglic, izberemo jih $k$).
+	\[x_i \ldots \text{ kolikokrat smo izbrali kroglico }i\]
+	\[x_i \geqslant 0, \quad i = 1, ..., n\]
 	\[x_i + x_2 + ... + x_n = k\]
-	$\equiv$ "sibke kompozicije $k$ z $n$ "cleni = $\binom{k + n - 1}{n - 1} = \binom{n + k - 1}{k}$
+	$\implies$ "sibke kompozicije $k$ z $n$ "cleni = $\binom{k + n - 1}{n - 1} = \binom{n + k - 1}{k}$
 \end{proof}
 
 \subsection{Na"celo vklju"citev in izklju"citev (NVI)}
@@ -513,17 +514,17 @@ Ideja:
 	$A_{\emptyset} = \cap_{i \in \emptyset} \ A_i = \{a; \ a \in A \ \land \ \forall i \in \emptyset\ a \in A_i \} = A$
 \end{ex}
 \begin{theorem}[Poenostavljen zapis NVI]
-	\[|\bigcup_{i = 1}^{n} A_i| = \sum_{\emptyset \neq I \subseteq [n]} (-1)^{|I| - 1} |A_i|\]
+	\[\bigg|\bigcup_{i = 1}^{n} A_i\bigg| = \sum_{\emptyset \neq I \subseteq [n]} (-1)^{|I| - 1} \bigg|\bigcap_{i \in I}A_i\bigg|\]
 \end{theorem}
 \begin{theorem}[Druga oblika NVI]
-	\[|\bigcap_{i = 1}^n A_i^c|  = \sum_{I \subseteq [n]} (-1)^{|I|} |A_I|\]
+	\[\bigg|\bigcap_{i = 1}^n A_i^c\bigg|  = \sum_{I \subseteq [n]} (-1)^{|I|} |A_I|\]
 \end{theorem}
 \begin{proof}
 	Ozna"cimo $A_1, \ldots, A_n \subseteq A$ in se spomnimo, da $A_\emptyset = A$
 	\[
-		|\bigcap_{i = 1}^n A_i^c| =
-		|(\bigcup_{i = 1}^n A_i)^c| =
-		|A| - |\bigcup_{i = 1}^n A_i| =
+		\bigg|\bigcap_{i = 1}^n A_i^c\bigg| =
+		\bigg|(\bigcup_{i = 1}^n A_i)^c\bigg| =
+		|A| - \bigg|\bigcup_{i = 1}^n A_i\bigg| =
 		|A_{\emptyset}|\sum_{\emptyset \neq I \subseteq [n]} (-1)^{|I|} (A_I) =
 		\sum_{I \subseteq [n]} (-1)^{|I|} |A_I|
 	\]
@@ -549,9 +550,9 @@ To lahko poka"zemo tudi s slede"co bijekcijo
 
 \begin{proof}(NVI)
 	\label{TODO: tega ne bom gledu}
-	\[a \in \bigcup_{i = 1}^{n} A_i \text{, a vsebovana v natanko k mno"zicah}\]
+	\[a \in \bigcup_{i = 1}^{n} A_i,\ a\text{ vsebovana v natanko }k\text{ mno"zicah}\]
 	Dokazati "zelimo, da je doprinos $a$-ju k vsoti na desni enak $1$.
-	\[k - \binom{k}{2} + \binom{k}{3} - ... + (-1)^{k-1} \binom{k}{k} = \sum_{j = 1}^{k} (-1)^{j - 1} \binom{k}{j} = - (\sum_{j = 0}^{k} (-1)^j \binom{k}{j} - 1) = 1\]
+	\[k - \binom{k}{2} + \binom{k}{3} - \cdots + (-1)^{k-1} \binom{k}{k} = \sum_{j = 1}^{k} (-1)^{j - 1} \binom{k}{j} = - \bigg(\sum_{j = 0}^{k} (-1)^j \binom{k}{j} - 1\bigg) = 1\]
 	$k$ \ldots doprinos v prvi vrstici\\
 	$\binom{k}{2}$ \ldots doprinos v drugi vrstici\\
 	$\displaystyle \sum_{j = 0}^{k} (-1)^j \binom{k}{j}$ = 0 (po lemi)
@@ -559,7 +560,7 @@ To lahko poka"zemo tudi s slede"co bijekcijo
 
 \subsection{Eulerjeva funkcija $\phi$} % $\varphi$
 \begin{defn}[Eulerjeva funkcija]
-	\[\phi (n) = |\{i \in [n] : \gcd(i, n) = 1\}|\]
+	\[\phi (n) = \big|\{i \in [n] : \gcd(i, n) = 1\}\big|\]
 \end{defn}
 
 \begin{claim}
@@ -581,7 +582,6 @@ To lahko poka"zemo tudi s slede"co bijekcijo
 	\]
 
 	Ulomkov je $n$, imenovalci so delitelji "stevila $n$, "stevci so "stevila, ki so manj"sa od $a$ in tuja z $a$.
-	\[\sum_{a | n} \phi (a) = n\]
 \end{proof}
 
 \begin{theorem}[Formula za $\phi$]
@@ -592,15 +592,14 @@ To lahko poka"zemo tudi s slede"co bijekcijo
 	\[A_i = \{j \in [n] : p_i | j\} \]
 	\[|A_i| = \frac{n}{p_i}\]
 	\[|A_i \cap A_j| = \frac{n}{p_i p_j}\]
-	\[|A_I| = \frac{n}{\displaystyle \prod_{i \subseteq I} p_i}\]
+	\[|A_I| = \frac{n}{\displaystyle \prod_{i \in I} p_i}\]
 
 	\[\phi (n) = \sum_{I \subseteq [k]} (-1)^{|I|} \frac{n}{\displaystyle \prod_{i \in I} p_i}\]
-
-		$k = 2$ \label{TODO: k=2? kasn k? od kje? kaj to pomen}
+	Kjer je $k$ "stevilo pra"stevilskih faktorjev $n$ (glej prvo vrstico dokaza). Vzemimo za primer $k = 2$:
 
 	\[n\cdot(1 - \frac{1}{p_1} - \frac{1}{p_2} + \frac{1}{p_1 p_2}) = n\cdot(1 - \frac{1}{p_1})\cdot(1 - \frac{1}{p_2})\]
 	\[\phi (n) \stackrel{\text{distributivnost}}{=}  n\cdot(1 - \frac{1}{p_1})\cdot(1 - \frac{1}{p_2})\cdot \ldots \cdot(1 - \frac{1}{p_k})\]
-
+	V splo"snem torej velja
 	\[\phi (n) = n \cdot \prod_{p | n} (1 - \frac{1}{p})\]
 \end{proof}
 %26. 10. 2021
@@ -612,14 +611,14 @@ Spomnimo se na binomske koeficiente
 Imamo $a$ enic in $b$ ni"cel. Preme"samo jih lahko na
 \[\binom{a + b}{a} = \binom{a + b}{b} = \frac{(a+b)!}{a!b!}\]
 na"cinov. Kaj pa "ce imamo ve"c enakih elementov? "Stevila $1,1,1,2,2,3,3,3,3,3,4$ lahko preme"samo na.
-\[\binom{a_1 + a_2 + ... + a_n}{a_1} \cdot \binom{a_2 + a_3 ... + a_n}{a_2} \cdot \binom{a_3 + a_4 + ... + a_n}{a_3} ...\]
+\[\binom{a_1 + a_2 + \cdots + a_n}{a_1} \cdot \binom{a_2 + a_3 \cdots + a_n}{a_2} \cdot \binom{a_3 + a_4 + \cdots + a_n}{a_3} \cdots\]
 na"cinov. V prvem binomu izberemo enke, v drugem dvojke, v tretjem trojke~\ldots. To razpi"semo kot
 \[\frac{(a_1 + a_2 + ... + a_n)!}{a_1!(a_2 + a_3 + ... + a_n)!} \cdot \frac{(a_2 + a_3 + ... + a_n)!}{a_2!(a_3 + a_4 + ... + a_n)!} \cdot \frac{(a_3 + a_4 + ... + a_n)!}{a_1!(a_4 + a_5 + ... + a_n)!} ... \frac{(a_{n-1}+a_n)!}{a_{n-1}!a_n!} =\]
 \[= \frac{(a_1 + a_2 + ... + a_n)!}{a_1!a_2!...a_n!} = \frac{(\displaystyle \sum_{i = 1}^n a_i)!}{\displaystyle \prod_{i = 1}^n a_i!} = \binom{a_1 + a_2 + ... + a_n}{a_1, a_2, ..., a_n}\]
 
 Alternativno: dodamo indekse $1_1, 1_2, 1_3, 2_1, 2_2, 3_1, 3_2, 3_3, 3_4, 3_5, 4_1$. Preme"samo na
-\[\frac{(a_1 + a_2 + ... + a_n)!}{a_1!a_2!...a_n!}\]
-na"cinov; najprej smo preme"sali vse na $(a_1 + a_2 + ... + a_n)!$ na"cinov, potem pa z $a_i!$ izbrisali indekse)\\
+\[\frac{(a_1 + a_2 + \cdots + a_n)!}{a_1!a_2! \cdots a_n!}\]
+na"cinov; najprej smo preme"sali vse na $(a_1 + a_2 + \cdots + a_n)!$ na"cinov, potem pa z $a_i!$ izbrisali indekse)
 
 \begin{rem}
 	\[\binom{a+b}{a, b} = \frac{(a+b)!}{a!b!} = \binom{a+b}{a} = \binom{a+b}{b}\]
@@ -631,12 +630,12 @@ na"cinov; najprej smo preme"sali vse na $(a_1 + a_2 + ... + a_n)!$ na"cinov, pot
 
 \begin{proof}
 	\[(x_1 + x_2 + \cdots + x_n)\cdot(x_1 + x_2 + \cdots + x_n)\cdot\ldots\cdot(x_1 + x_2 + \cdots + x_n)\]
-	Iz vsakega oklepaja izberemo $x_i$, kar skupaj pride $x_1^{a_1} x_2^{a_2}...x_n^{a_n}$, pri "cemer je $\displaystyle \sum_{i = 1}^n a_i$ = m, $a_i \geqslant 0$. Koeficient je o"citno $\binom{a_1 + a_2 + ... + a_n}{a_1, a_2, ..., a_n}$.
+	Iz vsakega oklepaja izberemo $x_i$, kar skupaj pride $x_1^{a_1} x_2^{a_2}\cdots x_n^{a_n}$, pri "cemer je $\displaystyle \sum_{i = 1}^n a_i = m$, $a_i \geqslant 0$. Koeficient je o"citno $\binom{a_1 + a_2 + \ldots + a_n}{a_1, a_2, \ldots, a_n}$.
 \end{proof}
 
 \begin{ex}
-	$x_1 = x_2 = ... = x_n$
-	\[n^m = \sum_{(a_1, ..., a_n)_{\text{"sibka kompozicija m}}} \binom{m}{a_1, ..., a_n}\]
+	$x_1 = x_2 = \cdots = x_n$
+	\[n^m = \sum_{(a_1, \ldots, a_n)_{\text{"sibka kompozicija m}}} \binom{m}{a_1, \ldots, a_n}\]
 \end{ex}
 
 
@@ -659,11 +658,11 @@ $8$ razli"cic, $6$ potro"snikov, vsak potro"snik testira $4$, vsako razli"cico t
 	Na"crt s parametri $(8, 4, 3)$.\\
 	Nari"semo tabelo
 	\begin{tabular}{c|c c c}
-		& $B_1$ & ... & $B_b$ \\
+		& $B_1$ & $\cdots$ & $B_b$ \\
 		\hline
-		1 \\
-		...\\
-		v
+		$1$ \\
+		$\vdots$ \\
+		$v$
 	\end{tabular}\\
 	Kljukico damo tam, kjer je $i \in B_j$. V vsakem stolpcu tako dobimo $k$ kljukic, skupaj $k\cdot b$, v vsaki vrstici dobimo $\lambda$ kljukic, skupaj $\lambda \cdot v$. Iz tega sledi, da $k \cdot b = \lambda \cdot v$, oziroma $b = \frac{\lambda v}{k}$
 
@@ -715,7 +714,7 @@ $8$ razli"cic, $6$ potro"snikov, vsak potro"snik testira $4$, vsako razli"cico t
 \end{proof}
 
 \begin{defn}[$t$-na"crt]
-	$B = \{B_1, \ldots, B_b\}$ je $t$-nar"ct s parametri $(v, k \lambda_t)$, kadar velja
+	$B = \{B_1, \ldots, B_b\}$ je $t$-nar"ct s parametri $(v, k, \lambda_t)$, kadar velja
 	\begin{itemize}
 		\item $B_1, \ldots, B_b \subseteq [v]$
 		\item $|B_1| = \cdots = |B_b| = k$
@@ -732,15 +731,18 @@ $8$ razli"cic, $6$ potro"snikov, vsak potro"snik testira $4$, vsako razli"cico t
 	Tudi na"crt s parametri $(7, 3, 3)$ NI $3$-na"crt!!
 \end{rem}
 
-\label{TODO: add explanation, kaj je point?}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.5]{fano_plane}
 	\caption{Fanova ravnina}
 \end{figure}
+\begin{rem}
+	\label{TODO: there's actually more to this, please add content}
+	Fanova ravnina je skica na"crta $(7, 3, 3)$.
+\end{rem}
 
 \begin{theorem}
-	"Ce je $B$ $t$-na"crt s parametri $(v, k, \lambda_t)$, je tudi $(t-1)$-na"crt s parametri $(v, k, \lambda_{t-1})$. Velja formula
+	"Ce je $B$ $t$-na"crt s parametri $(v, k, \lambda_t)$, je $B$ tudi $(t-1)$-na"crt s parametri $(v, k, \lambda_{t-1})$. Velja formula
 	\[\lambda_{t-1} = \lambda_t \cdot \frac{v - t + 1}{k - t + 1}\]
 \end{theorem}
 
@@ -749,31 +751,31 @@ $8$ razli"cic, $6$ potro"snikov, vsak potro"snik testira $4$, vsako razli"cico t
 	Nari"semo tabelo
 	\begin{center}
 		\begin{tabular}{c|c c c c c}
-		     & $B_1$ & $\cdots$ & j & $\cdots$ & $B_b$ \\
+		     & $B_1$ & $\cdots$ & $B_j$ & $\cdots$ & $B_b$ \\
 		\hline
-		     1 \\
-		     \vdots \\
-		     i & & & \checkmark\\
-		     \vdots \\
-		     v
+		     $1$ \\
+		     $\vdots$ \\
+		     $i$ & & & $\checkmark$ \\
+		     $\vdots$ \\
+		     $v$
 		\end{tabular}
 	\end{center}
-	$i \notin S$, $S \cup \{i\} \subseteq B_j$. Skupno je po stolpcih:
+	$i \notin S$, $S \cup \{i\} \subseteq B_j$.
+	
+	Skupno je po stolpcih:
 	\begin{itemize}
 	    \item $S\setminus B_j$: $0$ kljukic
 	    \item $S \subseteq B_j$: $k-t+1$ kljukic
-	    \item[] skupaj: $\lambda_s (k-t+1)$
+	    \item[] skupaj: $\lambda_s\cdot(k-t+1)$
 	\end{itemize}
 	in po vrsticah:
 	\begin{itemize}
 	    \item $i\in S$: $0$ kljukic
 	    \item $i\notin S$: $\lambda_t$ kljukic
-	    \item[] skupaj: $\lambda_t (v-t+1)$
+	    \item[] skupaj: $\lambda_t\cdot(v-t+1)$
 	\end{itemize}
-
-	\[\implies \lambda_s = \frac{(v - t + 1)\lambda_t}{k-t+1}\]
+	\[\implies \lambda_s = \frac{\lambda_t\cdot(v - t + 1)}{k-t+1}\]
 \end{proof}
-
 
 
 \section{Permutacije, razdelitve, raz"clenitve}
@@ -802,15 +804,15 @@ Za $c(n, k)$ ni ``lepe'' formule. Vemo pa naslednje lastnosti
 	Permutacije v $S_n$ s $k$ cikli:
 	\begin{itemize}
 	    \item $n$ je negibna to"cka: $c(n-1, k-1)$
-	    \item $n$ ni negibna to"cka: $c(n-1, k)  \cdot (n-1)$ ((izbri"sem $n$, dobim permutacijo v $S_{n-1}$ s $k$ cikli) $\cdot$ (vsako dobimo $(n-1)$-krat))
+	    \item $n$ ni negibna to"cka: $c(n-1, k)  \cdot (n-1)$ (izbri"sem $n$, dobim permutacijo v $S_{n-1}$ s $k$ cikli) $\cdot$ (vsako dobimo $(n-1)$-krat)
 	\end{itemize}
 \end{proof}
 
 
 % 2.11.2021 by Toma"z
 %\begin{Toma"z}
-Tabela Stirlingovih "stevil 1. vrste:
-\begin{center}
+\begin{figure}
+	\centering
 	\begin{tabular}{l|llllll}
 	    $n \backslash k$ & 0 & 1  & 2  & 3  & 4  & 5 \\
 	    \hline
@@ -821,10 +823,13 @@ Tabela Stirlingovih "stevil 1. vrste:
 	    4 & 0 & 6  & 11 & 6  & 1  & 0 \\
 	    5 & 0 & 24 & 50 & 36 & 10 & 1
 	\end{tabular}
-\end{center}
-Konstruiramo podobno kot Pascalov trikotnik za binomske koeficiente (\ref{pascalov_trikotnik}), samo da uporabimo drugo rekurzivno formulo; najprej damo diagonalne elemente na $1$, naddiagonalne na $0$, $1$. stoplec na 0 (razen prvega elementa, ki je "ze $1$), za ostale pa uporabimo rekurzivno forumlo (se"stejemo element levo zgoraj in $(n-1)$ krat zgornji). \label{konstrukcija_tabele}
+	\caption{Tabela Stirlingovih "stevil 1. vrste}
+	\begin{rem}
+		Konstruiramo jo podobno kot Pascalov trikotnik za binomske koeficiente (\ref{pascalov_trikotnik}), samo da uporabimo drugo rekurzivno formulo; najprej damo diagonalne elemente na $1$, naddiagonalne na $0$, nato vse elemente v $1$. stoplcu na 0 (razen prvega elementa, ki je "ze $1$), za ostale pa uporabimo rekurzivno forumlo (se"stejemo element levo zgoraj in $(n-1)$ krat zgornji). \label{konstrukcija_tabele}
+	\end{rem}
+\end{figure}
 
-\begin{claim}[Rekurzivna zveza]\label{rekurzivna_cnk_narascajoce}
+\begin{claim}[Formula za $c(n,k)$]\label{cnk_narascajoce}
     \[\sum_k c(n,k)x^k = x^{\overline{n}}\]
 \end{claim}
 
@@ -834,36 +839,44 @@ Konstruiramo podobno kot Pascalov trikotnik za binomske koeficiente (\ref{pascal
     Indukcijski korak: $n - 1 \implies n$:\\
     \[x^{\overline{n}} = x^{\overline{n-1}}(x+n-1) = \sum_k c(n-1,k)x^k (x+n-1) =\]
     \[= \sum_k c(n-1,k)x^{k+1} + \sum_k c(n-1,k)x^k (n-1) = \]
-    \[\sum_k c(n-1,k-1)x^{k} + \sum_k c(n-1,k)x^k (n-1) =\]
+    Pri prvem "clenu nastavimo $k = k-1$, ker itak se"stevamo za vse $k$.
+    \[= \sum_k c(n-1,k-1)x^{k} + \sum_k c(n-1,k)x^k (n-1) = \]
+    Zdru"zimo vsoti in izpostavimo $x^k$
+    \[= \sum_k x^{k}\cdot (c(n-1,k-1) + (n-1)\cdot c(n-1,k)) = \]
+    Uporabimo rekurzivno zvezo, da dobimo
     \[= \sum_k c(n,k)x^k\]
 \end{proof}
-
-\begin{proof}
-	Alternativno, lahko gremo tudi v obratni smeri.
-	\[x \leftrightarrow -x\] \label{TODO: I see x <-> -x, I skip.}
-	\[\sum_k c(n,k) (-1)^k x^k = (-x)^{\overline{n}}\]
-	\[\sum_k (-1)^{n-k} c(n,k) x^k = x^{\underline{n}}\]
-	$s(n,k) := (-1)^{n-k} c(n,k)$ predzna"ceno stirlingovo "stevilo prve vrste
-	\[\sum_k s(n,k) x^k = x^{\underline{n}}\]
-\end{proof}
-
 \begin{proof}
 	"Se eno alternativo tega dokaza bomo naredili pri P\'olyjevi teoriji (\ref{polyeva_dokaz_rekurzivne_cnk}).
 \end{proof}
 
+\begin{defn}[Predzna"ceno Stirlingovo "stevilo]
+	\[s(n,k) := (-1)^{n-k} c(n,k)\]
+\end{defn}
+\begin{claim}[Rekurzivna zveza za predzna"cena Stirlingova "stevila]
+	\[\sum_k s(n,k) x^k = x^{\underline{n}}\]
+\end{claim}
+\begin{proof}
+	Zamenjajmo $x$ z $-x$ v formuli za $c(n,k)$.
+	\[\sum_k c(n,k) (-1)^k x^k = (-x)^{\overline{n}}\]
+	"Ce na desni izpostavimo $(-1)^{n}$, se $x^{\overline{n}}$ spremeni v $x^{\underline{n}}$.
+	\[\sum_k (-1)^{n-k} c(n,k) x^k = x^{\underline{n}}\]
+	\[\implies \sum_k s(n,k) x^k = x^{\underline{n}}\]
+\end{proof}
+
 \subsection{Stirlingova "stevila druge vrste}
 \begin{defn}[Razdelitev mno"zice]
-    Razdelitev, razbitje ali particija je $\{B_1 \cdots B_n\}$, pri "cemer
+    Razdelitev, razbitje ali particija je $\{B_1, \ldots, B_n\}$, pri "cemer
     \begin{itemize}
         \item $B_i \neq \emptyset \quad i = 1 \ldots k$
-        \item $B_i \cap B_j = 0 \text{ za } i \neq j$
+        \item $B_i \cap B_j = \emptyset \text{ za } i \neq j$
         \item $\cup_{i=0}^k B_i = A$
-        \item $B_1 \dots B_n \text{ so bloki razdelitve}$
+        \item $B_1, \dots, B_n \text{ so bloki razdelitve}$
     \end{itemize}
 \end{defn}
 
 \begin{ex}
-	\[A = [8]: \{ \{1, 4, 5\} \{2\} \{3, 6, 7, 8\}\} \equiv 145-2-3678 \equiv 2-415-8763\]
+	$A = [8]$ lahko razdelimo na $\{ \{1, 4, 5\} \{2\} \{3, 6, 7, 8\}\}$, kar lahko zapi"semo kot $145-2-3678$ oziroma urejeno $2-415-8763$.
 \end{ex}
 \begin{rem}
 	"Ce je $R$ je ekvivalen"cna relacija nad $A$ (refleksivna, simetri"cna, tranzitivna), je mno"zica ekvivalen"cnih razredov $R$ ravno razdelitev mno"zice $A$.
@@ -888,7 +901,7 @@ Preproste formule za $S(n,k)$ in $B(n)$ nimamo, poznamo pa naslednje identitete:
 	\item $S(n,1) = 1 - \delta_{n0}$
 	\item $S(n,0) = \delta_{n0}$
 	\item $S(n,k) = 0$ za $k < 0$ ali $k > n$
-	\item $S(n,k) \leq c(n,k)$
+	\item $S(n,k) \leqslant c(n,k)$
 \end{itemize}
 
 \begin{claim}[Rekurzivna formula za $S(n)$]
@@ -921,7 +934,7 @@ Preproste formule za $S(n,k)$ in $B(n)$ nimamo, poznamo pa naslednje identitete:
 \end{rem}
 
 \begin{claim}[Pomen $S(n)$]
-    $S(n,k)$ je "stevilo ekvivalen"cnih relacij na $[n]$ s k ekvivalen"cnimi razredi. $B(n)$ je "stevilo ekvivalen"cnih relacij na $[n]$
+    $S(n,k)$ je "stevilo ekvivalen"cnih relacij na $[n]$ s $k$ ekvivalen"cnimi razredi. $B(n)$ je "stevilo ekvivalen"cnih relacij na $[n]$
 \end{claim}
 
 \begin{claim}
@@ -945,7 +958,7 @@ Preproste formule za $S(n,k)$ in $B(n)$ nimamo, poznamo pa naslednje identitete:
 \end{claim}
 
 \begin{proof}(1. na"cin)
-	Z indukcijo (na vajah, DN?)
+	Z indukcijo (na vajah, sicer je doma"ca naloga)
 \end{proof}
 \begin{proof}(2. na"cin)
     Naj bo $x \in \N$.
@@ -955,11 +968,13 @@ Preproste formule za $S(n,k)$ in $B(n)$ nimamo, poznamo pa naslednje identitete:
     kjer je $T$ slika preslikave, $\binom{x}{k} = \frac{x^{\underline{k}}}{k!}$ pa predstavlja "stevilo $k$-elementnih podmno"zic od $[x]$.
 \end{proof}
 
-\label{TODO: surprise analiza? kaj so te polinomi kle?}
-Dva polinoma stopnje $\leq n$, ki se ujemata v $n+1$ to"ckah, sta enaka (razlika je polonom stopnje $\leq n$ z $n+1$ ni"clami, torej je ekvivalentna 0)
+\begin{proof}(3. na"cin)
+	Dva polinoma stopnje $\leqslant n$, ki se ujemata v $n+1$ to"ckah, sta enaka (razlika je polonom stopnje $\leqslant n$ z $n+1$ ni"clami, torej je ekvivalentna 0)
 
-$\sum_k S(n,k)x^{\underline{k}}$ in $x^n$ sta polinoma stopnje $n$, ujemata se v neskon"cno to"ckah (ker gremo v vsoti po vseh $x \in \Z(\N)$), torej sta enaka.
-\\
+	$\sum_k S(n,k)x^{\underline{k}}$ in $x^n$ sta polinoma stopnje $n$, ujemata se v neskon"cno to"ckah (ker gremo v vsoti po vseh $x \in \N$), torej sta enaka.
+	\label{TODO: zakaj se ujemata?}
+\end{proof}
+
 Velja tudi: \[\sum_k (-1)^{n-k} S(n,k) x^{\overline{k}} = x^n\]
 
 \begin{claim}[Rekurzivna formula za $B(n)$]
@@ -967,34 +982,35 @@ Velja tudi: \[\sum_k (-1)^{n-k} S(n,k) x^{\overline{k}} = x^n\]
 \end{claim}
 
 \begin{proof}
-    Izberemo razdelitev $[n+1]$ ($k$ je "stevilo elementov), ki so v istem bloku kot $n+1$
+    Izberemo razdelitev $[n+1]$, $k$ pa naj bo "stevilo elementov, ki so v istem bloku kot $n+1$
     \[B(n+1) = \sum_{k=0}^n \binom{n}{k}B(n-k)\]
-    $\binom{n}{k}$: izbira elementov, ki so v istem bloku (skupaj z $n+1$). \\
-    $B(n-k)$: izberemo razdelitev na preostalik $n-k$ elementih (ta izbira je neodvisna in takih je $B(n-k)$).
-    \[k \rightarrow n-k: \quad B(n+1) = \sum_{k=0}^n \binom{n}{k}B(k)\]
+    $\binom{n}{k}$: izbira elementov, ki so v istem bloku (skupaj z $n+1$).
+    
+    $B(n-k)$: izberemo razdelitev na preostalih $n-k$ elementih (ta izbira je neodvisna in takih je $B(n-k)$).
+    
+    "Ce zamenjamo $n-k$ s $k$, in uporabimo $\binom{n}{n-k} = \binom{n}{k}$ lahko poenostavimo
+    \[B(n+1) = \sum_{k=0}^n \binom{n}{k}B(k)\]
 \end{proof}
 %%
 
 \subsection{Lahova "stevila}
 \begin{defn}[Lahovo "stevilo]
-	$L(n,k)$ je "stevilo razdelitev $[n]$ na k linearno urejenih blokov.
+	$L(n,k)$ je "stevilo razdelitev $[n]$ na $k$ linearno urejenih blokov.
 \end{defn}
 \begin{rem}
 	Spomnimo se: $S(n,k)$ je "stevilo razdelitev $[n]$ na $k$ blokov, $c(n,k)$ pa "stevilo razdelitev $[n]$ na $k$ cikli"cno urejenih blokov.
 \end{rem}
 
-
 \begin{itemize}
 	\item $L(n,n) = 1$
-	\item $L(n,n-1) = 2$
-	\item $\binom{n}{2} = n(n-1)$
+	\item $L(n,n-1) = \binom{n}{2}\cdot 2 = n(n-1)$
 	\item $L(n,0) = \delta_{n0}$
 	\item $L(n,1) = n!$
 	\item $L(n,k) = 0$ za $k < 0$ ali $k > n$
-	\item $S(n,k) \leq c(n,k) \leq L(n,k)$
+	\item $S(n,k) \leqslant c(n,k) \leqslant L(n,k)$
 \end{itemize}
 
-\begin{claim}[Rekurzivna formula za $L(n, k)$]
+\begin{claim}[Eksplicitna formula za $L(n, k)$]
     \[L(n,k) = \frac{n!}{k!} \binom{n-1}{k-1}\]
 \end{claim}
 \begin{proof}
@@ -1022,15 +1038,15 @@ Primerjajmo rekurzije:
     \[ \sum_k L(n,k)x^{\underline{k}} = x^{\overline{n}}\]
 \end{claim}
 \begin{proof}
-    Dokaz bomo prepustili bralcu za vajo
+    Dokaz bomo prepustili bralcu za vajo (uporabi indukcijo).
 \end{proof}
 
 Primerjajmo:
 \begin{itemize}
     \item $\sum_k \binom{n}{k}x^k = (1+x)^n$
-    \item $\sum_k C(n,k)x^k = x^{\overline{n}} \quad \sum_k (-1)^{n-k}C(n,k)x^k = x^{\underline{n}}$
-    \item $\sum_k S(n,k)x^{\underline{k}} = x^n \quad \sum_k (-1)^{n-k}S(n,k)x^{\overline{k}}x^n$
-    \item $\sum_k L(n,k)x^{\underline{k}} = x^{\overline{{n}}} \quad \sum_k (-1)^{n-k}L(n,k)x^{\overline{{n}}}x^{\underline{k}}$
+    \item $\sum_k c(n,k)x^k = x^{\overline{n}} \quad \sum_k (-1)^{n-k}c(n,k)x^k = x^{\underline{n}}$
+    \item $\sum_k S(n,k)x^{\underline{k}} = x^n \quad \sum_k (-1)^{n-k}S(n,k)x^{\overline{k}} = x^n$
+    \item $\sum_k L(n,k)x^{\underline{k}} = x^{\overline{{n}}} \quad \sum_k (-1)^{n-k}L(n,k)x^{\overline{{k}}} = x^{\underline{n}}$
 \end{itemize}
 
 %\end{Toma"z}
@@ -1054,7 +1070,7 @@ Primerjajmo:
 
 Raz"cletnive lahko prika"zemo grafi"cno s pomo"cjo Ferresovih diagramov.
 \begin{ex}
-	Diagram za $\lambda = (5, 4, 3, 2, 1, 1)$
+	Diagram za $\lambda = (5, 4, 4, 2, 1, 1)$
 	\[
 		\begin{tikzpicture}[scale=0.7]
 		 \fill foreach \Z [count=\Y] in {5,4,4,2,1,1}
@@ -1072,18 +1088,17 @@ Raz"cletnive lahko prika"zemo grafi"cno s pomo"cjo Ferresovih diagramov.
 		\item S $\overline{p_k}(n)$ ozna"cimo "stevilo raz"clenitev $n$ z $\leqslant k$ "cleni.
 	\end{itemize}
 \end{defn}
+Prvih nekaj "stevil $p(n)= 1, 1, 2, 3, 5, 7, 11, 15, \ldots$
 \begin{rem}
 	Ni lepe formule za $p(n)$, $p_k(n)$ ali $\overline{p_k}(n)$.
 \end{rem}
 
 \begin{ex}\mbox{}\\
-	$n = 0: (), p(0) = 1, p_0(0) = 1$\\
 	$n = 1: 1$\\
 	$n = 2: 2, 1 1$\\
 	$n = 3: 3, 2 1, 1 1 1$\\
 	$n = 4: 4, 3 1, 2 2, 2 1 1, 1 1 1 1$\\
 	$n = 5: 5, 4 1, 3 2, 3 1 1, 2 2 1, 2 1 1 1, 1 1 1 1 1$\\
-	$p(n) : 1, 1, 2, 3, 5, 7, 11, 15, \ldots$\\
 	$p_2(5) = 2$\\
 	$\overline{p_3}(5) = 5$
 \end{ex}
@@ -1104,7 +1119,7 @@ Veljajo naslednje lastnosti:
 
 \begin{claim}[Lastnosti $p_k(n)$]\mbox{}
 	\begin{enumerate}
-	    \item $p_k(n)$ = $\overline{p_{k - 1}} (n - k)$
+	    \item $p_k(n)$ = $\overline{p_{k}} (n - k)$
 	    \item $p_k(n)$ = $p_{k - 1} (n - 1)$ + $p_k (n - k)$
 	    \item $\overline{p_{k}}(n)$ = $\overline{p_{k - 1}}(n) + p_k (n)$ = $\overline{p_{k - 1}}(n) + \overline{p_k} (n - k)$
 	\end{enumerate}
@@ -1113,9 +1128,9 @@ Veljajo naslednje lastnosti:
 \begin{proof}
 	Precej trivialno;
     \begin{enumerate}
-        \item Izbri"semo / dodamo prvi stolpec / stolpec dol"zine k
+        \item Izbri"semo prvi stolpec (ima dol"zino $k$)
         \item Imamo raz"clenitev $n$ s $k$ "cleni: $\lambda_l = 1$ ($p_{k - 1}(n - 1)$) in $\lambda_l \geqslant 2$ ($p_k(n - k)$)
-        \item O"citno
+        \item Raz"clenitev s $k$ "cleni ima lahko strogo manj kot $k$ "clenov, ali pa natanko $k$ "clenov.
     \end{enumerate}
 \end{proof}
 
@@ -1181,7 +1196,7 @@ Torej o"citno: $p(n) = \displaystyle\sum_{m=1}^{\infty} ? p(n - m)$.
 
 Relevantne so raz"clenitve $m$ z razli"cnimi "cleni
 \[7 = 7 = 6 + 1 = 5 + 2 = 4 + 3 = 4 + 2 + 1\]
-$\alpha(m)$ \ldots "stevilo raz"clenitev m z lihomnogo razli"cnimi "cleni\\
+$\alpha(m)$ \ldots "stevilo raz"clenitev m z liho mnogo razli"cnimi "cleni\\
 $\beta(m)$ \ldots "stevilo raz"clenitev m z sodo mnogo razli"cnimi "cleni\\
 $p(n) = \sum_{m = 1}^{\infty} (\alpha(m) - \beta (m)\cdot p(n - m))$
 
@@ -1353,14 +1368,13 @@ $p(n) = \sum_{m = 1}^{\infty} (\alpha(m) - \beta (m)\cdot p(n - m))$
 	    \item "Ce je $s(\lambda) \leqslant b(\lambda)$: najmanj"si "clen postavimo desno od boka
 	\end{enumerate}
 
-	Zakaj to ni vselej bijekcija? \label{TODO: add image 5} Prvo pravilo ne deluje, "ce
-	\[b(\lambda) = l(\lambda) = s(\lambda) - 1 = k\]
+	Zakaj to ni vselej bijekcija? \label{TODO: add image 5} Prvo pravilo ne deluje, "ce se bok seka z najmanj"sim "clenom, oziroma kadar velja $b(\lambda) = l(\lambda) = s(\lambda)$.
 	% Dodaj sliko
 	\label{TODO: add image 6}
 	\[(k + 1) + (k + 2) + \cdots + (k + k) =\]
 	\[\frac{2k (2k + 1)}{2} - \frac{k (k + 1)}{2} = \frac{k (3k + 1)}{2}\]
 	Drugo pravilo ne deluje, "ce
-	\[b(\lambda) = l(\lambda) = s(\lambda) = k\]
+	\[b(\lambda) = l(\lambda) = s(\lambda) - 1 = k\]
 	% Dodaj sliko
 	\label{TODO: add image 7}
 	\[k + (k + 1) + (k + 2) + \cdots + (k + k - 1) =\]
@@ -1390,9 +1404,9 @@ Spomnimo se na definiciji injektivnosti in surjektivnosti
 \[\begin{tabular}{c|c|c c c}
     $N$ & $K$ & vse & injektivne & surjektivne \\
 \hline
-    Lo"cimo & Lo"cimo & $k^n$ & $k^{\underline{n}}$ & $k!\cdot s(n, k)$\\
+    Lo"cimo & Lo"cimo & $k^n$ & $k^{\underline{n}}$ & $k!\cdot S(n, k)$\\
     Ne lo"cimo & Lo"cimo & $\binom{n + k - 1}{k - 1}$ & $\binom{k}{n}$ & $\binom{n - 1}{k - 1}$\\
-    Lo"cimo & Ne lo"cimo & $\sum_{i \leqslant k} s(n, i)$ & $k \geqslant n \ ? \ 1 : 0$ & $s(n, k)$\\
+    Lo"cimo & Ne lo"cimo & $\sum_{i \leqslant k} S(n, i)$ & $k \geqslant n \ ? \ 1 : 0$ & $S(n, k)$\\
     Ne lo"cimo & Ne lo"cimo & $\overline{p_k}(n)$ & $k \geqslant n \ ? \ 1:0$ & $p_k(n)$ \\
 \end{tabular}\]
 
@@ -1496,9 +1510,9 @@ $(\R[x], +, \cdot)$ je (neskon"cnorazse"zen) vektorski prostor (za $\cdot$ mno"z
 
 $\R_n[x] = \{a_0 + a_1 x + ... + a_n x^n: a_0, ..., a_n \in \R\}$ (polinomi stopnje $\leqslant n$) je $(n + 1)$-dimenzionalen vektorski prostor. Njegova baza je npr. $1, x, x^2, ..., x^n$, lahko pa tudi $1, x^{\underline{1}}, x^{\underline{2}}, ..., x^{\underline{n}}$ ali $1, x^{\overline{1}}, x^{\overline{2}}, ..., x^{\overline{n}}$. Prehodni matriki bi bili $[c(n, k)]$ in $[S(n, k)]$.
 \[
-	\sum_k c(n, k) x^n = x^{\overline{n}}
+	\sum_k c(n, k) x^k = x^{\overline{n}}
 	\qquad
-	\sum_k S(n, k) x^{\overline{n}} = x^n
+	\sum_k S(n, k) x^{\underline{k}} = x^n
 \]
 
 \begin{defn}[Konvolucijsko mno"zenje]
@@ -1743,7 +1757,7 @@ Poskusimo posplo"siti zgornji postopek za poljubno homogeno linearno rekurzivno 
         & = \sum_{i = 1}^k \sum_{j = 1}^{\alpha_i} A_{i j} \sum_{n = 0}^{\infty} \binom{n + j - 1}{j - 1} \lambda_i^n x^n
     \end{align*}
     \[a_n = \sum_{i = 1}^k (\sum_{j = 1}^{\alpha_i} A_{i j} \binom{n + j - 1}{j - 1})\lambda_i^n = \sum_{i = 1}^k p_i(n)\lambda_i^n\]
-    \[\binom{n  j - 1}{j - 1} = \frac{(n + j - 1)(n + j - 2) ... (n + 1)}{(j + 1)!}\]
+    \[\binom{n + j - 1}{j - 1} = \frac{(n + j - 1)(n + j - 2) ... (n + 1)}{(j + 1)!}\]
     \[\text{ polinom stopnje (j - 1)} \implies deg(p_i) < \alpha_i\]
 \end{proof}
 
@@ -1763,7 +1777,7 @@ Poskusimo posplo"siti zgornji postopek za poljubno homogeno linearno rekurzivno 
 % 30. 11. 2021
 \subsection{Binomska vrsta}
 Spomnimo se biomskega koeficienta za $n, k \in \N$
-\[\binom{n}{k} = \bigg|\binom{[n]}{k}\bigg| = \frac{n^{\underline{k}}}{k} = \begin{cases}\frac{n!}{k!(n-k)!}: 0 \leqslant k \leqslant n \\ 0: k > n\end{cases}\] %\frac{n \cdot (n - 1) \cdot ... \cdot (n - k + 1)}{k!}\]
+\[\binom{n}{k} = \bigg|\binom{[n]}{k}\bigg| = \frac{n^{\underline{k}}}{k!} = \begin{cases}\frac{n!}{k!(n-k)!}: 0 \leqslant k \leqslant n \\ 0: k > n\end{cases}\] %\frac{n \cdot (n - 1) \cdot ... \cdot (n - k + 1)}{k!}\]
 \begin{defn}[Posplo"seni binomski koeficient]
 	Zahtevamo samo $n \in \N$.
 	\[\binom{\lambda}{n} = \frac{\lambda^{\underline{n}}}{n!} = \frac{\lambda \cdot (\lambda - 1) \cdots (\lambda - n + 1)}{n!}\]
@@ -1814,6 +1828,7 @@ Spomnimo se biomskega koeficienta za $n, k \in \N$
 \end{ex}
 
 Opazimo o"citen vzorec. Ali bi lahko posplo"sili pravilo $B_{\lambda}(x) = (1 + x)^{\lambda}$? Natan"cneje, "ce bi definirali npr. $(1 + x)^{\frac{1}{2}}$ tako, da velja $((1 + x)^{\frac{1}{2}})^2 = 1$, ali lahko pri"cakujemo, da je $B_{\frac{1}{2}} = (1+x)^{\frac{1}{2}}$? Vse to in "se ve"c bomo lahko trdili, ko doka"zemo $B_{\lambda} (x) \cdot B_{\mu} (x) = B_{\lambda + \mu} (x)$.
+\label{TODO: kaj ce bi to dejansko tud dokazal?}
 
 \begin{lemma}[Binomski izrek s "crtico]
 	\[(a+b)^{\overline{n}} = \sum_{k=0}^n \binom{n}{k}a^{\overline{n-k}} b^{\overline{k}}\]
@@ -1880,7 +1895,7 @@ Ker smo kul matematiki, se ne bomo zadovoljili zgolj z rekurzivno zvezo.
 \begin{proof}
 	Definirajmo $F(x) = \sum_{n = 0}^{\infty} C_n x^n$.
 	Pomno"zimo rekurzijo z $x^{n + 1}$ in se"stejmo "clene $\sum_{n = 0}^{\infty}$, kot smo to po"celi pri linearnih rekurzijah.
-	\[\sum_{n = 0}^{\infty} C_{n + 1} x^{n + 1} = \sum_{n = 0}^{\infty} (\sum_{k = 0}^{\infty} C_k x^k) x^{n + 1}\]
+	\[\sum_{n = 0}^{\infty} C_{n + 1} x^{n + 1} = \sum_{n = 0}^{\infty} (\sum_{k = 0}^{\infty} C_k C_{n-k}) x^{n + 1}\]
 	Levo stran izrazimo kot $F(x) - 1$, na desni strani pa opazimo konvolucijo $F(x)$ s samim sabo. Dobimo torej $x F^2(x)$. "Ce enakost preoblikujemo, dobimo $x F^2(x) - F(x) + 1 = 0$.
 
 	Kaj pa zdaj? No, ko vidimo kvadratno ena"cbo, nas ima, da bi jo re"sili. Poskusimo s kvadratno ena"cbo
@@ -1994,7 +2009,7 @@ To je enak problem, kot "ce bi hoteli zapisati "stevilo $5$ kot vsoto "stevil $1
 \begin{ex}
 	$\sum_k c(n,k)x^k = x^{\overline{n}}$.
 \end{ex}
-(2) Rodovno funkcijo se da pogosto zapisati iz kombinatori"cnega problema (ve"c pri kombinatoriki 2).
+(2) Rodovno funkcijo se da pogosto zapisati iz kombinatori"cnega problema (ve"c pri Kombinatoriki 2).
 \begin{ex}
 	$i_n \text{ je "stevilo involucij v } S_n \text{, torej } \pi^2 = id$, $\sum i_n \frac{x^n}{n!} = e^{x+\frac{x^2}{2}}$.
 	Pomen: $e$ na nekaj sestavljeno iz $x$ (cikli dol"zine 1) in $\frac{x^2}{2}$ (cikli dol"zine 2).
@@ -2024,7 +2039,7 @@ npr. koliko elementov ima v povpre"cju podmno"zica $[n]$?
 Nekateri objekti so ekvivalentni, zanima nas "stevilo ekvivaletnih razredov barvanj.
 
 \begin{defn}[Permutacijska grupa]
-	je grupa $G \leq S_n$
+	je grupa $G \leqslant S_n$
 \end{defn}
 \begin{theorem}[Cayleyev]
 	Vsaka grupa je izomorfna neki permutacijski grupi.
@@ -2037,13 +2052,13 @@ Nekateri objekti so ekvivalentni, zanima nas "stevilo ekvivaletnih razredov barv
 	$H \cong G$
 \end{proof}
 \begin{ex}[Cikli"cna grupa]
-	$C_n = \lbrace \cycle{1, 2, 3, \ldots, n}^i: 0 \leq i \le n \rbrace \leq S_n$\\
+	$C_n = \lbrace \cycle{1, 2, 3, \ldots, n}^i: 0 \leqslant i < n \rbrace \leqslant S_n$\\
 	$C_n \cong \Z_n$\\
 	$\phi: \Z_n \rightarrow C_n := i \rightarrow \cycle{1, 2, \ldots, n}^i$
 \end{ex}
 
 \begin{ex}[Diedrska grupa]
-	$D_n = \lbrace \text{rotacije + zrcaljenja} \rbrace \leq S_n$\\
+	$D_n = \lbrace \text{rotacije + zrcaljenja} \rbrace \leqslant S_n$\\
 	$|D_n| = 2n$ ($n$ zrcaljenj in $n$ rotacij)
 	\\
 	\includegraphics{diedrska}
@@ -2059,21 +2074,21 @@ $X$ z operacijo $\sim$ razpade na ekvivalen"cne razrede, ki jih imenujemo orbite
 \begin{defn}[Orbita]
 	$$Gx = {g \cdot x: g \in G}$$
 \end{defn}
-\begin{rem}
+\begin{rem*}
 	\label{orbita_neq_odsek}
 	Koncept orbit spominja na leve (desne) odseke, a ni isto. Pri odsekih imamo podgrupo, tukaj pa $x$ niti ni element $G$. Pomembna posledica je, da so orbite lahko razli"cno velike, odseki pa so po mo"ci vedno enaki ($|aH|=|bH|$).
-\end{rem}
+\end{rem*}
 \begin{ex}
 	Za $G=C_n, D_n \text{ ali } S_n$ velja $Gx = X$ (samo ena orbita).
 \end{ex}
 \begin{ex}
 	% maybe je +1 thing lih obratno, se mi zdi da je neki menjou kaj je tip 1 in kaj je tip 2
-	$$G = \lbrace\text{id, zrcaljenje}\rbrace \leq S_n$$
+	$$G = \lbrace\text{id, zrcaljenje}\rbrace \leqslant S_n$$
 	$$\text{"stevilo orbit} = \begin{cases}\frac{n+1}{2}; \quad n\text{ lih} \\ \frac{n}{2}; \quad n\text{ sod, zrcaljenje tipa }1 \\ \frac{n}{2}+1; \quad  n\text{ sod, zrcaljenje tipa }2\end{cases}$$
 \end{ex}
 Mno"zico orbit ozna"cimo z $X/G$.
 \begin{rem}
-	Na enak na"cin smo ozna"cili tudi faktorske grupe (mno"zice odsekov), a koncept ni isti, ker orbita~$\neq$~odsek (glej opombo \ref{orbita_neq_odsek} pri definiciji orbite).
+	Na enak na"cin smo ozna"cili tudi faktorske grupe (mno"zice odsekov), a koncept ni isti, ker orbita~$\neq$~odsek (glej opombo \ref{orbita_neq_odsek}).
 \end{rem}
 \begin{defn}[Stabilizator]
 	$$G_x = \lbrace g \in G: g \cdot x = x \rbrace$$
@@ -2084,7 +2099,7 @@ Mno"zico orbit ozna"cimo z $X/G$.
 	Elemente $X_g$ imenujemo negibne to"cke $g$-ja.
 \end{defn}
 \begin{theorem}
-	$$G_x \leq G$$
+	$$G_x \leqslant G$$
 \end{theorem}
 \begin{proof}
 	$$id \in G_x$$
@@ -2110,7 +2125,7 @@ Mno"zico orbit ozna"cimo z $X/G$.
 \end{claim}
 \begin{proof}
 	Spomnimo se levih odsekov $\ldots$
-	$$ H \leq G \models g \cdot H = \lbrace g \cdot h : h \in H \rbrace \quad \text{je levi odsek v }G $$
+	$$ H \leqslant G \models g \cdot H = \lbrace g \cdot h : h \in H \rbrace \quad \text{je levi odsek v }G $$
 	$$g = e \implies g \cdot H = H$$
 	$g \cdot H$ in $g' \cdot H$ sta bodisi enaka, bodisi disjunktna.
 	$G$ torej razpade na leve odseke, ki imajo enako mo"c ($H \rightarrow gH$ je bijekcija; inverz $g \rightarrow g^{-1}h$).
@@ -2202,7 +2217,7 @@ Mno"zico orbit ozna"cimo z $X/G$.
 \end{ex}
 
 \subsection{Cikli"cni indeks}
-Naj bo $G \leq S_n$ permuatacijska grupa, $n=|X|$.
+Naj bo $G \leqslant S_n$ permuatacijska grupa, $n=|X|$.
 $g \in G$ je permutacija elementov iz $X$, ki jo seveda lahko enoli"cno zapi"semo $g$ kot produkt disjunktih ciklov.
 \begin{defn}[Cikli"cni indeks]
 	Ozna"cimo z $\alpha_i(g)$ "stevilo ciklov dol"zine $i$.
@@ -2274,7 +2289,7 @@ $g \in G$ je permutacija elementov iz $X$, ki jo seveda lahko enoli"cno zapi"sem
 
 
 \subsection{"Stevilo neekvialentnih barvanj}
-V tem razdelku bomo ugotovili pravo uproabnost Burnsidove leme in cikli"cnega indeksa.
+V tem razdelku bomo ugotovili pravo uporabnost Burnsidove leme in cikli"cnega indeksa.
 \begin{defn}[Barvanje]
 	"Ce je $R$ mno"zica barv, je barvanje $b \in R$ preslikava iz mno"zice korald v mno"zico barv
 	$b : X \to R$.
@@ -2318,7 +2333,7 @@ Ugotovimo, da je edina zahteva, da mora biti vsak cikel $g$ v celoti iste barve.
 	\[ Z_{\substack{G \\ \\ \uparrow \\ \mathclap{\text{grupa rotacij tetraedra}}}} (t_1,t_2,t_3,t_4) = \frac{1}{12}(t_1^4 + 8t_1t_3 + 3t_2^2) \]
 	nato le "se vstavimo $t_1 = t_2 = t_3 = t_4 = r$.
 \end{ex}
-\begin{ex}\label{polyeva_dokaz_rekurzivne_cnk}
+\begin{ex*}\label{polyeva_dokaz_rekurzivne_cnk}
 	Naj bo $G = S_n$. Barvanji sta v tem primeru ekvivalentni natanko tedaj, ko imata enako "stevilo korald iste barve. "Stevilo mo"znih barvanj torej dobimo kot "sibke kompozicije $n$ ("st. korald) z $r$ ("st. barv) "cleni.
 	\[\binom{n+r-1}{r-1} \]
 	Po drugi strani bi lahko to zapisali po P\'{o}lyevem izreku.
@@ -2329,9 +2344,9 @@ Ugotovimo, da je edina zahteva, da mora biti vsak cikel $g$ v celoti iste barve.
 	\[ \binom{n+r-1}{r-1} = \frac{(n+r-1)!}{(r-1)!n!} = \frac{(n+r-1)\cdots r \cdot(r-1)\cdots1}{((r-1)\cdot(r-2)\cdots2\cdot1)\cdot n!} = r^{\overline{n}} \cdot \frac{1}{n!} \]
 	\[ \implies \sum_k c(n,k) r^k = r^{\overline{n}} \]
 	\begin{rem}
-		To formulo smo "ze dokazali z indukcijo - glej rekurzivna zveza za $c(n, k)$ (\ref{rekurzivna_cnk_narascajoce}).
+		To formulo smo "ze dokazali z indukcijo - glej rekurzivna zveza za $c(n, k)$ (\ref{cnk_narascajoce}).
 	\end{rem}
-\end{ex}
+\end{ex*}
 
 
 
@@ -2380,7 +2395,7 @@ Recimo, da nas zanima, koliko je mo"znih barvanj zapestnic s to"cno dolo"cenim "
 	Izra"cunajte sami, pomagajte si z multinomskim koeficientom, da ne ra"cunate vseh potenc.
 \end{ex}
 
-% "Ne bom sprasvou tega dokaza, samo hotu sm ga mal skicirat"
+% ``Ne bom sprasvou tega dokaza, samo hotu sm ga mal skicirat''
 % Ce se ti da, prosim dopolni
 % link do dokaza: https://youtu.be/AUkPKlDzwlM?t=2483
 \label{TODO: dopolni?}
@@ -2475,16 +2490,16 @@ Recimo, da nas zanima, koliko je mo"znih barvanj zapestnic s to"cno dolo"cenim "
 Iz zgornjih dveh primerov je razvidno, da "ce je $n$ produkt razli"cnih pra"stevil, je $D_n$ izomorfen $B_k$, kjer je $k$ mo"c faktorizacije $n$. Iz tega sledi zgornja trditev o Hassejevih diagramih $D_n$ (\ref{Dn_je_hiperkocka}).
 
 \begin{defn}[Veriga]
-	Naj bo $(P, \leqslant)$ delno urejena mno"zica. Tedaj je $(C \subseteq P, \leqslant)$ veriga, "ce velja $\forall x,y\in C: x \leq y \lor y \leq x$ (vsi elementi so med seboj primerljivi).
+	Naj bo $(P, \leqslant)$ delno urejena mno"zica. Tedaj je $(C \subseteq P, \leqslant)$ veriga, "ce velja $\forall x,y\in C: x \leqslant y \lor y \leqslant x$ (vsi elementi so med seboj primerljivi).
 \end{defn}
 \begin{ex}
 	$\{ \emptyset, \{1, 3\}, \{1, 3, 4\}\} \subseteq B_4$ je veriga.
 \end{ex}
 \begin{defn}[Antiveriga]
-	Naj bo $(P, \leqslant)$ delno urejena mno"zica. Tedaj je $(C \subseteq P, \leqslant)$ antiveriga, "ce velja $\forall x,y\in C: \lnot(x \leq y \lor y \leq x)$ (nobena dva elementa nista primerljiva).
+	Naj bo $(P, \leqslant)$ delno urejena mno"zica. Tedaj je $(C \subseteq P, \leqslant)$ antiveriga, "ce velja $\forall x,y\in C: \lnot(x \leqslant y \lor y \leqslant x)$ (nobena dva elementa nista primerljiva).
 \end{defn}
 \begin{ex}
-	$\{\{1, 3\}, \{2, 4\}, \{1, 2, 3\}\} \subseteq B_5$ je antiveriga.
+	$\{\{1, 3\}, \{2, 4\}, \{1, 2\}\} \subseteq B_5$ je antiveriga.
 \end{ex}
 
 \begin{defn}[Vi"sina delno urejene mno"zice]
@@ -2531,19 +2546,26 @@ Iz zgornjih dveh primerov je razvidno, da "ce je $n$ produkt razli"cnih pra"stev
 \begin{rem}
 	Ta dokaz slu"zi tudi kot algoritem za iskanje antiverig.
 \end{rem}
-
 \subsection{Dilworthov izrek}
 \begin{theorem}[Dilworthov izrek]
 	Naj bo $(P, \leqslant)$ kon"cna delno urejena mno"zica, $M$ dol"zina najdalj"se antiverige ("sirina), $m$ pa najmanj"se "stevilo verig, s katerimi lahko pokrijemo $P$. Tedaj velja $M = m$.
 \end{theorem}
 \begin{proof}
-	Podobno kot pri Minskyjevem izreku, opazimo da $M \leqslant m$, ker mora vsak element najdalj"se antiverige imeti svojo verigo v pokritju. $m \leqslant M$ bomo pokazali z indukcijo po mo"ci $P$.\\
-	Baza indukcije: $|P| = 1$. $m = M = 1$.\\
+	Podobno kot pri Minskyjevem izreku, opazimo da $M \leqslant m$, ker mora vsak element najdalj"se antiverige imeti svojo verigo v pokritju. $m \leqslant M$ bomo pokazali z indukcijo po mo"ci $P$.
+	
+	Baza indukcije: $|P| = 1$. $m = M = 1$.
+	
 	Indukcijski korak: definirajmo $C \coloneqq$ katerakoli najdalj"sa veriga v $P$. Problem nastane (za razliko od dokaza Minskyjevega), ker $P \setminus C$ nima nujno manj"se "sirine kot $P$.
 	
 	"Ce je se "sirina zmanj"sala, lahko (enako kot pri Minskyjevem) $P\setminus C$ pokrijemo z $\leqslant M-1$ verigami, torej lahko $P$ pokrijemo z $\leqslant M$ verigami.
 	
-	"Ce se "sirina ni zmanj"sala, izberimo neko antiverigo $A=\{a_1, \ldots, a_n\}$ iz $P \setminus C$. Definirajmo
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.6]{dilworth}
+		\caption{Primer DUM, kjer se "sirina ne zmanj"sa, "ce odstranimo najdalj"so verigo $\{A, B, E, F\}$ (najdalj"sa antiveriga je potem $\{C, D\}$).}
+	\end{figure}
+	
+	"Ce se "sirina ni zmanj"sala, izberimo neko najdalj"so antiverigo $A=\{a_1, \ldots, a_n\}$ iz $P \setminus C$. Definirajmo
 	\begin{itemize}
 		\item $S^+ \coloneqq \{x \in P; \exists i: x \geqslant a_i\}$
 		\item $S^- \coloneqq \{x \in P; \exists i: x \leqslant a_i\}$
@@ -2580,9 +2602,9 @@ Iz zgornjih dveh primerov je razvidno, da "ce je $n$ produkt razli"cnih pra"stev
 	\[ \binom{n}{k} \leqslant \binom{n}{k+1} \]
 	\[ \frac{\binom{n}{k}}{\binom{n}{k+1}}\leqslant 1 \]
 	\[ \frac{n!(k+1)!(n-k-1)!}{k!(n-k)!n!} \leqslant 1 \]
-	\[ \frac{k+1}{n-k} \leq 1 \]
-	\[ k+1 \leq n-k \]
-	\[ 2k+1 \leq n \]
+	\[ \frac{k+1}{n-k} \leqslant 1 \]
+	\[ k+1 \leqslant n-k \]
+	\[ 2k+1 \leqslant n \]
 	\[ k \leqslant \frac{n-1}{2} \]
 \end{proof}
 \begin{rem}
@@ -2604,17 +2626,17 @@ Iz zgornjih dveh primerov je razvidno, da "ce je $n$ produkt razli"cnih pra"stev
 		\begin{proof}
 			Verigo $\emptyset \subseteq \{i_1\} \subseteq \{i_1, i_2\} \subseteq \cdots \subseteq [n]$ dobimo tako, da izberemo nek vrstni red dodajanja elementov proti $[n]$.
 		\end{proof}
-		\item Tiste, ki vsebujejo izbrano podmno"zico $S \subseteq B_n$ velikosti $k$: $k!(n-k)!$
+		\item Tiste, ki vsebujejo izbrano podmno"zico $S \in B_n$ velikosti $k$: $k!(n-k)!$
 		\begin{proof}
 			Dobimo jih tako, da konstruiramo verigo do $S$ ($k!$ na"cinov), nato pa dodajamo "se ostalih $n-k$ elementov do $[n]$.
 		\end{proof}
 		\item Tiste, ki vsebujejo katerikoli element iz $A$: $\sum_{k=0}^na_kk!(n-k)!$
 		\begin{proof}
-			Vsak element $A$ ima lahko med $0$ in $n$ elementov. "Ce za vsako od teh "stevil dodamo se"stejemo "stevilo verig, ki vsebuje ta element (teh je dokazano $k!(n-k)!$), dobimo ravno na"s rezultat. Nobene verige nismo "steli dvakrat, ker vsaka od na"sih verig vsebuje natanko en - unikaten - element $A$-ja.
+			Vsak element $A$ ima lahko med $0$ in $n$ elementov. "Ce za vsako od teh "stevil dodamo se"stejemo "stevilo verig, ki vsebuje ta element (teh je dokazano $k!(n-k)!$), dobimo ravno na"s rezultat. Nobene verige nismo "steli dvakrat, ker vsaka od na"sih verig vsebuje natanko en element $A$-ja ($A$ je antiveriga, zato ne sme obstajati veriga med dvema elementoma iz $A$).
 		\end{proof}
 	\end{itemize}
-	Zaklju"cimo lahko, da je $\sum_{k=0}^na_kk!(n-k)! \leq n!$, saj je mno"zica maksimalnih verig, ki vsebujejo elemente iz $A$ pomno"zica vseh maksimalnih verig. "Ce delimo z $n!$, dobimo
-	\[\sum_{k = 0}^n\frac{a_k}{\binom{n}{k}} \leq 1\]
+	Zaklju"cimo lahko, da je $\sum_{k=0}^na_kk!(n-k)! \leqslant n!$, saj je mno"zica maksimalnih verig, ki vsebujejo elemente iz $A$ pomno"zica vseh maksimalnih verig. "Ce delimo z $n!$, dobimo
+	\[\sum_{k = 0}^n\frac{a_k}{\binom{n}{k}} \leqslant 1\]
 	\[
 		1 \geq
 		\sum_{k = 0}^n\frac{a_k}{\binom{n}{k}} \geq
@@ -2647,14 +2669,15 @@ Iz zgornjih dveh primerov je razvidno, da "ce je $n$ produkt razli"cnih pra"stev
 	Naj bo $G$ dvodelen graf na particiji $X$ in $Y$. Prirejanje $M$ je popolno prirejanje iz $X$ v $Y$ "ce velja $\forall x \in X: \exists e \in M: x \in e$.
 \end{defn}
 \begin{rem}
-	"Ce obstaja popolno prirejanje iz $X$ v $Y$, je $|X| \leq |Y|$. Popolno prirejanje namre"c deluje kot injekcija.
+	"Ce obstaja popolno prirejanje iz $X$ v $Y$, je $|X| \leqslant |Y|$. Popolno prirejanje namre"c deluje kot injekcija.
 \end{rem}
 \begin{defn}[Sose"s"cina $A$]
 	$N(A) = \{v \in V: \exists u \in A: u \sim v\}$
 \end{defn}
-\begin{rem}
-	"Ce obstaja popolno prirejanje iz $X$ v $Y$, je $|A| \leq |N(A)|$. Popolno prirejanje je v tem primeru injekcija $A \rightarrow N(A)$.
-\end{rem}
+\begin{rem*}
+	"Ce obstaja popolno prirejanje iz $X$ v $Y$, je $|A| \leqslant |N(A)|$. Popolno prirejanje je v tem primeru injekcija $A \rightarrow N(A)$.
+	\label{hall_desno}
+\end{rem*}
 \begin{defn}[Alternirajo"ca pot]
 	Pot, v kateri se izmenjujejo rde"ce in "crne povezave (tj. povezave, ki so element prirejanja in povezave, ki niso).
 \end{defn}
@@ -2672,7 +2695,7 @@ Iz zgornjih dveh primerov je razvidno, da "ce je $n$ produkt razli"cnih pra"stev
 	% Za obstoj Hamiltonovega cikla nimamo dobre karakterizacije.
 \end{rem}
 \begin{proof}
-	Dokaz v desno smo "ze razmislili. Za"cnimo s poljubnim prirejanjem in predpostavimo $|A| \leqslant |N(A)|$. "Ce je to prirejanje popolno iz $X$ v $Y$, potem smo kon"cali. Sicer poskusimo to prirejanje pove"cati. To bomo lahko ponavljali, dokler ne pridemo do popolnega prirejanja.
+	Dokaz v desno smo "ze razmislili (\ref{hall_desno}). Za"cnimo s poljubnim prirejanjem in predpostavimo $|A| \leqslant |N(A)|$. "Ce je to prirejanje popolno iz $X$ v $Y$, potem smo kon"cali. Sicer poskusimo to prirejanje pove"cati. To bomo lahko ponavljali, dokler ne pridemo do popolnega prirejanja.
 	
 	Po predpostavi (na"se prirejanje ni popolno) obstaja neko vozli"s"ce $a \in X$, ki ni v nobeni povezavi v prirejanju (ni element rde"ce povezave). Definirajmo \\
 	$A \coloneqq \{x \in X; \exists \text{ alternirajo"ca pot od }a\text{ do }x\}$ in\\
