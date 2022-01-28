@@ -525,7 +525,7 @@ vrstni red ni pomemben & $\binom{n + k - 1}{k}$ & $\binom{n}{k}$
 		\bigg|\bigcap_{i = 1}^n A_i^c\bigg| =
 		\bigg|(\bigcup_{i = 1}^n A_i)^c\bigg| =
 		|A| - \bigg|\bigcup_{i = 1}^n A_i\bigg| =
-		|A_{\emptyset}|\sum_{\emptyset \neq I \subseteq [n]} (-1)^{|I|} (A_I) =
+		|A_{\emptyset}| - \sum_{\emptyset \neq I \subseteq [n]} (-1)^{|I|-1} |A_I| =
 		\sum_{I \subseteq [n]} (-1)^{|I|} |A_I|
 	\]
 \end{proof}
@@ -1191,7 +1191,6 @@ Kaj pa rekurzija za $p(n)$?
         & + ...\nonumber
 \end{align}
 
-\label{TODO: fill in the question mark}
 Torej o"citno: $p(n) = \displaystyle\sum_{m=1}^{\infty} ? p(n - m)$.
 
 Relevantne so raz"clenitve $m$ z razli"cnimi "cleni
