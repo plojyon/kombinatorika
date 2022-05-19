@@ -382,7 +382,7 @@ Trikotnik konstruiramo tako, da napi"semo zunanji pla"s"c enic, nato pa vsak par
 	Indukcijski korak, $n - 1 \Rightarrow n$:
 \[(a+b)^n = (a+b)^{n-1}(a+b) = (\sum_{k=0}^{n-1} \binom{n-1}{k} a^{n-1-k}b^k)(a+b) =\]
 \[ = \sum_{k=0}^{n-1} \binom{n-1}{k} a^{n-k}b^k + \sum_{k=0}^{n-1} \binom{n-1}{k} a^{n-1-k}b^{k+1} =\]
-\[\stackrel{k' = k + 1}{=} \sum_{k=0}^{n-1} \binom{n-1}{k} a^{n-k}b^k + \sum_{k'=1}^{n-1} \binom{n-1}{k'-1} a^{n-k'}b^{k'} = \]
+\[\stackrel{k' = k + 1}{=} \sum_{k=0}^{n-1} \binom{n-1}{k} a^{n-k}b^k + \sum_{k'=1}^{n} \binom{n-1}{k'-1} a^{n-k'}b^{k'} = \]
 \[\stackrel{k'=k}{=} \sum_{k=0}^{n} {\binom{n-1}{k}a^{n-k} b^k} + \sum_{k=0}^{n} {\binom{n-1}{k-1}a^{n-k} b^k} =\]
 \[= \sum_{k=0}^n (\binom{n-1}{k} + \binom{n-1}{k-1})a^{n-k}b^k =\]
 \[\stackrel{\text{rekurzija}}{=} \sum_{k=0}^n \binom{n}{k}a^{n-k}b^k\]
@@ -502,7 +502,7 @@ vrstni red ni pomemben & $\binom{n + k - 1}{k}$ & $\binom{n}{k}$
 \end{ex}
 
 \begin{theorem}[NVI]
-	\[|A_1 \cup \cdots \cup A_n| = \sum_{j = 1}^{n} (-1)^{j - 1} \sum_{1 \leqslant i_1 \leqslant \cdots \leqslant i_j \leqslant n}|A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_j}|\]
+	\[|A_1 \cup \cdots \cup A_n| = \sum_{j = 1}^{n} (-1)^{j - 1} \sum_{1 < i_1 < \cdots < i_j < n}|A_{i_1} \cap A_{i_2} \cap \cdots \cap A_{i_j}|\]
 \end{theorem}
 \begin{defn}
 	\[A_I := \displaystyle \bigcap_{i \in I} A_i \]
@@ -537,7 +537,8 @@ vrstni red ni pomemben & $\binom{n + k - 1}{k}$ & $\binom{n}{k}$
 
 \begin{proof}
 	V binomski izrek vstavimo $x = -1$
-	\[(1 -1)^n = \sum_{j = 0}^k \binom{k}{j} x^j = 0\]
+	\[(1 -x)^n = \sum_{j = 0}^k \binom{k}{j} x^j \]
+	\[(1 -1)^n = \sum_{j = 0}^k \binom{k}{j} (-1)^j = 0\]
 \end{proof}
 
 \begin{rem}
@@ -547,7 +548,7 @@ vrstni red ni pomemben & $\binom{n + k - 1}{k}$ & $\binom{n}{k}$
 To lahko poka"zemo tudi s slede"co bijekcijo
 \[\varphi: \{\text{sode podmno"zice }[k]\} \rightarrow \{\text{lihe podmno"zice }[k]\} \]
 \[\varphi (S) = \begin{cases}S \setminus \{k\}: \quad k \in S  \\ S \cup \{k\}: \quad k \notin S \end{cases}\]
-
+\pagebreak
 \begin{proof}(NVI)
 	\label{TODO: tega ne bom gledu}
 	\[a \in \bigcup_{i = 1}^{n} A_i,\ a\text{ vsebovana v natanko }k\text{ mno"zicah}\]
@@ -557,6 +558,18 @@ To lahko poka"zemo tudi s slede"co bijekcijo
 	$\binom{k}{2}$ \ldots doprinos v drugi vrstici\\
 	$\displaystyle \sum_{j = 0}^{k} (-1)^j \binom{k}{j}$ = 0 (po lemi)
 \end{proof}
+
+\begin{ex}
+    \label{nvi_surjekcije}
+	Koliko je surjekcij $[n] \to [k]$? \\ 
+	Vseh preslikav: $A=k^n$ \\ 
+	$A_i := $ preslikave, ki nobenega elementa ne slikajo v $i$ \\ 
+	\[A_i = \left\{f: [n] \to [k]: f(j) \neq i \quad \forall j \in [n] \right\} = \left([k] \backslash \{i\} \right)^{[n]}\]
+	\[|A_i| = (k-1)^n\] 
+	\[|A_S| = (k-|S|)^n\]
+	Uporabimo formulo za NVI \\ 
+    \[\left|\bigcup_{i=1}^k A_i^c\right| = \sum_{S \subseteq [k]} (-1)^{|S|}(k-|S|)^n = \sum_{j=0}^k (-1)^j \binom{k}{j}(k-j)^n =\] \[ \stackrel{j=k-j}{=} \sum_{j=0}^k (-1)^{k-j} \binom{k}{k-j}j^n = \sum_{j=0}^k (-1)^{k-j} \binom{k}{j}j^n\]
+\end{ex}
 
 \subsection{Eulerjeva funkcija $\phi$} % $\varphi$
 \begin{defn}[Eulerjeva funkcija]
@@ -876,7 +889,7 @@ Za $c(n, k)$ ni ``lepe'' formule. Vemo pa naslednje lastnosti
 \end{defn}
 
 \begin{ex}
-	$A = [8]$ lahko razdelimo na $\{ \{1, 4, 5\} \{2\} \{3, 6, 7, 8\}\}$, kar lahko zapi"semo kot $145-2-3678$ oziroma urejeno $2-415-8763$.
+	$A = [8]$ lahko razdelimo na $\{ \{1, 4, 5\}, \{2\}, \{3, 6, 7, 8\}\}$, kar lahko zapi"semo kot $145-2-3678$ oziroma urejeno $2-415-8763$.
 \end{ex}
 \begin{rem}
 	"Ce je $R$ je ekvivalen"cna relacija nad $A$ (refleksivna, simetri"cna, tranzitivna), je mno"zica ekvivalen"cnih razredov $R$ ravno razdelitev mno"zice $A$.
@@ -951,7 +964,9 @@ Preproste formule za $S(n,k)$ in $B(n)$ nimamo, poznamo pa naslednje identitete:
 
 \begin{conseq}
 	\[S(n,k) = \frac{1}{k!} \sum_{j=0}^k (-1)^{k-j} \binom{k}{j}j^n = \sum_{j=0}^k \frac{(-1)^{k-j} j^n}{j! (k-j)!}\]
+	(dokazano z NVI \ref{nvi_surjekcije})
 \end{conseq}
+
 
 \begin{claim}[Rekurzivna formula za $S(n)$]
     \[\sum_k S(n,k)x^{\underline{k}} = x^n\]
@@ -962,9 +977,9 @@ Preproste formule za $S(n,k)$ in $B(n)$ nimamo, poznamo pa naslednje identitete:
 \end{proof}
 \begin{proof}(2. na"cin)
     Naj bo $x \in \N$.
-    $x^n$ je "stevilo preslikav iz $[n]$ v $[k]$.
+    $x^n$ je "stevilo preslikav iz $[n]$ v $[x]$.
     Vsaka preslikava je surjekcija na svojo sliko (zalogo vrednosti).
-    \[x^n = \sum_T \big(|T|! \cdot S(n,|T|)\big) = \sum_k \big(k! \cdot S(n,k) \cdot \binom{x}{k}\big)\]
+    \[x^n = \sum_{T \subseteq [x]} \big(|T|! \cdot S(n,|T|)\big) = \sum_k \big(k! \cdot S(n,k) \cdot \binom{x}{k}\big)\]
     kjer je $T$ slika preslikave, $\binom{x}{k} = \frac{x^{\underline{k}}}{k!}$ pa predstavlja "stevilo $k$-elementnih podmno"zic od $[x]$.
 \end{proof}
 
@@ -1894,7 +1909,7 @@ Ker smo kul matematiki, se ne bomo zadovoljili zgolj z rekurzivno zvezo.
 \begin{proof}
 	Definirajmo $F(x) = \sum_{n = 0}^{\infty} C_n x^n$.
 	Pomno"zimo rekurzijo z $x^{n + 1}$ in se"stejmo "clene $\sum_{n = 0}^{\infty}$, kot smo to po"celi pri linearnih rekurzijah.
-	\[\sum_{n = 0}^{\infty} C_{n + 1} x^{n + 1} = \sum_{n = 0}^{\infty} (\sum_{k = 0}^{\infty} C_k C_{n-k}) x^{n + 1}\]
+	\[\sum_{n = 0}^{\infty} C_{n + 1} x^{n + 1} = \sum_{n = 0}^{\infty} (\sum_{k = 0}^{n} C_k C_{n-k}) x^{n + 1}\]
 	Levo stran izrazimo kot $F(x) - 1$, na desni strani pa opazimo konvolucijo $F(x)$ s samim sabo. Dobimo torej $x F^2(x)$. "Ce enakost preoblikujemo, dobimo $x F^2(x) - F(x) + 1 = 0$.
 
 	Kaj pa zdaj? No, ko vidimo kvadratno ena"cbo, nas ima, da bi jo re"sili. Poskusimo s kvadratno ena"cbo
@@ -2071,7 +2086,7 @@ Nekateri objekti so ekvivalentni, zanima nas "stevilo ekvivaletnih razredov barv
 $X$ z operacijo $\sim$ razpade na ekvivalen"cne razrede, ki jih imenujemo orbite. Orbito elementa $x$ v $G$ ozna"cimo $Gx$ ($\neq G_x$!!).
 \subsection{Orbite, stabilizatorji in negibne to"cke}
 \begin{defn}[Orbita]
-	$$Gx = {g \cdot x: g \in G}$$
+	$$Gx = \{g \cdot x: g \in G\}$$
 \end{defn}
 \begin{rem*}
 	\label{orbita_neq_odsek}
@@ -2143,7 +2158,7 @@ Mno"zico orbit ozna"cimo z $X/G$.
 	Hkrati smo pokazali, da je injektivna (ker so vmes ekvivalence, ne samo implikacije).
 	Poka"zimo "se, da je surjektivna:
 	$$gG_x = \phi (g \cdot x) $$
-	$$\implies |G_x| = \frac{G}{G_x}$$
+	$$\implies |Gx| = \frac{|G|}{|G_x|}$$
 \end{proof}
 
 \begin{ex}
@@ -2233,7 +2248,7 @@ $g \in G$ je permutacija elementov iz $X$, ki jo seveda lahko enoli"cno zapi"sem
 
 
 \begin{theorem}[Cikli"cni indeks $C_n$]
-	\[ Z_{C_n}(t_1, \ldots, t_n) = \frac{1}{n}\sum_{d | n} \phi(d) \cdot (t_{\frac{n}{d}})^d \]
+	\[ Z_{C_n}(t_1, \ldots, t_n) = \frac{1}{n}\sum_{d | n} \phi\left(\frac{n}{d}\right) \cdot (t_{\frac{n}{d}})^d \]
 \end{theorem}
 \begin{theorem}[Cikli"cni indeks $D_n$]
 	\[	Z_{D_n} = \frac{1}{2}Z_{C_n} +
@@ -2295,7 +2310,7 @@ V tem razdelku bomo ugotovili pravo uporabnost Burnsidove leme in cikli"cnega in
 	$R^X$ je tedaj mno"zica barvanj.
 \end{defn}
 
-Namesto da permutiramo koralde, lahko $G$ razumemo tudi kot grupo permutacij barvanj (podgrupo $S_{R^X}$). Ker je $g$ permutacija korald, moramo posebej definirati, kako uporabimo $g \in G$ na barvnju $b \in R^X$.
+Namesto da permutiramo koralde, lahko $G$ razumemo tudi kot grupo permutacij barvanj (podgrupo $S_{R^X}$). Ker je $g$ permutacija korald, moramo posebej definirati, kako uporabimo $g \in G$ na barvanju $b \in R^X$.
 \begin{defn}[Permutacija barvanja]
 	$g \cdot b(x) \coloneqq b (g^{-1} \cdot x)$
 \end{defn}
